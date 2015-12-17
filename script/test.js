@@ -1,9 +1,28 @@
 $tiles = $('.tiles');
 console.log($tiles);
-$tiles.click(leftRoad)
+$tiles.click(bottomRightRoad)
+
 function leftRoad() {
-  console.log("!!!!");
   $tile = $(this);
   $tile.append('<div class="leftRoad"></div>');
-  console.log($tile);
+}
+function rightRoad() {
+  $tile = $(this);
+  $tile.append('<div class="rightRoad"></div>');
+}
+function topLeftRoad() {
+  $tile = $(this);
+  $tile.append('<div class="topLeftRoad"></div>');
+}
+function topRightRoad() {
+  $tile = $(this);
+  $tile.append('<div class="topRightRoad"></div>');
+}
+function bottomLeftRoad() {
+  $tile = $(this);
+  $tile.append('<div class="bottomLeftRoad"></div>');
+}
+function bottomRightRoad() {
+  $tile = $(this);
+  $tile.append('<div class="bottomRightRoad"></div>');
 }

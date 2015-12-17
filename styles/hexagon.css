@@ -1,10 +1,11 @@
 body {
-  width: 1000px;
+  margin: auto;
+  max-width: 100%;
 }
 
 #gameBoard {
-  width: 1000px;
-  max-width: 100%;
+  margin: auto;
+  max-width: 1000px;
   height: 1000px;
 }
 
@@ -13,7 +14,7 @@ body {
 }
 
 .imageSize {
-  width: 100px;
+  max-width: 100px;
 }
 
 #main-header {
@@ -27,8 +28,9 @@ body {
 }
 #hex1 {
   position: absolute;
-  left: 350px;
+  left: 35%;
   display: inline-block;
+  max-width: 100%;
 }
 
 .leftRoad {
@@ -42,15 +44,81 @@ body {
   display: inline;
 }
 
+.rightRoad {
+  position: absolute;
+  left: 97.5px;
+  top: 35px;
+  height: 45px;
+  width: 5px;
+  background-color: blue;
+  z-index: 20;
+  display: inline;
+}
+
+.topLeftRoad {
+  position: absolute;
+  left: 23px;
+  top: -8px;
+  height: 45px;
+  width: 5px;
+  background-color: blue;
+  z-index: 20;
+  display: inline;
+  -ms-transform: rotate(60deg); /* IE 9 */
+  -webkit-transform: rotate(60deg); /* Chrome, Safari, Opera */
+  transform: rotate(60deg);
+}
+
+.topRightRoad {
+  position: absolute;
+  left: 73px;
+  top: -8px;
+  height: 45px;
+  width: 5px;
+  background-color: green;
+  z-index: 20;
+  display: inline;
+  -ms-transform: rotate(-60deg); /* IE 9 */
+  -webkit-transform: rotate(-60deg); /* Chrome, Safari, Opera */
+  transform: rotate(-60deg);
+}
+
+.bottomLeftRoad {
+  position: absolute;
+  left: 23px;
+  top: 78px;
+  height: 45px;
+  width: 5px;
+  background-color: green;
+  z-index: 20;
+  display: inline;
+  -ms-transform: rotate(-60deg); /* IE 9 */
+  -webkit-transform: rotate(-60deg); /* Chrome, Safari, Opera */
+  transform: rotate(-60deg);
+}
+
+.bottomRightRoad {
+  position: absolute;
+  left: 73px;
+  top: 78px;
+  height: 45px;
+  width: 5px;
+  background-color: green;
+  z-index: 20;
+  display: inline;
+  -ms-transform: rotate(60deg); /* IE 9 */
+  -webkit-transform: rotate(60deg); /* Chrome, Safari, Opera */
+  transform: rotate(60deg);
+}
 #hex2 {
   position: absolute;
-  left: 450px;
+  left: 45%;
   display: inline-block;
 }
 
 #hex3 {
   position: absolute;
-  left: 550px;
+  left: 55%;
   display: inline-block;
 }
 
@@ -62,25 +130,25 @@ body {
 
 #hex4 {
   position: absolute;
-  left: 300px;
+  left: 30%;
   display: inline-block;
 }
 
 #hex5 {
   position: absolute;
-  left: 400px;
+  left: 40%;
   display: inline-block;
 }
 
 #hex6 {
   position: absolute;
-  left: 500px;
+  left: 50%;
   display: inline-block;
 }
 
 #hex7 {
   position: absolute;
-  left: 600px;
+  left: 60%;
   display: inline-block;
 }
 
@@ -92,31 +160,31 @@ body {
 
 #hex8 {
   position: absolute;
-  left: 250px;
+  left: 25%;
   display: inline-block;
 }
 
 #hex9 {
   position: absolute;
-  left: 350px;
+  left: 35%;
   display: inline-block;
 }
 
 #hex10 {
   position: absolute;
-  left: 450px;
+  left: 45%;
   display: inline-block;
 }
 
 #hex11 {
   position: absolute;
-  left: 550px;
+  left: 55%;
   display: inline-block;
 }
 
 #hex12 {
   position: absolute;
-  left: 650px;
+  left: 65%;
   display: inline-block;
 }
 
@@ -128,25 +196,25 @@ body {
 
 #hex13 {
   position: absolute;
-  left: 300px;
+  left: 30%;
   display: inline-block;
 }
 
 #hex14 {
   position: absolute;
-  left: 400px;
+  left: 40%;
   display: inline-block;
 }
 
 #hex15 {
   position: absolute;
-  left: 500px;
+  left: 50%;
   display: inline-block;
 }
 
 #hex16 {
   position: absolute;
-  left: 600px;
+  left: 60%;
   display: inline-block;
 }
 
@@ -158,18 +226,18 @@ body {
 
 #hex17 {
   position: absolute;
-  left: 350px;
+  left: 35%;
   display: inline-block;
 }
 
 #hex18 {
   position: absolute;
-  left: 450px;
+  left: 45%;
   display: inline-block;
 }
 
 #hex19 {
   position: absolute;
-  left: 550px;
+  left: 55%;
   display: inline-block;
 }
