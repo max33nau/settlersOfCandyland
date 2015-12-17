@@ -11,9 +11,39 @@ body {
   border-radius: 100%;
   color: black;
   z-index: 1000;
-  background-color: black;
+  background-color: none;
 }
 
+.road {
+  position:absolute;
+  width: 5px;
+  height: 35px;
+  color: black;
+  z-index: 1000;
+  background-color: none;
+}
+
+.road1 {
+  top: 37%;
+  left: -209.5%;
+}
+
+.road2 {
+  top: 35%;
+  left: -108%;
+}
+
+.road3 {
+  top: 35%;
+  left: -5%;
+
+}
+
+.road4 {
+  top: 35%;
+  left: 97%;
+
+}
 .spot1 {
   top: 20%;
   left: -10%;
