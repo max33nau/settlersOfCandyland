@@ -10,7 +10,9 @@ body {
 }
 
 .tiles {
- position: relative;
+  position: absolute;
+  display: inline-block;
+
 }
 
 .imageSize {
@@ -21,16 +23,24 @@ body {
   text-align: center;
 }
 
-#topRow {
-  position: relative;
-  display: block;
-  top: 0;
-}
-#hex1 {
+.cupCake {
   position: absolute;
-  left: 35%;
-  display: inline-block;
-  max-width: 100%;
+  width: 15px;
+  height: 15px;
+  background-color: blue;
+  z-index: 19;
+  display: inline;
+}
+
+.iceCreamSunday {
+  position: absolute;
+  top: 20px;
+  width: 25px;
+  height: 25px;
+  border-radius: 20px;
+  background-color: blue;
+  z-index: 30;
+  display: inline;
 }
 
 .leftRoad {
@@ -110,134 +120,194 @@ body {
   -webkit-transform: rotate(60deg); /* Chrome, Safari, Opera */
   transform: rotate(60deg);
 }
-#hex2 {
-  position: absolute;
-  left: 45%;
-  display: inline-block;
-}
 
-#hex3 {
-  position: absolute;
-  left: 55%;
-  display: inline-block;
-}
-
-#BelowTopRow {
+#topRow {
   position: relative;
   display: block;
   top: 87px;
 }
 
-#hex4 {
-  position: absolute;
+#topBoarder {
+  position: relative;
+  display: block;
+  top: 0px;
+}
+
+#boarder1 {
   left: 30%;
-  display: inline-block;
+}
+
+#boarder2 {
+  left: 40%;
+}
+
+#boarder3 {
+  left: 50%;
+
+}
+
+#boarder4 {
+  left: 60%;
+}
+
+#boarder5 {
+  left: 25%;
+}
+
+#hex1 {
+  left: 35%;
+}
+
+#hex2 {
+  left: 45%;
+}
+
+#hex3 {
+  left: 55%;
+}
+
+#boarder6 {
+  left: 65%;
+}
+
+#BelowTopRow {
+  position: relative;
+  display: block;
+  top: 174.5px;
+}
+
+#boarder7 {
+  left: 20%;
+}
+
+#hex4 {
+  left: 30%;
 }
 
 #hex5 {
-  position: absolute;
   left: 40%;
-  display: inline-block;
 }
 
 #hex6 {
-  position: absolute;
   left: 50%;
-  display: inline-block;
 }
 
 #hex7 {
-  position: absolute;
   left: 60%;
-  display: inline-block;
+}
+
+#boarder8 {
+  left: 70%;
 }
 
 #middleRow {
   position: relative;
   display: block;
-  top: 174px;
+  top: 261px;
+}
+
+#boarder9 {
+  left: 15%;
 }
 
 #hex8 {
-  position: absolute;
   left: 25%;
-  display: inline-block;
 }
 
 #hex9 {
-  position: absolute;
   left: 35%;
-  display: inline-block;
 }
 
 #hex10 {
-  position: absolute;
   left: 45%;
-  display: inline-block;
 }
 
 #hex11 {
-  position: absolute;
   left: 55%;
-  display: inline-block;
 }
 
 #hex12 {
-  position: absolute;
   left: 65%;
-  display: inline-block;
+}
+
+#boarder10 {
+  left: 75%;
 }
 
 #AboveBottomRow {
   position: relative;
   display: block;
-  top: 261px;
+  top: 348.5px;
+}
+
+#boarder11 {
+  left: 20%;
 }
 
 #hex13 {
-  position: absolute;
   left: 30%;
-  display: inline-block;
 }
 
 #hex14 {
-  position: absolute;
   left: 40%;
-  display: inline-block;
 }
 
 #hex15 {
-  position: absolute;
   left: 50%;
-  display: inline-block;
 }
 
 #hex16 {
-  position: absolute;
   left: 60%;
-  display: inline-block;
+}
+
+#boarder12 {
+  left: 70%;
 }
 
 #bottomRow {
   position: relative;
   display: block;
-  top: 348px;
+  top: 435.5px;
+}
+
+#boarder13 {
+  left: 25%;
 }
 
 #hex17 {
-  position: absolute;
   left: 35%;
-  display: inline-block;
 }
 
 #hex18 {
-  position: absolute;
   left: 45%;
-  display: inline-block;
 }
 
 #hex19 {
-  position: absolute;
   left: 55%;
-  display: inline-block;
+}
+
+#boarder14 {
+  left: 65%;
+}
+
+#bottomBoarder {
+  position: relative;
+  display: block;
+  top: 522px;
+}
+
+#boarder15 {
+  left: 30%;
+}
+
+#boarder16 {
+  left: 40%;
+}
+
+#boarder17 {
+  left: 50%;
+}
+
+#boarder18 {
+  left: 60%;
 }
