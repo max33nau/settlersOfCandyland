@@ -1,277 +1,243 @@
 body {
-  width: 960px;
-
+  margin: auto;
+  max-width: 100%;
 }
 
-.building {
-  position:absolute;
-  width: 10px;
-  height: 10px;
-  border: 3px solid black;
-  border-radius: 100%;
-  color: black;
-  z-index: 1000;
-  background-color: black;
+#gameBoard {
+  margin: auto;
+  max-width: 1000px;
+  height: 1000px;
 }
 
-.spot1 {
-  top: 20%;
-  left: -10%;
+.tiles {
+ position: relative;
 }
 
-.spot2 {
-  top: 20%;
-  left: -113%;
+.imageSize {
+  max-width: 100px;
 }
-.spot3 {
-  top: 20%;
-  left: -215%;
-}
-.spot4 {
-  top: 19%;
-  left: 90%;
-}
-.spot5 {
-  top: -4%;
-  left: -61.5%;
-}
-.spot6 {
-  top: -4%;
-  left: -164%;
-}
-.spot7 {
-  top: -4%;
-  left: 42%;
-}
+
 #main-header {
   text-align: center;
 }
 
-.middleHexagon {
-  width: 104px;
-  height: 60px;
-}
-
-.topHexagon {
-  width: 0px;
-  border-right: 52px solid transparent;
-  border-left: 52px solid transparent;
-}
-
-.bottomHexagon {
-  width: 0px;
-  border-right: 52px solid transparent;
-  border-left: 52px solid transparent;
-}
-
-.middleSugar {
-  background-color: grey;
-}
-
-.topSugar {
-  border-bottom: 30px solid grey;
-}
-
-.bottomSugar {
-  border-top: 30px solid grey;
-}
-
-.middleBatter {
-  background-color: purple;
-}
-
-.topBatter {
-  border-bottom: 30px solid purple;
-}
-
-.bottomBatter {
-  border-top: 30px solid purple;
-}
-
-.middleSprinkles {
-  background-color: orange;
-}
-
-.topSprinkles {
-  border-bottom: 30px solid orange;
-}
-
-.bottomSprinkles {
-  border-top: 30px solid orange;
-}
-
-.middleIceCream {
-  background-color: blue;
-}
-
-.topIceCream {
-  border-bottom: 30px solid blue;
-}
-
-.bottomIceCream {
-  border-top: 30px solid blue;
-}
-
-.middleFrosting {
-  background-color: red;
-}
-
-.topFrosting {
-  border-bottom: 30px solid red;
-}
-
-.bottomFrosting {
-  border-top: 30px solid red;
-}
-
-.middleCottonCandy {
-  background-color: pink;
-}
-
-.topCottonCandy {
-  border-bottom: 30px solid pink;
-}
-
-.bottomCottonCandy {
-  border-top: 30px solid pink;
-}
-
-
 #topRow {
-  width: 960px;
+  position: relative;
   display: block;
+  top: 0;
 }
 #hex1 {
-  position: relative;
-  left: 50%;
+  position: absolute;
+  left: 35%;
   display: inline-block;
+  max-width: 100%;
 }
 
+.leftRoad {
+  position: absolute;
+  left: -2px;
+  top: 35px;
+  height: 45px;
+  width: 5px;
+  background-color: blue;
+  z-index: 20;
+  display: inline;
+}
+
+.rightRoad {
+  position: absolute;
+  left: 97.5px;
+  top: 35px;
+  height: 45px;
+  width: 5px;
+  background-color: blue;
+  z-index: 20;
+  display: inline;
+}
+
+.topLeftRoad {
+  position: absolute;
+  left: 23px;
+  top: -8px;
+  height: 45px;
+  width: 5px;
+  background-color: blue;
+  z-index: 20;
+  display: inline;
+  -ms-transform: rotate(60deg); /* IE 9 */
+  -webkit-transform: rotate(60deg); /* Chrome, Safari, Opera */
+  transform: rotate(60deg);
+}
+
+.topRightRoad {
+  position: absolute;
+  left: 73px;
+  top: -8px;
+  height: 45px;
+  width: 5px;
+  background-color: green;
+  z-index: 20;
+  display: inline;
+  -ms-transform: rotate(-60deg); /* IE 9 */
+  -webkit-transform: rotate(-60deg); /* Chrome, Safari, Opera */
+  transform: rotate(-60deg);
+}
+
+.bottomLeftRoad {
+  position: absolute;
+  left: 23px;
+  top: 78px;
+  height: 45px;
+  width: 5px;
+  background-color: green;
+  z-index: 20;
+  display: inline;
+  -ms-transform: rotate(-60deg); /* IE 9 */
+  -webkit-transform: rotate(-60deg); /* Chrome, Safari, Opera */
+  transform: rotate(-60deg);
+}
+
+.bottomRightRoad {
+  position: absolute;
+  left: 73px;
+  top: 78px;
+  height: 45px;
+  width: 5px;
+  background-color: green;
+  z-index: 20;
+  display: inline;
+  -ms-transform: rotate(60deg); /* IE 9 */
+  -webkit-transform: rotate(60deg); /* Chrome, Safari, Opera */
+  transform: rotate(60deg);
+}
 #hex2 {
-  position: relative;
-  left: 27.5%;
+  position: absolute;
+  left: 45%;
   display: inline-block;
 }
 
 #hex3 {
-  position: relative;
-  left: 5%;
-  display: inline-block;
-}
-
-#hex4 {
-  position: relative;
-  left: 44.33%;
-  display: inline-block;
-}
-
-#hex5 {
-  position: relative;
-  left: 21.9%;
-  display: inline-block;
-}
-
-#hex6 {
-  position: relative;
-  left: -.6%;
-  display: inline-block;
-}
-
-#hex7 {
-  position: relative;
-  left: 21.75%;
+  position: absolute;
+  left: 55%;
   display: inline-block;
 }
 
 #BelowTopRow {
+  position: relative;
   display: block;
-  margin-top: -32px;
+  top: 87px;
 }
 
-#hex8 {
-  position: relative;
-  left: 16.35%;
+#hex4 {
+  position: absolute;
+  left: 30%;
   display: inline-block;
 }
 
-#hex9 {
-  position: relative;
-  left: 16.3%;
+#hex5 {
+  position: absolute;
+  left: 40%;
   display: inline-block;
 }
 
-#hex10 {
-  position: relative;
-  left: 27.45%;
+#hex6 {
+  position: absolute;
+  left: 50%;
   display: inline-block;
 }
 
-#hex11 {
-  position: relative;
-  left: 5%;
-  display: inline-block;
-}
-
-#hex12 {
-  position: relative;
-  left: 16.1%;
+#hex7 {
+  position: absolute;
+  left: 60%;
   display: inline-block;
 }
 
 #middleRow {
+  position: relative;
   display: block;
-  margin-top: -32px;
+  top: 174px;
 }
 
-
-#hex13 {
-  position: relative;
-  left: 21.9%;
+#hex8 {
+  position: absolute;
+  left: 25%;
   display: inline-block;
 }
 
-#hex14 {
-  position: relative;
-  left: 21.9%;
+#hex9 {
+  position: absolute;
+  left: 35%;
   display: inline-block;
 }
 
-#hex15 {
-  position: relative;
-  left: 21.9%;
+#hex10 {
+  position: absolute;
+  left: 45%;
   display: inline-block;
 }
 
-#hex16 {
-  position: relative;
-  left: 21.9%;
+#hex11 {
+  position: absolute;
+  left: 55%;
+  display: inline-block;
+}
+
+#hex12 {
+  position: absolute;
+  left: 65%;
   display: inline-block;
 }
 
 #AboveBottomRow {
+  position: relative;
   display: block;
-  margin-top: -32px;
+  top: 261px;
 }
 
-#hex17 {
-  position: relative;
-  left: 27.55%;
+#hex13 {
+  position: absolute;
+  left: 30%;
   display: inline-block;
 }
 
-#hex18 {
-  position: relative;
-  left: 27.5%;
+#hex14 {
+  position: absolute;
+  left: 40%;
   display: inline-block;
 }
 
-#hex19 {
-  position: relative;
-  left: 27.5%;
+#hex15 {
+  position: absolute;
+  left: 50%;
+  display: inline-block;
+}
+
+#hex16 {
+  position: absolute;
+  left: 60%;
   display: inline-block;
 }
 
 #bottomRow {
+  position: relative;
   display: block;
-  margin-top: -32px;
+  top: 348px;
+}
+
+#hex17 {
+  position: absolute;
+  left: 35%;
+  display: inline-block;
+}
+
+#hex18 {
+  position: absolute;
+  left: 45%;
+  display: inline-block;
+}
+
+#hex19 {
+  position: absolute;
+  left: 55%;
+  display: inline-block;
 }
