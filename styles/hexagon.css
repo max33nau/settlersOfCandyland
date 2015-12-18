@@ -3,6 +3,12 @@ body {
   max-width: 100%;
 }
 
+#roadSelection {
+  width: 200px;
+  font-size: .8em;
+  float: left;
+}
+
 #gameBoard {
   margin: auto;
   max-width: 1000px;

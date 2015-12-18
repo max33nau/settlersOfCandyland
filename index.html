@@ -10,6 +10,16 @@
 
   <body>
     <h1 id='main-header'> SETTLERS OF CANDYLAND </h1>
+    <button id='rollDice' name ='rollDice' onclick='rollTheDice()'>Roll Dice </button>
+    <fieldset id='roadSelection'>
+      <legend> Options </legend>
+      <input type='radio' name='roadLocation' value= 'topLeft'> Add road to top left </input> <br />
+      <input type='radio' name='roadLocation' value= 'topRight'> Add road to top right </input> <br />
+      <input type='radio' name='roadLocation' value= 'middleLeft'> Add road to middle left </input> <br />
+      <input type='radio' name='roadLocation' value= 'middleRight'> Add road to middle right </input> <br />
+      <input type='radio' name='roadLocation' value= 'bottomLeft'> Add road to bottom left </input> <br />
+      <input type='radio' name='roadLocation' value= 'bottomRight'> Add road to bottom right </input> <br />
+    </fieldset>
     <div id='gameBoard'>
     <div id='topRow'>
       <div class='tiles' id = 'hex1'>
