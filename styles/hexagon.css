@@ -12,6 +12,7 @@ body {
 .tiles {
   position: absolute;
   display: inline-block;
+
 }
 
 .imageSize {
