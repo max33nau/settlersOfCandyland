@@ -27,8 +27,19 @@ body {
   position: absolute;
   width: 15px;
   height: 15px;
-  background-color: yellow;
+  background-color: blue;
   z-index: 19;
+  display: inline;
+}
+
+.iceCreamSunday {
+  position: absolute;
+  top: 20px;
+  width: 25px;
+  height: 25px;
+  border-radius: 20px;
+  background-color: blue;
+  z-index: 30;
   display: inline;
 }
 
@@ -132,6 +143,7 @@ body {
 
 #boarder3 {
   left: 50%;
+  
 }
 
 #boarder4 {
