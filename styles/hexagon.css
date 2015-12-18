@@ -23,6 +23,15 @@ body {
   text-align: center;
 }
 
+.cupCake {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background-color: yellow;
+  z-index: 19;
+  display: inline;
+}
+
 .leftRoad {
   position: absolute;
   left: -2px;
