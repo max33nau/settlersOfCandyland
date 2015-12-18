@@ -6,7 +6,7 @@ body {
 #roadSelection {
   width: 200px;
   font-size: .8em;
-  float: left;
+  float:left;
 }
 
 #gameBoard {
@@ -15,9 +15,7 @@ body {
   height: 1000px;
 }
 
-.tiles {
- position: relative;
-}
+
 
 .imageSize {
   max-width: 100px;
