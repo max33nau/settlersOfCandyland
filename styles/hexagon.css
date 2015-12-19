@@ -43,6 +43,14 @@ body {
   display: inline;
 }
 
+#hexagon {
+  width: 100px;
+  height: 55px;
+  background: red;
+  position: relative;
+  display: inline-block;
+}
+
 .leftRoad {
   position: absolute;
   left: -2px;
@@ -143,7 +151,7 @@ body {
 
 #boarder3 {
   left: 50%;
-  
+
 }
 
 #boarder4 {
