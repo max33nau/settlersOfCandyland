@@ -35,13 +35,27 @@ body {
 }
 /*--------------------*/
 
+/*path {
+  fill: red;
+}
+path:hover {
+  fill: blue;
+}*/
+
 .cupCake {
   position: absolute;
-  width: 15px;
-  height: 15px;
-  background-color: blue;
+  max-width: 600px;
   z-index: 19;
   display: inline;
+  fill: yellow;
+}
+
+.cupCake:hover {
+  position: absolute;
+  width: 600px;
+  z-index: 19;
+  display: inline;
+  fill: teal;
 }
 
 .iceCreamSunday {
