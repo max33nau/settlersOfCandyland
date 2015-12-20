@@ -3,6 +3,7 @@
   <head>
     <title> </title>
     <meta charset="utf-8"></meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="styles/hexagon.css">
 
   </head>
@@ -35,7 +36,6 @@
     <div id='topBoarder'>
       <div class='tiles' id = 'boarder1'>
         <img  class='imageSize' src='graphics/stripes---tile-4.gif'>
-
       </div>
       <div class='tiles' id = 'boarder2'>
         <img  class='imageSize' src='graphics/stripes-tile.gif'>
@@ -53,16 +53,19 @@
       </div>
 
       <div class='tiles' id = 'xy31'>
-        <img  class='imageSize' src='graphics/sugar-tile.gif'>
+        <img class='imageSize' src='graphics/sugar-tile.gif'>
         <div class='check'> </div>
+        <div class='numberTile number2'>2 </div>
       </div>
       <div class='tiles' id = 'xy41'>
         <img class='imageSize' src='graphics/batter-tile.gif'>
         <div class='check'> </div>
+        <div class='numberTile number9'>9 </div>
       </div>
       <div class='tiles' id = 'xy51'>
         <img class='imageSize' src='graphics/sprinkles-tile.gif'>
         <div class='check'> </div>
+        <div class='numberTile number4'>4 </div>
       </div>
       <div class='tiles' id = 'boarder6'>
         <img  class='imageSize' src='graphics/stripes---tile-1.gif'>
@@ -77,18 +80,22 @@
       <div class='tiles' id = 'xy22'>
         <img class='imageSize' src='graphics/frosting-tile.gif'>
         <div class='check'> </div>
+        <div class='numberTile number5'>5 </div>
       </div>
       <div class='tiles' id = 'xy32'>
         <img class='imageSize' src='graphics/sprinkles-tile.gif'>
         <div class='check'> </div>
+        <div class='numberTile number8'>8 </div>
       </div>
       <div class='tiles' id = 'xy42'>
         <img class='imageSize' src='graphics/sugar-tile.gif'>
         <div class='check'> </div>
+        <div class='numberTile number3'>3 </div>
       </div>
       <div class='tiles' id = 'xy52'>
         <img class='imageSize' src='graphics/icecream-tile.gif'>
         <div class='check'> </div>
+        <div class='numberTile number10'>10 </div>
       </div>
       <div class='tiles' id = 'boarder8'>
         <img  class='imageSize' src='graphics/stripes-tile.gif'>
@@ -102,22 +109,27 @@
       <div class='tiles' id = 'xy13'>
         <img class='imageSize' src='graphics/icecream-tile.gif'>
         <div class='check'> </div>
+        <div class='numberTile number11'>11 </div>
       </div>
       <div class='tiles' id = 'xy23'>
         <img class='imageSize' src='graphics/sugar-tile.gif'>
         <div class='check'> </div>
+        <div class='numberTile number5'>5 </div>
       </div>
       <div class='tiles' id = 'xy33'>
         <img class='imageSize' src='graphics/batter-tile.gif'>
-        <div class='check'> </div>
+        <div class='check'>  </div>
+        <div class='numberTile number4'>4 </div>
       </div>
       <div class='tiles' id = 'xy43'>
         <img class='imageSize' src='graphics/sugar-tile.gif'>
         <div class='check'> </div>
+        <div class='numberTile number12'>12 </div>
       </div>
       <div class='tiles' id = 'xy53'>
         <img class='imageSize' src='graphics/frosting-tile.gif'>
         <div class='check'> </div>
+        <div class='numberTile number6'>6 </div>
       </div>
       <div class='tiles' id = 'boarder10'>
         <img  class='imageSize' src='graphics/stripes-batter-tile.gif'>
@@ -132,18 +144,22 @@
       <div class='tiles' id = 'xy14'>
         <img class='imageSize' src='graphics/fudge-tile.gif'>
         <div class='check'> </div>
+        <div id='thief' class='numberTile'>Thief </div>
       </div>
       <div class='tiles' id = 'xy24'>
         <img class='imageSize' src='graphics/icecream-tile.gif'>
         <div class='check'> </div>
+        <div class='numberTile number9'>9 </div>
       </div>
       <div class='tiles' id = 'xy34'>
         <img class='imageSize' src='graphics/sprinkles-tile.gif'>
         <div class='check'> </div>
+        <div class='numberTile number6'>6 </div>
       </div>
       <div class='tiles' id = 'xy44'>
         <img class='imageSize' src='graphics/frosting-tile.gif'>
         <div class='check'> </div>
+        <div class='numberTile number11'>11 </div>
       </div>
       <div class='tiles' id = 'boarder12'>
         <img  class='imageSize' src='graphics/stripes-tile.gif'>
@@ -158,14 +174,17 @@
       <div class='tiles' id = 'xy15'>
         <img class='imageSize' src='graphics/frosting-tile.gif'>
         <div class='check'> </div>
+        <div class='numberTile number8'>8 </div>
       </div>
       <div class='tiles' id = 'xy25'>
         <img class='imageSize' src='graphics/sprinkles-tile.gif'>
         <div class='check'> </div>
+        <div class='numberTile number3'>3 </div>
       </div>
       <div class='tiles' id = 'xy35'>
         <img class='imageSize' src='graphics/batter-tile.gif'>
         <div class='check'> </div>
+        <div  class='numberTile number10'>10 </div>
       </div>
       <div class='tiles' id = 'boarder14'>
         <img  class='imageSize' src='graphics/stripes-frosting-tile.gif'>
@@ -185,6 +204,37 @@
         <img  class='imageSize' src='graphics/stripes-tile.gif'>
       </div>
     </div>
+
+
+    <fieldset id='currentPlayer'>
+      <legend> Current Player </legend>
+    </fieldset>
+
+    <fieldset id='bakingRequirements'>
+      <legend> Baking Requirements </legend>
+      <div> Churro (Road) </div>
+      <img class='bakingInstructions' src='graphics/batter-tile.gif'>
+      <img class='bakingInstructions' src='graphics/sugar-tile.gif'>
+      <div> Cupcake (Settlement) </div>
+      <img class='bakingInstructions' src='graphics/batter-tile.gif'>
+      <img class='bakingInstructions' src='graphics/sugar-tile.gif'>
+      <img class='bakingInstructions' src='graphics/sprinkles-tile.gif'>
+      <img class='bakingInstructions' src='graphics/frosting-tile.gif'>
+      <div> Ice Cream Sundae (City) </div>
+      <img class='bakingInstructions' src='graphics/icecream-tile.gif'>
+      <img class='bakingInstructions' src='graphics/icecream-tile.gif'>
+      <img class='bakingInstructions' src='graphics/icecream-tile.gif'> <br />
+      <img class='bakingInstructions' src='graphics/sprinkles-tile.gif'>
+      <img class='bakingInstructions' src='graphics/sprinkles-tile.gif'>
+      <div> Ice Cream Cake (Development Card) </div>
+      <img class='bakingInstructions' src='graphics/frosting-tile.gif'>
+      <img class='bakingInstructions' src='graphics/icecream-tile.gif'>
+      <img class='bakingInstructions' src='graphics/sprinkles-tile.gif'>
+
+
+
+    </fieldset>
+
   <script src="script/jquery-2.1.4.min.js"></script>
   <script src='script/road.js'></script>
   <script src='script/test.js'></script>

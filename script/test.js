@@ -1,41 +1,42 @@
-function PlayerInfo (name, color) {
+function PlayerInfo (name, color,imageUrl) {
   this.name = name;
   this.color = color;
+  this.imageUrl = imageUrl;
   this.numberOfChurros = 15;
   this.numberOfCupcakes = 5;
   this.numberOfIceCreamSundaes = 4;
 }
 
-function findPreviousTile($tile) {
-  var leftNumber = Number($tile.attr('id').slice(3))-1;
-  var tileLocation = $('#hex'+leftNumber.toString());
-  return tileLocation;
-}
-
-
 my = {};
 
-player1 = new PlayerInfo('King Kandy', 'rgb(255, 255, 0)');
-player2 = new PlayerInfo('Lord Licorice', 'rgb(255, 0, 0)');
-player3 = new PlayerInfo('Queen Frostine', 'rgb(0, 0, 255)');
-player4 = new PlayerInfo('Gloppy', 'rgb(0, 0, 0)');
-playerInfo = [player1,player2,player3,player4];
+player1 = new PlayerInfo('King Kandy', 'rgb(255, 255, 0)','graphics/King_kandy.jpg');
+player2 = new PlayerInfo('Lord Licorice', 'rgb(255, 0, 0)','graphics/Lord-Licorice.png');
+player3 = new PlayerInfo('Queen Frostine', 'rgb(0, 0, 255)','graphics/queenFrostine.jpg');
+player4 = new PlayerInfo('Gloppy', 'rgb(0, 0, 0)','graphics/gloppy.png');
+var playerInfo = [player1,player2,player3,player4];
 my.currentPlayer = -1;
 
 my.playersTurnColor = '';
 my.playersTurnName = '';
+my.currentPlayerFieldset = $('#currentPlayer');
 
 //my.totalPlayers = Number(prompt('How many players are playing?'))-1
 
 my.totalPlayers = 3;
 function rollTheDice() {
+  console.log(my.currentPlayerFieldset);
+  my.currentPlayerFieldset.empty();
+  console.log('here');
   if(my.currentPlayer == my.totalPlayers) {
     my.currentPlayer = -1;
   }
   my.currentPlayer++;
+  my.currentPlayerFieldset.css('background-color',playerInfo[my.currentPlayer].color);
+  my.currentPlayerFieldset.append('<img src='+playerInfo[my.currentPlayer].imageUrl+'>');
+
 
 }
-my.currentPlayer = 2;
+
 $tiles = $('.check');
 $tiles.click(checkButton)
 function checkButton() {

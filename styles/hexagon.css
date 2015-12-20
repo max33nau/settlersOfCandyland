@@ -6,13 +6,17 @@ body {
 #roadSelection {
   width: 200px;
   font-size: .8em;
-  float:left;
+  position: fixed;
+  top: 0;
+  right: 0;
 }
 
 #buildingSelection {
   width: 200px;
   font-size: .8em;
-  float:right;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 .tiles {
@@ -372,6 +376,55 @@ body {
   height: 65px;
   width: 75px;
   background-color: transparent;
-  z-index: 40;
+  z-index: 70;
   display: inline;
+}
+
+
+
+.numberTile {
+  position: absolute;
+  left: 27px;
+  top: 37px;
+  height: 45px;
+  width: 45px;
+  background-color: black;
+  color: white;
+  border-radius: 100%;
+  z-index: 50;
+  display: inline;
+  text-align: center;
+  line-height: 45px;
+}
+
+.number8, .number6 {
+  color: red;
+}
+
+#rollDice {
+  position: fixed;
+  top: 50%;
+  left: 0;
+}
+#currentPlayer {
+  height: 100px;
+  width: 200px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+
+#bakingRequirements {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 180px;
+  height: 290px;
+}
+
+
+.bakingInstructions {
+  width: 35px;
+  height: 35px;
+  border-radius: 100%;
 }
