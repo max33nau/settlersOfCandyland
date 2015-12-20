@@ -8,7 +8,7 @@ body {
   font-size: .8em;
   position: fixed;
   top: 0;
-  right: 0;
+  left: 0;
 }
 
 #buildingSelection {
@@ -16,7 +16,7 @@ body {
   font-size: .8em;
   position: fixed;
   top: 0;
-  left: 0;
+  right: 0;
 }
 
 .tiles {

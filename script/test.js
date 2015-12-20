@@ -24,9 +24,9 @@ my.currentPlayerFieldset = $('#currentPlayer');
 
 my.totalPlayers = 3;
 function rollTheDice() {
-  console.log(my.currentPlayerFieldset);
+
   my.currentPlayerFieldset.empty();
-  console.log('here');
+
   if(my.currentPlayer == my.totalPlayers) {
     my.currentPlayer = -1;
   }
@@ -49,7 +49,7 @@ function checkButton() {
   var rightX = xCoord + 1;
   var leftX = xCoord - 1;
   var bottomY = yCoord + 1;
-  console.log(my.thiefButton);
+  console.log($('input[type="radio"][name="buildingLocation"]:checked').val())
 
   var upperLeftTile = $('#xy'+xCoord.toString()+upperY.toString());
   var upperRightTile = $('#xy'+rightX.toString()+upperY.toString());
