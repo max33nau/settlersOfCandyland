@@ -422,7 +422,15 @@ body {
   height: 290px;
 }
 
+#moveThief {
+  position: fixed;
+  top: 40%;
+  right: 3%;
+}
 
+#thief {
+  z-index: 10000;
+}
 .bakingInstructions {
   width: 35px;
   height: 35px;

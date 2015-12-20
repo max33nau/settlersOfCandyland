@@ -34,7 +34,6 @@ function rollTheDice() {
   my.currentPlayerFieldset.css('background-color',playerInfo[my.currentPlayer].color);
   my.currentPlayerFieldset.append('<img src='+playerInfo[my.currentPlayer].imageUrl+'>');
 
-
 }
 
 $tiles = $('.check');
@@ -42,6 +41,7 @@ $tiles.click(checkButton)
 function checkButton() {
   my.radioButtonRoad=$('input[type="radio"][name="roadLocation"]:checked').val();
   my.radioButtonBuilding=$('input[type="radio"][name="buildingLocation"]:checked').val();
+  my.thiefButton=$('input[type="radio"][name="thiefLocation"]:checked').val();
   $tile = $(this).parent();
   var xCoord = Number($tile.attr('id').slice(2,3));
   var yCoord = Number($tile.attr('id').slice(3,4));
@@ -49,6 +49,7 @@ function checkButton() {
   var rightX = xCoord + 1;
   var leftX = xCoord - 1;
   var bottomY = yCoord + 1;
+  console.log(my.thiefButton);
 
   var upperLeftTile = $('#xy'+xCoord.toString()+upperY.toString());
   var upperRightTile = $('#xy'+rightX.toString()+upperY.toString());
@@ -57,11 +58,6 @@ function checkButton() {
   var bottomLeftTile = $('#xy'+leftX.toString()+bottomY.toString());
   var bottomRightTile = $('#xy'+xCoord.toString()+bottomY.toString());
 
-  console.log('top left', upperLeftTile);
-  console.log('top right', upperRightTile);
-  console.log('specific tile', $tile);
-  console.log('bottom left', bottomLeftTile);
-  console.log('bottom right', bottomRightTile);
 
   if(my.radioButtonRoad) {
     if (playerInfo[my.currentPlayer].numberOfChurros == 0) {
@@ -127,9 +123,14 @@ function checkButton() {
     playerInfo[my.currentPlayer].numberOfCupcakes--;
 
 
-  } else {
+  }  else {
     console.log('truthy');
   }
+
+} else if (my.thiefButton == 'moveThief') {
+  $thief = $('#thief');
+  $thief.remove();
+  $tile.append('<img id="thief" class="numberTile" src="graphics/gingerbreadMan.gif">');
 
 } else {
   alert('You did not make a selection, please try again.');
