@@ -9,12 +9,17 @@ body {
   float:left;
 }
 
-#gameBoard {
-  margin: auto;
-  max-width: 1000px;
-  height: 1000px;
+#buildingSelection {
+  width: 200px;
+  font-size: .8em;
+  float:right;
 }
 
+.tiles {
+  position: absolute;
+  display: inline-block;
+
+}
 
 
 .imageSize {
@@ -25,16 +30,71 @@ body {
   text-align: center;
 }
 
-#topRow {
-  position: relative;
-  display: block;
-  top: 0;
-}
-#hex1 {
+
+.upperBuilding {
   position: absolute;
-  left: 35%;
-  display: inline-block;
-  max-width: 100%;
+  top: -8px;
+  right: 40px;
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  z-index: 30;
+  display: inline;
+}
+
+.topRightBuilding {
+  position: absolute;
+  top: 18px;
+  left: 91px;
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  z-index: 30;
+  display: inline;
+}
+
+.topLeftBuilding {
+  position: absolute;
+  top: 18px;
+  left: -11px;
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  z-index: 30;
+  display: inline;
+}
+
+.bottomRightBuilding {
+  position: absolute;
+  top: 78px;
+  left: 91px;
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  z-index: 30;
+  display: inline;
+}
+
+.bottomLeftBuilding {
+  position: absolute;
+  top: 78px;
+  left: -11px;
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  z-index: 30;
+  display: inline;
+}
+
+.bottomBuilding {
+  position: absolute;
+  top: 103px;
+  right: 40px;
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  z-index: 30;
+  display: inline;
 }
 
 .leftRoad {
@@ -43,7 +103,6 @@ body {
   top: 35px;
   height: 45px;
   width: 5px;
-  background-color: blue;
   z-index: 20;
   display: inline;
 }
@@ -54,7 +113,6 @@ body {
   top: 35px;
   height: 45px;
   width: 5px;
-  background-color: blue;
   z-index: 20;
   display: inline;
 }
@@ -65,7 +123,6 @@ body {
   top: -8px;
   height: 45px;
   width: 5px;
-  background-color: blue;
   z-index: 20;
   display: inline;
   -ms-transform: rotate(60deg); /* IE 9 */
@@ -79,7 +136,6 @@ body {
   top: -8px;
   height: 45px;
   width: 5px;
-  background-color: green;
   z-index: 20;
   display: inline;
   -ms-transform: rotate(-60deg); /* IE 9 */
@@ -93,7 +149,6 @@ body {
   top: 78px;
   height: 45px;
   width: 5px;
-  background-color: green;
   z-index: 20;
   display: inline;
   -ms-transform: rotate(-60deg); /* IE 9 */
@@ -107,141 +162,216 @@ body {
   top: 78px;
   height: 45px;
   width: 5px;
-  background-color: green;
   z-index: 20;
   display: inline;
   -ms-transform: rotate(60deg); /* IE 9 */
   -webkit-transform: rotate(60deg); /* Chrome, Safari, Opera */
   transform: rotate(60deg);
 }
-#hex2 {
-  position: absolute;
-  left: 45%;
-  display: inline-block;
-}
 
-#hex3 {
-  position: absolute;
-  left: 55%;
-  display: inline-block;
-}
-
-#BelowTopRow {
+#topRow {
   position: relative;
   display: block;
   top: 87px;
 }
 
-#hex4 {
-  position: absolute;
+#topBoarder {
+  position: relative;
+  display: block;
+  top: 0px;
+}
+
+#boarder1 {
   left: 30%;
-  display: inline-block;
 }
 
-#hex5 {
-  position: absolute;
+#boarder2 {
   left: 40%;
-  display: inline-block;
 }
 
-#hex6 {
-  position: absolute;
+#boarder3 {
   left: 50%;
-  display: inline-block;
+
 }
 
-#hex7 {
-  position: absolute;
+#boarder4 {
   left: 60%;
-  display: inline-block;
+}
+
+#boarder5 {
+  left: 25%;
+}
+
+#xy31 {
+  left: 35%;
+}
+
+#xy41 {
+  left: 45%;
+}
+
+#xy51 {
+  left: 55%;
+}
+
+#boarder6 {
+  left: 65%;
+}
+
+#BelowTopRow {
+  position: relative;
+  display: block;
+  top: 174.5px;
+}
+
+#boarder7 {
+  left: 20%;
+}
+
+#xy22 {
+  left: 30%;
+}
+
+#xy32 {
+  left: 40%;
+}
+
+#xy42 {
+  left: 50%;
+}
+
+#xy52 {
+  left: 60%;
+}
+
+#boarder8 {
+  left: 70%;
 }
 
 #middleRow {
   position: relative;
   display: block;
-  top: 174px;
+  top: 261px;
 }
 
-#hex8 {
-  position: absolute;
+#boarder9 {
+  left: 15%;
+}
+
+#xy13 {
   left: 25%;
-  display: inline-block;
 }
 
-#hex9 {
-  position: absolute;
+#xy23 {
   left: 35%;
-  display: inline-block;
 }
 
-#hex10 {
-  position: absolute;
+#xy33 {
   left: 45%;
-  display: inline-block;
 }
 
-#hex11 {
-  position: absolute;
+#xy43 {
   left: 55%;
-  display: inline-block;
 }
 
-#hex12 {
-  position: absolute;
+#xy53 {
   left: 65%;
-  display: inline-block;
+}
+
+#boarder10 {
+  left: 75%;
 }
 
 #AboveBottomRow {
   position: relative;
   display: block;
-  top: 261px;
+  top: 348.5px;
 }
 
-#hex13 {
-  position: absolute;
+#boarder11 {
+  left: 20%;
+}
+
+#xy14 {
   left: 30%;
-  display: inline-block;
 }
 
-#hex14 {
-  position: absolute;
+#xy24 {
   left: 40%;
-  display: inline-block;
 }
 
-#hex15 {
-  position: absolute;
+#xy34 {
   left: 50%;
-  display: inline-block;
 }
 
-#hex16 {
-  position: absolute;
+#xy44 {
   left: 60%;
-  display: inline-block;
+}
+
+#boarder12 {
+  left: 70%;
 }
 
 #bottomRow {
   position: relative;
   display: block;
-  top: 348px;
+  top: 435.5px;
 }
 
-#hex17 {
-  position: absolute;
+#boarder13 {
+  left: 25%;
+}
+
+#xy15 {
   left: 35%;
-  display: inline-block;
 }
 
-#hex18 {
-  position: absolute;
+#xy25 {
   left: 45%;
-  display: inline-block;
 }
 
-#hex19 {
-  position: absolute;
+#xy35 {
   left: 55%;
-  display: inline-block;
+}
+
+#boarder14 {
+  left: 65%;
+}
+
+#bottomBoarder {
+  position: relative;
+  display: block;
+  top: 522px;
+}
+
+#boarder15 {
+  left: 30%;
+}
+
+#boarder16 {
+  left: 40%;
+}
+
+#boarder17 {
+  left: 50%;
+}
+
+#boarder18 {
+  left: 60%;
+}
+
+#gameBoard {
+    max-width: 1000px;
+    max-width: 100%;
+}
+
+.check {
+  position: absolute;
+  left: 15px;
+  top: 25px;
+  height: 65px;
+  width: 75px;
+  background-color: transparent;
+  z-index: 40;
+  display: inline;
 }
