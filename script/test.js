@@ -54,11 +54,13 @@ function checkButton() {
   var previousTile = $('#xy'+leftX.toString()+yCoord.toString());
   var nextTile = $('#xy'+rightX.toString()+yCoord.toString());
   var bottomLeftTile = $('#xy'+leftX.toString()+bottomY.toString());
-  var bottomRightTile = $('#xy'+rightX.toString()+bottomY.toString());
+  var bottomRightTile = $('#xy'+xCoord.toString()+bottomY.toString());
 
+  console.log('top left', upperLeftTile);
+  console.log('top right', upperRightTile);
   console.log('specific tile', $tile);
-  console.log('upper left', upperLeftTile);
-  console.log('upper right', upperRightTile);
+  console.log('bottom left', bottomLeftTile);
+  console.log('bottom right', bottomRightTile);
 
   if(my.radioButtonRoad) {
     if (playerInfo[my.currentPlayer].numberOfChurros == 0) {
@@ -78,9 +80,7 @@ function checkButton() {
     } else if (my.radioButtonRoad == 'bottomLeft') {
       road.bottomLeft($tile,previousTile,nextTile,upperLeftTile, upperRightTile, bottomLeftTile, bottomRightTile,playerInfo[my.currentPlayer].color);
     } else if (my.radioButtonRoad == 'bottomRight') {
-      $tile.append('<div class="bottomRightRoad"></div>');
-      $tile.find('.bottomRightRoad').css('background-color',playerInfo[my.currentPlayer].color);
-      playerInfo[my.currentPlayer].numberOfChurros--;
+      road.bottomRight($tile,previousTile,nextTile,upperLeftTile, upperRightTile, bottomLeftTile, bottomRightTile,playerInfo[my.currentPlayer].color);
     } else {
       console.log('truthy');
     }

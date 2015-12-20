@@ -18,7 +18,7 @@ road.buildTopRightRoad = function($tile) {
   playerInfo[my.currentPlayer].numberOfChurros--;
 }
 
-road.buildBottomLeftRoad = function($tile) {
+road.buildTopLeftRoad = function($tile) {
   $tile.append('<div class="topLeftRoad"></div>');
   $tile.find('.topLeftRoad').css('background-color',playerInfo[my.currentPlayer].color);
   playerInfo[my.currentPlayer].numberOfChurros--;
@@ -720,74 +720,74 @@ road.bottomLeft = function($specificTile, $previousTile, $nextTile, $upperLeftTi
 }
 
 road.bottomRight = function($specificTile, $previousTile, $nextTile, $upperLeftTile, $upperRightTile, $bottomLeftTile, $bottomRightTile, playerColor) {
-  $tileTopRightRoad = $specificTile.find('.topRightRoad');
-  $tileUpperRightBottomLeftRoad = $upperRightTile.find('.bottomLeftRoad');
+  $tileBottomRightRoad = $specificTile.find('.bottomRightRoad');
+  $tileBottomRightUpperLeftRoad = $bottomRightTile.find('.topLeftRoad');
 // CHECK IF ROAD ALREADY EXISTS IN THAT SPOT
-  if ($tileTopRightRoad.length > 0 || $tileUpperRightBottomLeftRoad.length > 0) {
+  if ($tileBottomRightRoad.length > 0 || $tileBottomRightUpperLeftRoad.length > 0) {
     alert('Cannot build road, there is one already there');
     return;
   } else {
-    $tileTopBuilding = $specificTile.find('.upperBuilding');
-    $tileTopLeftBottomRightBuilding = $upperLeftTile.find('.bottomRightBuilding');
-    $tileTopRightBottomLeftBuilding = $upperRightTile.find('.bottomLeftBuilding');
+    $tileNextBottomLeftBuilding = $nextTile.find('.bottomLeftBuilding');
+    $tileBottomRightBuilding = $specificTile.find('.bottomRightBuilding');
+    $tileBottomRightUpperBuilding = $bottomRightTile.find('.upperBuilding');
 
-    $tileTopRightBuilding = $specificTile.find('.topRightBuilding');
-    $tileNextTopLeftBuilding = $nextTile.find('.topLeftBuilding');
-    $tileTopRightBottomBuilding = $upperRightTile.find('.bottomBuilding');
+    $tileBottomBuilding = $specificTile.find('.bottomBuilding');
+    $tileBottomLeftUpperRightBuilding = $bottomLeftTile.find('.upperRightBuilding');
+    $tileBottomRightUpperLeftBuilding = $upperRightTile.find('.upperLeftBuilding');
 
     $tileMiddleRightRoad = $specificTile.find('.rightRoad');
-    $tileNextMiddleLeftRode = $nextTile.find('.leftRoad');
+    $tileNextLeftRode = $nextTile.find('.leftRoad');
 
-    $tileTopLeftMiddleRightRoad = $upperLeftTile.find('.rightRoad');
-    $tileTopRightLeftRode = $upperRightTile.find('.leftRoad');
+    $tileBottomLeftMiddleRightRoad = $bottomLeftTile.find('.rightRoad');
+    $tileBottomRightLeftRode = $bottomRightTile.find('.leftRoad');
 
-    $tileTopLeftRoad = $specificTile.find('.topLeftRoad');
-    $tileUpperLeftBottomRightRoad = $upperLeftTile.find('.bottomRightRoad');
+    $tileBottomLeftRoad = $specificTile.find('.bottomLeftRoad');
+    $tileBottomLeftUpperRightRoad = $bottomLeftTile.find('.upperRightRoad');
 
-    $tileNextUpperLeftRoad = $nextTile.find('.topLeftRoad');
-    $tileTopRightBottomRightRoad = $upperRightTile.find('.bottomRightRoad');
+    $tileNextBottomLeftRoad = $nextTile.find('.bottomLeftRoad');
+    $tileBottomRightUpperRightRoad = $bottomRightTile.find('.upperRightRoad');
   }
-// CHECK TOP BUILDING SPOT
-  if ($tileTopBuilding.length > 0) {
-    $tileTopBuildingColor = $tileTopBuilding.css('background-color');
-    if ($tileTopBuildingColor == playerColor) {
-      road.buildTopRightRoad($specificTile);
+// CHECK BOTTOM RIGHT BUILDING SPOT
+  if ($tileNextBottomLeftBuilding.length > 0) {
+    $tileNextBottomLeftBuildingColor = $tileNextBottomLeftBuilding.css('background-color');
+    if ($tileNextBottomLeftBuildingColor == playerColor) {
+      road.buildBottomRightRoad($specificTile);
       return;
     }
   }
- if( $tileTopLeftBottomRightBuilding.length > 0) {
-    $tileTopLeftBottomRightBuildingColor = $tileTopLeftBottomRightBuilding.css('background-color');
-    if ($tileTopLeftBottomRightBuildingColor == playerColor) {
-      road.buildTopRightRoad($specificTile);
+ if( $tileBottomRightBuilding.length > 0) {
+    $tileBottomRightBuildingColor = $tileBottomRightBuilding.css('background-color');
+    if ($tileBottomRightBuildingColor == playerColor) {
+      road.buildBottomRightRoad($specificTile);
       return;
     }
   }
- if ($tileTopRightBottomLeftBuilding.length > 0) {
-    $tileTopRightBottomLeftBuildingColor = $tileTopRightBottomLeftBuilding.css('background-color');
-    if ($tileTopRightBottomLeftBuildingColor == playerColor) {
-      road.buildTopRightRoad($specificTile);
+ if ($tileBottomRightUpperBuilding.length > 0) {
+    $tileBottomRightUpperBuildingColor = $tileBottomRightUpperBuilding.css('background-color');
+    if ($tileBottomRightUpperBuildingColor == playerColor) {
+      road.buildBottomRightRoad($specificTile);
       return;
     }
   }
-// CHECK TOP RIGHT BUILDING SPOT
-  if ($tileTopRightBuilding.length > 0 ) {
-    $tileTopRightBuildingColor = $tileTopRightBuilding.css('background-color');
-    if($tileTopRightBuildingColor == playerColor) {
-      road.buildTopRightRoad($specificTile);
+// CHECK BOTTOM BUILDING SPOT
+  if ($tileBottomBuilding.length > 0 ) {
+    $tileBottomBuildingColor = $tileBottomBuilding.css('background-color');
+    if($tileBottomBuildingColor == playerColor) {
+      road.buildBottomRightRoad($specificTile);
       return;
     }
   }
- if($tileNextTopLeftBuilding.length > 0) {
-      $tileNextTopLeftBuildingColor = $tileNextTopLeftBuilding.css('background-color');
-      if ($tileNextTopLeftBuildingColor == playerColor) {
-        road.buildTopRightRoad($specificTile);
+ if($tileBottomLeftUpperRightBuilding.length > 0) {
+      $tileBottomLeftUpperRightBuildingColor = $tileBottomLeftUpperRightBuilding.css('background-color');
+      if ($tileBottomLeftUpperRightBuildingColor == playerColor) {
+        road.buildBottomRightRoad($specificTile);
         return;
       }
   }
- if($tileTopRightBottomBuilding.length > 0) {
-      $tileTopRightBottomBuildingColor = $tileTopRightBottomBuilding.css('background-color');
-      if ($tileTopRightBottomBuildingColor == playerColor) {
-        road.buildTopRightRoad($specificTile);
+ if($tileBottomRightUpperLeftBuilding.length > 0) {
+      $tileBottomRightUpperLeftBuildingColor = $tileBottomRightUpperLeftBuilding.css('background-color');
+      if ($tileBottomRightUpperLeftBuildingColor == playerColor) {
+        road.buildBottomRightRoad($specificTile);
         return;
       }
   }
@@ -796,62 +796,62 @@ road.bottomRight = function($specificTile, $previousTile, $nextTile, $upperLeftT
   if($tileMiddleRightRoad.length > 0) {
     $tileMiddleRightRoadColor = $tileMiddleRightRoad.css('background-color');
     if ($tileMiddleRightRoadColor == playerColor) {
-      road.buildTopRightRoad($specificTile);
+      road.buildBottomRightRoad($specificTile);
       return;
     }
   }
-  if ($tileNextMiddleLeftRode.length > 0) {
-    $tileNextMiddleLeftRodeColor = $tileNextMiddleLeftRode.css('background-color');
-    if($tileNextMiddleLeftRodeColor == playerColor) {
-      road.buildTopRightRoad($specificTile);
-      return;
-    }
-  }
-
-  // MIDDLE ROAD ABOVE CHECK
-  if ($tileTopLeftMiddleRightRoad.length > 0) {
-    $tileTopLeftMiddleRightRoadColor = $tileTopLeftMiddleRightRoad.css('background-color');
-    if ($tileTopLeftMiddleRightRoadColor == playerColor) {
-      road.buildTopRightRoad($specificTile);
-      return;
-    }
-  }
-  if ($tileTopRightLeftRode.length > 0) {
-    $tileTopRightLeftRodeColor = $tileTopRightLeftRode.css('background-color');
-    if($tileTopRightLeftRodeColor == playerColor) {
-      road.buildTopRightRoad($specificTile);
+  if ($tileNextLeftRode.length > 0) {
+    $tileNextLeftRodeColor = $tileNextLeftRode.css('background-color');
+    if($tileNextLeftRodeColor == playerColor) {
+      road.buildBottomRightRoad($specificTile);
       return;
     }
   }
 
-// SPECIFIC TILE TOP LEFT ROAD CHECK
-  if ($tileTopLeftRoad.length > 0) {
-    $tileTopLeftRoadColor = $tileTopLeftRoad.css('background-color');
-    if ($tileTopLeftRoadColor == playerColor) {
-      road.buildTopRightRoad($specificTile);
+  // BOTTOM LEFT MIDDLE ROAD SPOT
+  if ($tileBottomLeftMiddleRightRoad.length > 0) {
+    $tileBottomLeftMiddleRightRoadColor = $tileBottomLeftMiddleRightRoad.css('background-color');
+    if ($tileBottomLeftMiddleRightRoadColor == playerColor) {
+      road.buildBottomRightRoad($specificTile);
       return;
     }
   }
-  if ($tileUpperLeftBottomRightRoad.length > 0) {
-    $tileUpperLeftBottomRightRoadColor = $tileUpperLeftBottomRightRoad.css('background-color');
-    if($tileUpperLeftBottomRightRoadColor == playerColor) {
-      road.buildTopRightRoad($specificTile);
+  if ($tileBottomRightLeftRode.length > 0) {
+    $tileBottomRightLeftRodeColor = $tileBottomRightLeftRode.css('background-color');
+    if($tileBottomRightLeftRodeColor == playerColor) {
+      road.buildBottomRightRoad($specificTile);
       return;
     }
   }
 
-  // NEXT TILE TOP LEFT SPOT
-  if ($tileNextUpperLeftRoad.length > 0) {
-    $tileNextUpperLeftRoadColor = $tileNextUpperLeftRoad.css('background-color');
-    if ($tileNextUpperLeftRoadColor == playerColor) {
-      road.buildTopRightRoad($specificTile);
+// SPECIFIC TILE BOTTOM LEFT ROAD CHECK
+  if ($tileBottomLeftRoad.length > 0) {
+    $tileBottomLeftRoadColor = $tileBottomLeftRoad.css('background-color');
+    if ($tileBottomLeftRoadColor == playerColor) {
+      road.buildBottomRightRoad($specificTile);
       return;
     }
   }
-  if ($tileTopRightBottomRightRoad.length > 0) {
-    $tileTopRightBottomRightRoadColor = $tileTopRightBottomRightRoad.css('background-color');
-    if($tileTopRightBottomRightRoadColor == playerColor) {
-      road.buildTopRightRoad($specificTile);
+  if ($tileBottomLeftUpperRightRoad.length > 0) {
+    $tileBottomLeftUpperRightRoadColor = $tileBottomLeftUpperRightRoad.css('background-color');
+    if($tileBottomLeftUpperRightRoadColor == playerColor) {
+      road.buildBottomRightRoad($specificTile);
+      return;
+    }
+  }
+
+  // NEXT TILE Bottom LEFT SPOT
+  if ($tileNextBottomLeftRoad.length > 0) {
+    $tileNextBottomLeftRoadColor = $tileNextBottomLeftRoad.css('background-color');
+    if ($tileNextBottomLeftRoadColor == playerColor) {
+      road.buildBottomRightRoad($specificTile);
+      return;
+    }
+  }
+  if ($tileBottomRightUpperRightRoad.length > 0) {
+    $tileBottomRightUpperRightRoadColor = $tileBottomRightUpperRightRoad.css('background-color');
+    if($tileBottomRightUpperRightRoadColor == playerColor) {
+      road.buildBottomRightRoad($specificTile);
       return;
     }
   }
