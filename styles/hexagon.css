@@ -3,6 +3,14 @@ body {
   max-width: 100%;
 }
 
+#gameBoard {
+    display: flex;
+    flex-flow: column nowrap;
+    width: 1000px;
+    max-width: 100%;
+    margin: 50px auto;
+}
+
 #roadSelection {
   width: 200px;
   font-size: .8em;
@@ -19,17 +27,24 @@ body {
   right: 0;
 }
 
+.row {
+  display: flex;
+  justify-content: center;
+  margin-top: -31px;
+}
+
 .tiles {
-  position: absolute;
-  display: inline-block;
+  position: relative;
 }
 
 .imageSize {
-  max-width: 100px;
+  width: 100px;
+  max-width: 100%;
 }
 
 #main-header {
   text-align: center;
+  display: block;
 }
 
 .upperBuilding {
@@ -164,231 +179,40 @@ body {
   transform: rotate(60deg);
 }
 
-#topRow {
-  position: relative;
-  display: block;
-  top: 87px;
-}
-
-#topBoarder {
-  position: relative;
-  display: block;
-  top: 0px;
-}
-
-#boarder1 {
-  left: 30%;
-}
-
-#boarder2 {
-  left: 40%;
-}
-
-#boarder3 {
-  left: 50%;
-
-}
-
-#boarder4 {
-  left: 60%;
-}
-
-#boarder5 {
-  left: 25%;
-}
-
-#xy31 {
-  left: 35%;
-}
-
-#xy41 {
-  left: 45%;
-}
-
-#xy51 {
-  left: 55%;
-}
-
-#boarder6 {
-  left: 65%;
-}
-
-#BelowTopRow {
-  position: relative;
-  display: block;
-  top: 174.5px;
-}
-
-#boarder7 {
-  left: 20%;
-}
-
-#xy22 {
-  left: 30%;
-}
-
-#xy32 {
-  left: 40%;
-}
-
-#xy42 {
-  left: 50%;
-}
-
-#xy52 {
-  left: 60%;
-}
-
-#boarder8 {
-  left: 70%;
-}
-
-#middleRow {
-  position: relative;
-  display: block;
-  top: 261px;
-}
-
-#boarder9 {
-  left: 15%;
-}
-
-#xy13 {
-  left: 25%;
-}
-
-#xy23 {
-  left: 35%;
-}
-
-#xy33 {
-  left: 45%;
-}
-
-#xy43 {
-  left: 55%;
-}
-
-#xy53 {
-  left: 65%;
-}
-
-#boarder10 {
-  left: 75%;
-}
-
-#AboveBottomRow {
-  position: relative;
-  display: block;
-  top: 348.5px;
-}
-
-#boarder11 {
-  left: 20%;
-}
-
-#xy14 {
-  left: 30%;
-}
-
-#xy24 {
-  left: 40%;
-}
-
-#xy34 {
-  left: 50%;
-}
-
-#xy44 {
-  left: 60%;
-}
-
-#boarder12 {
-  left: 70%;
-}
-
-#bottomRow {
-  position: relative;
-  display: block;
-  top: 435.5px;
-}
-
-#boarder13 {
-  left: 25%;
-}
-
-#xy15 {
-  left: 35%;
-}
-
-#xy25 {
-  left: 45%;
-}
-
-#xy35 {
-  left: 55%;
-}
-
-#boarder14 {
-  left: 65%;
-}
-
-#bottomBoarder {
-  position: relative;
-  display: block;
-  top: 522px;
-}
-
-#boarder15 {
-  left: 30%;
-}
-
-#boarder16 {
-  left: 40%;
-}
-
-#boarder17 {
-  left: 50%;
-}
-
-#boarder18 {
-  left: 60%;
-}
-
-#gameBoard {
-    width: 1000px;
-    max-width: 100%;
-}
-
 .check {
   position: absolute;
-  left: 15px;
   top: 25px;
+  left:25px;
   height: 65px;
   width: 75px;
   background-color: transparent;
   z-index: 10000;
-  display: inline;
 }
 
-
-
-.numberTile {
+.numbers {
   position: absolute;
-  left: 23px;
-  top: 27px;
   height: 55px;
   width: 55px;
   z-index: 50;
-  display: inline;
+  top: 25px;
+  left: 25px;
 }
 
 #currentPlayer {
-  height: 100px;
+  height: 120px;
   width: 200px;
   position: fixed;
-  bottom: 0;
+  bottom: 5px;
   left: 0;
+  text-align: center;
+  margin: auto;
+}
+
+.currentPlayerImage {
+  width: 100px;
+  height: 100px;
+  padding: 10px;
+
 }
 
 #bakingRequirements {
@@ -407,14 +231,15 @@ body {
 
 #thief {
   z-index: 10000;
-  top: 33px;
-  left: 27px;
   border-radius: 100%;
   width: 45px;
   height: 45px;
 }
 .bakingInstructions {
-  width: 35px;
-  height: 35px;
-  border-radius: 100%;
+  position: fixed;
+  bottom: 5px;
+  right: 0;
+  width: 250px;
+  height: 300px;
+  margin-right: -20px;
 }

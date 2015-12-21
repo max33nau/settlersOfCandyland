@@ -17,6 +17,6 @@ $('#rollDiceButton').click(function() {
    }
   my.currentPlayer++;
   my.currentPlayerFieldset.css('background-color',playerInfo[my.currentPlayer].color);
-  my.currentPlayerFieldset.append('<img src='+playerInfo[my.currentPlayer].imageUrl+'>');
+  my.currentPlayerFieldset.append('<img class="currentPlayerImage" src='+playerInfo[my.currentPlayer].imageUrl+'>');
   });
 })
