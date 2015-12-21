@@ -306,8 +306,14 @@ building.bottomRight = function($specificTile, $previousTile, $nextTile, $upperL
   $tileNextBottomLeftBuilding = $nextTile.find('.bottomLeftBuilding');
   $tileBottomRightUpperBuilding = $bottomRightTile.find('.upperBuilding');
 
-  if ($tileBottomRightBuilding.length > 0 || $tileNextBottomLeftBuilding.length > 0 ||   $tileBottomRightUpperBuilding.length > 0 ) {
+  if ($tileBottomRightBuilding.length > 0) {
     building.buildBottomRightIceCreamSundae($specificTile);
+    return;
+  } else if ($tileNextBottomLeftBuilding.length > 0) {
+    building.buildBottomLeftIceCreamSundae($nextTile);
+    return;
+  } else if ($tileBottomRightUpperBuilding.length > 0) {
+    building.buildUpperIceCreamSundae($bottomRightTile);
     return;
   } else {
 
