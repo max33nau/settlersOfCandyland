@@ -47,7 +47,7 @@ path:hover {
   max-width: 600px;
   z-index: 19;
   display: inline;
-  fill: yellow;
+  fill: red;
 }
 
 .cupCake:hover {
