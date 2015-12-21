@@ -4,31 +4,106 @@ body {
 }
 
 #gameBoard {
-  margin: auto;
-  max-width: 1000px;
-  height: 1000px;
+    display: flex;
+    flex-flow: column nowrap;
+    width: 1000px;
+    max-width: 100%;
+    margin: 50px auto;
+}
+
+#roadSelection {
+  width: 200px;
+  font-size: .8em;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+#buildingSelection {
+  width: 200px;
+  font-size: .8em;
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  margin-top: -31px;
 }
 
 .tiles {
-  position: absolute;
-  display: inline-block;
-
+  position: relative;
 }
 
 .imageSize {
-  max-width: 100px;
+  width: 100px;
+  max-width: 100%;
 }
 
 #main-header {
   text-align: center;
+  display: block;
 }
 
-.cupCake {
+.upperBuilding {
   position: absolute;
-  width: 15px;
-  height: 15px;
-  background-color: yellow;
-  z-index: 19;
+  top: -8px;
+  right: 40px;
+  z-index: 30;
+  display: inline;
+}
+
+.topRightBuilding {
+  position: absolute;
+  top: 18px;
+  left: 91px;
+  z-index: 30;
+  display: inline;
+}
+
+.topLeftBuilding {
+  position: absolute;
+  top: 18px;
+  left: -11px;
+  z-index: 30;
+  display: inline;
+}
+
+.cupcake {
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+}
+
+.iceCreamSundae {
+  width: 25px;
+  height: 25px;
+  border-radius: 0;
+}
+
+.bottomRightBuilding {
+  position: absolute;
+  top: 78px;
+  left: 91px;
+  z-index: 30;
+  display: inline;
+}
+
+.bottomLeftBuilding {
+  position: absolute;
+  top: 78px;
+  left: -11px;
+  z-index: 30;
+  display: inline;
+}
+
+.bottomBuilding {
+  position: absolute;
+  top: 103px;
+  right: 40px;
+  z-index: 30;
   display: inline;
 }
 
@@ -38,7 +113,6 @@ body {
   top: 35px;
   height: 45px;
   width: 5px;
-  background-color: blue;
   z-index: 20;
   display: inline;
 }
@@ -49,7 +123,6 @@ body {
   top: 35px;
   height: 45px;
   width: 5px;
-  background-color: blue;
   z-index: 20;
   display: inline;
 }
@@ -60,7 +133,6 @@ body {
   top: -8px;
   height: 45px;
   width: 5px;
-  background-color: blue;
   z-index: 20;
   display: inline;
   -ms-transform: rotate(60deg); /* IE 9 */
@@ -74,7 +146,6 @@ body {
   top: -8px;
   height: 45px;
   width: 5px;
-  background-color: green;
   z-index: 20;
   display: inline;
   -ms-transform: rotate(-60deg); /* IE 9 */
@@ -88,7 +159,6 @@ body {
   top: 78px;
   height: 45px;
   width: 5px;
-  background-color: green;
   z-index: 20;
   display: inline;
   -ms-transform: rotate(-60deg); /* IE 9 */
@@ -102,7 +172,6 @@ body {
   top: 78px;
   height: 45px;
   width: 5px;
-  background-color: green;
   z-index: 20;
   display: inline;
   -ms-transform: rotate(60deg); /* IE 9 */
@@ -110,192 +179,74 @@ body {
   transform: rotate(60deg);
 }
 
-#topRow {
-  position: relative;
-  display: block;
-  top: 87px;
+.check {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  height: 65px;
+  width: 75px;
+  background-color: transparent;
+  z-index: 10000;
 }
 
-#topBoarder {
-  position: relative;
-  display: block;
-  top: 0px;
+.numbers {
+  position: absolute;
+  height: 55px;
+  width: 55px;
+  z-index: 50;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+
 }
 
-#boarder1 {
-  left: 30%;
+#currentPlayer {
+  height: 120px;
+  width: 200px;
+  position: fixed;
+  bottom: 5px;
+  left: 0;
+  text-align: center;
+  margin: auto;
 }
 
-#boarder2 {
-  left: 40%;
+.currentPlayerImage {
+  width: 100px;
+  height: 100px;
+  padding: 10px;
+
 }
 
-#boarder3 {
-  left: 50%;
+#bakingRequirements {
+  position: fixed;
+  bottom: 5px;
+  right: 0;
+  width: 180px;
+  height: 300px;
 }
 
-#boarder4 {
-  left: 60%;
+#moveThief {
+  position: fixed;
+  top: 40%;
+  right: 3%;
 }
 
-#boarder5 {
-  left: 25%;
+#thief {
+  z-index: 10000;
+  border-radius: 100%;
+  width: 45px;
+  height: 45px;
 }
-
-#hex1 {
-  left: 35%;
-}
-
-#hex2 {
-  left: 45%;
-}
-
-#hex3 {
-  left: 55%;
-}
-
-#boarder6 {
-  left: 65%;
-}
-
-#BelowTopRow {
-  position: relative;
-  display: block;
-  top: 174.5px;
-}
-
-#boarder7 {
-  left: 20%;
-}
-
-#hex4 {
-  left: 30%;
-}
-
-#hex5 {
-  left: 40%;
-}
-
-#hex6 {
-  left: 50%;
-}
-
-#hex7 {
-  left: 60%;
-}
-
-#boarder8 {
-  left: 70%;
-}
-
-#middleRow {
-  position: relative;
-  display: block;
-  top: 261px;
-}
-
-#boarder9 {
-  left: 15%;
-}
-
-#hex8 {
-  left: 25%;
-}
-
-#hex9 {
-  left: 35%;
-}
-
-#hex10 {
-  left: 45%;
-}
-
-#hex11 {
-  left: 55%;
-}
-
-#hex12 {
-  left: 65%;
-}
-
-#boarder10 {
-  left: 75%;
-}
-
-#AboveBottomRow {
-  position: relative;
-  display: block;
-  top: 348.5px;
-}
-
-#boarder11 {
-  left: 20%;
-}
-
-#hex13 {
-  left: 30%;
-}
-
-#hex14 {
-  left: 40%;
-}
-
-#hex15 {
-  left: 50%;
-}
-
-#hex16 {
-  left: 60%;
-}
-
-#boarder12 {
-  left: 70%;
-}
-
-#bottomRow {
-  position: relative;
-  display: block;
-  top: 435.5px;
-}
-
-#boarder13 {
-  left: 25%;
-}
-
-#hex17 {
-  left: 35%;
-}
-
-#hex18 {
-  left: 45%;
-}
-
-#hex19 {
-  left: 55%;
-}
-
-#boarder14 {
-  left: 65%;
-}
-
-#bottomBoarder {
-  position: relative;
-  display: block;
-  top: 522px;
-}
-
-#boarder15 {
-  left: 30%;
-}
-
-#boarder16 {
-  left: 40%;
-}
-
-#boarder17 {
-  left: 50%;
-}
-
-#boarder18 {
-  left: 60%;
+.bakingInstructions {
+  position: fixed;
+  bottom: 5px;
+  right: 0;
+  width: 250px;
+  height: 300px;
+  margin-right: -20px;
 }
