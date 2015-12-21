@@ -595,7 +595,7 @@ road.bottomLeft = function($specificTile, $previousTile, $nextTile, $upperLeftTi
 
     $tileBottomBuilding = $specificTile.find('.bottomBuilding');
     $tileBottomLeftUpperRightBuilding = $bottomLeftTile.find('.topRightBuilding');
-    $tileBottomRightUpperLeftBuilding = $upperRightTile.find('.topLeftBuilding');
+    $tileBottomRightUpperLeftBuilding = $bottomRightTile.find('.topLeftBuilding');
 
     $tileMiddleLeftRoad = $specificTile.find('.leftRoad');
     $tilePreviousRightRode = $previousTile.find('.rightRoad');
@@ -733,7 +733,7 @@ road.bottomRight = function($specificTile, $previousTile, $nextTile, $upperLeftT
 
     $tileBottomBuilding = $specificTile.find('.bottomBuilding');
     $tileBottomLeftUpperRightBuilding = $bottomLeftTile.find('.topRightBuilding');
-    $tileBottomRightUpperLeftBuilding = $upperRightTile.find('.topLeftBuilding');
+    $tileBottomRightUpperLeftBuilding = $bottomRightTile.find('.topLeftBuilding');
 
     $tileMiddleRightRoad = $specificTile.find('.rightRoad');
     $tileNextLeftRode = $nextTile.find('.leftRoad');
