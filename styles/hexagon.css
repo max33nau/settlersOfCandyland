@@ -376,7 +376,7 @@ body {
   height: 65px;
   width: 75px;
   background-color: transparent;
-  z-index: 70;
+  z-index: 10000;
   display: inline;
 }
 

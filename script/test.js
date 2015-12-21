@@ -49,6 +49,10 @@ function checkButton() {
   var rightX = xCoord + 1;
   var leftX = xCoord - 1;
   var bottomY = yCoord + 1;
+  var straightAboveY = yCoord -2;
+  var nextLeftX = xCoord +2;
+  var previousLeftX = xCoord -2;
+  var straightBelowY = yCoord + 2;
   console.log($('input[type="radio"][name="buildingLocation"]:checked').val())
 
   var upperLeftTile = $('#xy'+xCoord.toString()+upperY.toString());
@@ -57,6 +61,7 @@ function checkButton() {
   var nextTile = $('#xy'+rightX.toString()+yCoord.toString());
   var bottomLeftTile = $('#xy'+leftX.toString()+bottomY.toString());
   var bottomRightTile = $('#xy'+xCoord.toString()+bottomY.toString());
+
 
 
   if(my.radioButtonRoad) {
@@ -83,45 +88,37 @@ function checkButton() {
     }
 
 } else if (my.radioButtonBuilding) {
+  var straightAboveTile = $('#xy'+rightX.toString()+ straightAboveY.toString());
+  var straightBelowTile = $('#xy'+leftX.toString()+ straightBelowY.toString());
+  var previousUpperLeftTile = $('#xy'+leftX.toString()+upperY.toString());
+  var nextUpperRightTile = $('#xy'+nextLeftX.toString()+upperY.toString());
+  var previousBottomLeftTile = $('#xy'+previousLeftX.toString()+bottomY.toString());
+  var nextBottomRightTile = $('#xy'+rightX.toString()+bottomY.toString());
   if (playerInfo[my.currentPlayer].numberOfCupcakes == 0) {
     alert('You have ran out of cupcakes sorry');
   } else if (my.radioButtonBuilding == 'upper') {
-
-    $tile.append('<div class="upperBuilding "></div>');
-    $tile.find('.upperBuilding').css('background-color',playerInfo[my.currentPlayer].color);
-    playerInfo[my.currentPlayer].numberOfCupcakes--;
+    building.upper($tile,previousTile,nextTile,upperLeftTile, upperRightTile, bottomLeftTile, bottomRightTile,straightAboveTile,playerInfo[my.currentPlayer].color);
 
 
   } else if (my.radioButtonBuilding == 'topRight') {
 
-    $tile.append('<div class="topRightBuilding"></div>');
-    $tile.find('.topRightBuilding').css('background-color',playerInfo[my.currentPlayer].color);
-    playerInfo[my.currentPlayer].numberOfCupcakes--;
+    building.topRight($tile,previousTile,nextTile,upperLeftTile, upperRightTile, bottomLeftTile, bottomRightTile,nextUpperRightTile,playerInfo[my.currentPlayer].color);
 
 
   } else if (my.radioButtonBuilding == 'topLeft') {
-    $tile.append('<div class="topLeftBuilding"></div>');
-    $tile.find('.topLeftBuilding').css('background-color',playerInfo[my.currentPlayer].color);
-    playerInfo[my.currentPlayer].numberOfCupcakes--;
+    building.topLeft($tile,previousTile,nextTile,upperLeftTile, upperRightTile, bottomLeftTile, bottomRightTile,previousUpperLeftTile,playerInfo[my.currentPlayer].color);
 
 
   } else if (my.radioButtonBuilding == 'bottom') {
-    $tile.append('<div class="bottomBuilding"></div>');
-    $tile.find('.bottomBuilding').css('background-color',playerInfo[my.currentPlayer].color);
-    playerInfo[my.currentPlayer].numberOfCupcakes--;
+    building.bottom($tile,previousTile,nextTile,upperLeftTile, upperRightTile, bottomLeftTile, bottomRightTile,straightBelowTile,playerInfo[my.currentPlayer].color);
 
 
   } else if (my.radioButtonBuilding == 'bottomLeft') {
-    $tile.append('<div class="bottomLeftBuilding"></div>');
-    $tile.find('.bottomLeftBuilding').css('background-color',playerInfo[my.currentPlayer].color);
-    playerInfo[my.currentPlayer].numberOfCupcakes--;
+    building.bottomLeft($tile,previousTile,nextTile,upperLeftTile, upperRightTile, bottomLeftTile, bottomRightTile,previousBottomLeftTile,playerInfo[my.currentPlayer].color);
 
 
   } else if (my.radioButtonBuilding == 'bottomRight') {
-    $tile.append('<div class="bottomRightBuilding"></div>');
-    $tile.find('.bottomRightBuilding').css('background-color',playerInfo[my.currentPlayer].color);
-    playerInfo[my.currentPlayer].numberOfCupcakes--;
-
+    building.bottomRight($tile,previousTile,nextTile,upperLeftTile, upperRightTile, bottomLeftTile, bottomRightTile,nextBottomRightTile,playerInfo[my.currentPlayer].color);
 
   }  else {
     console.log('truthy');
