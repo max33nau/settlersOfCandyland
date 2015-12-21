@@ -5,33 +5,28 @@
  * Fall 2015             *
  * * * * * * * * * * * * */
 
-var tileToTileAngles =  [ "30", "90", "150", "210", "270", "330" ];
-var edgeToVertexAngles = [ "0", "60", "120", "180", "240", "300" ];
-var allAngles = edgeToVertexAngles
-    .concat(tileToTileAngles)
-    .sort(function(a, b) { return Number(a) - Number(b); } );
+var oddHours =  [ 1, 3, 5, 7, 9, 11 ];
+var evenHours = [ 0, 2, 4, 6, 8, 10 ];
+var allHours = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ]
 
 var isNull = function( x ) {
     return x === null;
 }
 
-var invert = function( angle ) {
-    return ( ( Number(angle) + 180 ) % 360 ).toString();
+var invert = function( hour ) {
+    return  ( hour + 6 )  % 12;
 } 
 
 
-
-
-
 function NeighborSet() {
-    var self = this;
+    var my = [ null, null, null, null, null, null,
+	       null, null, null, null, null, null ];
     // Using stringified integers as keys is abusive syntax
     // but it makes our life so much easier later.
-    edgeToVertexAngles.forEach(
-	function (angle) {return self[angle] = { edge: null, vertex: null } } );
+    evenHours.forEach(function(hour){return my[hour]={edge:null,vertex:null};});
+    oddHours.forEach(function(hour){return my[hour]={edge:null,tile:null};});
 
-    tileToTileAngles.forEach(
-	function (angle) {return self[angle] = { edge: null, tile: null } } );
+    return my;
 
 }
 
@@ -59,16 +54,16 @@ function Tile( x, y ) {
 
     // I know that for each tile I create, I can safely add all
     // these neighbors without accidentally creating duplicates.
-    self.neighbors["30"].edge = new Edge();
-    self.neighbors["30"].edge.setNeighbor(self);
-    self.neighbors["150"].edge = new Edge();
-    self.neighbors["150"].edge.setNeighbor(self);
-    self.neighbors["270"].edge = new Edge();
-    self.neighbors["270"].edge.setNeighbor(self);
-    self.neighbors["0"].vertex = new Vertex();
-    self.neighbors["0"].vertex.setNeighbor(self);
-    self.neighbors["180"].vertex = new Vertex();
-    self.neighbors["180"].vertex.setNeighbor(self);
+    self.neighbors[1].edge = new Edge();
+    self.neighbors[1].edge.setNeighbor(self);
+    self.neighbors[5].edge = new Edge();
+    self.neighbors[5].edge.setNeighbor(self);
+    self.neighbors[9].edge = new Edge();
+    self.neighbors[9].edge.setNeighbor(self);
+    self.neighbors[0].vertex = new Vertex();
+    self.neighbors[0].vertex.setNeighbor(self);
+    self.neighbors[6].vertex = new Vertex();
+    self.neighbors[6].vertex.setNeighbor(self);
 
 }
 
@@ -125,18 +120,18 @@ function HexBoard(radius) {
 
 	// Brute force: this sucks, needs fix
 	// Make first ring
-	self.center.neighbors["30"].tile = new Tile( 1, -1 );
-	self.center.neighbors["30"].tile.setNeighbor(self.center);
-	self.center.neighbors["90"].tile = new Tile( 1, 0 );
-	self.center.neighbors["90"].tile.setNeighbor(self.center);
-	self.center.neighbors["150"].tile = new Tile( 0, 1 );
-	self.center.neighbors["150"].tile.setNeighbor(self.center);
-	self.center.neighbors["210"].tile = new Tile( -1, 1 );
-	self.center.neighbors["210"].tile.setNeighbor(self.center);
-	self.center.neighbors["270"].tile = new Tile( -1, 0 );
-	self.center.neighbors["270"].tile.setNeighbor(self.center);
-	self.center.neighbors["330"].tile = new Tile( 0, -1 );
-	self.center.neighbors["330"].tile.setNeighbor(self.center);
+	self.center.neighbors[1].tile = new Tile( 1, -1 );
+	self.center.neighbors[1].tile.setNeighbor(self.center);
+	self.center.neighbors[3].tile = new Tile( 1, 0 );
+	self.center.neighbors[3].tile.setNeighbor(self.center);
+	self.center.neighbors[5].tile = new Tile( 0, 1 );
+	self.center.neighbors[5].tile.setNeighbor(self.center);
+	self.center.neighbors[7].tile = new Tile( -1, 1 );
+	self.center.neighbors[7].tile.setNeighbor(self.center);
+	self.center.neighbors[9].tile = new Tile( -1, 0 );
+	self.center.neighbors[9].tile.setNeighbor(self.center);
+	self.center.neighbors[11].tile = new Tile( 0, -1 );
+	self.center.neighbors[11].tile.setNeighbor(self.center);
 
 	console.log(self);
     }
