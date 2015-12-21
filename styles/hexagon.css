@@ -39,9 +39,6 @@ body {
   position: absolute;
   top: -8px;
   right: 40px;
-  width: 20px;
-  height: 20px;
-  border-radius: 20px;
   z-index: 30;
   display: inline;
 }
@@ -50,9 +47,6 @@ body {
   position: absolute;
   top: 18px;
   left: 91px;
-  width: 20px;
-  height: 20px;
-  border-radius: 20px;
   z-index: 30;
   display: inline;
 }
@@ -61,20 +55,26 @@ body {
   position: absolute;
   top: 18px;
   left: -11px;
+  z-index: 30;
+  display: inline;
+}
+
+.cupcake {
   width: 20px;
   height: 20px;
   border-radius: 20px;
-  z-index: 30;
-  display: inline;
+}
+
+.iceCreamSundae {
+  width: 25px;
+  height: 25px;
+  border-radius: 0;
 }
 
 .bottomRightBuilding {
   position: absolute;
   top: 78px;
   left: 91px;
-  width: 20px;
-  height: 20px;
-  border-radius: 20px;
   z-index: 30;
   display: inline;
 }
@@ -83,9 +83,6 @@ body {
   position: absolute;
   top: 78px;
   left: -11px;
-  width: 20px;
-  height: 20px;
-  border-radius: 20px;
   z-index: 30;
   display: inline;
 }
@@ -94,9 +91,6 @@ body {
   position: absolute;
   top: 103px;
   right: 40px;
-  width: 20px;
-  height: 20px;
-  border-radius: 20px;
   z-index: 30;
   display: inline;
 }
