@@ -16,20 +16,98 @@ body {
     margin: 50px auto;
 }
 
+.radioTile {
+  width: 150px;
+}
+
 #roadSelection {
-  width: 200px;
+  width: 150px;
+  height: 200px;
   font-size: .8em;
   position: fixed;
   top: 0;
   left: 0;
 }
 
+#topLeftChurro {
+  position: absolute;
+  top: 33px;
+  left: 38px;
+}
+
+#topRightChurro {
+  position: absolute;
+  top: 33px;
+  left: 110px;
+}
+
+#middleLeftChurro {
+  position: absolute;
+  top: 100px;
+  left: 5px;
+}
+
+#middleRightChurro {
+  position: absolute;
+  top: 100px;
+  left: 148px;
+}
+
+#bottomLeftChurro {
+  position: absolute;
+  bottom: 35px;
+  left: 38px;
+}
+
+#bottomRightChurro {
+  position: absolute;
+  bottom: 35px;
+  left: 110px;
+}
+
 #buildingSelection {
-  width: 200px;
+  width: 150px;
+  height: 200px;
   font-size: .8em;
   position: fixed;
   top: 0;
   right: 0;
+}
+
+#top {
+  position: absolute;
+  top: 14px;
+  left: 76px;
+}
+
+#topLeft {
+  position: absolute;
+  top: 54px;
+  left: 4px;
+}
+
+#topRight {
+  position: absolute;
+  top: 54px;
+  right: 4px;
+}
+
+#bottomLeft {
+  position: absolute;
+  bottom: 55px;
+  left: 4px;
+}
+
+#bottomRight {
+  position: absolute;
+  bottom: 55px;
+  right: 4px;
+}
+
+#bottom {
+  position: absolute;
+  bottom: 15px;
+  left: 76px;
 }
 
 .row {
@@ -204,6 +282,7 @@ body {
 }
 
 .numbers {
+  max-width: 100%;
   position: absolute;
   height: 55px;
   width: 55px;
