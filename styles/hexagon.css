@@ -22,9 +22,7 @@ body {
 .tiles {
   position: absolute;
   display: inline-block;
-
 }
-
 
 .imageSize {
   max-width: 100px;
@@ -33,7 +31,6 @@ body {
 #main-header {
   text-align: center;
 }
-
 
 .upperBuilding {
   position: absolute;
@@ -378,28 +375,14 @@ body {
 
 .numberTile {
   position: absolute;
-  left: 27px;
-  top: 37px;
-  height: 45px;
-  width: 45px;
-  background-color: black;
-  color: white;
-  border-radius: 100%;
+  left: 23px;
+  top: 27px;
+  height: 55px;
+  width: 55px;
   z-index: 50;
   display: inline;
-  text-align: center;
-  line-height: 45px;
 }
 
-.number8, .number6 {
-  color: red;
-}
-
-#rollDice {
-  position: fixed;
-  top: 50%;
-  left: 0;
-}
 #currentPlayer {
   height: 100px;
   width: 200px;
@@ -410,10 +393,10 @@ body {
 
 #bakingRequirements {
   position: fixed;
-  bottom: 0;
+  bottom: 5px;
   right: 0;
   width: 180px;
-  height: 290px;
+  height: 300px;
 }
 
 #moveThief {
@@ -424,6 +407,11 @@ body {
 
 #thief {
   z-index: 10000;
+  top: 33px;
+  left: 27px;
+  border-radius: 100%;
+  width: 45px;
+  height: 45px;
 }
 .bakingInstructions {
   width: 35px;

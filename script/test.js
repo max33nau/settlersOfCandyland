@@ -5,6 +5,11 @@ function PlayerInfo (name, color,imageUrl) {
   this.numberOfChurros = 15;
   this.numberOfCupcakes = 5;
   this.numberOfIceCreamSundaes = 4;
+  this.sugar = 0;
+  this.batter = 0;
+  this.sprinkles = 0;
+  this.frosting = 0;
+  this.icecream = 0;
 }
 
 my = {};
@@ -20,23 +25,14 @@ my.playersTurnColor = '';
 my.playersTurnName = '';
 my.currentPlayerFieldset = $('#currentPlayer');
 
+
+
 //my.totalPlayers = Number(prompt('How many players are playing?'))-1
 
 my.totalPlayers = 3;
-function rollTheDice() {
+$(function(){
 
-  my.currentPlayerFieldset.empty();
-
-  if(my.currentPlayer == my.totalPlayers) {
-    my.currentPlayer = -1;
-  }
-  my.currentPlayer++;
-  my.currentPlayerFieldset.css('background-color',playerInfo[my.currentPlayer].color);
-  my.currentPlayerFieldset.append('<img src='+playerInfo[my.currentPlayer].imageUrl+'>');
-
-}
-
-$tiles = $('.check');
+var $tiles = $('.check');
 $tiles.click(checkButton)
 function checkButton() {
   my.radioButtonRoad=$('input[type="radio"][name="roadLocation"]:checked').val();
@@ -53,7 +49,6 @@ function checkButton() {
   var nextLeftX = xCoord +2;
   var previousLeftX = xCoord -2;
   var straightBelowY = yCoord + 2;
-  console.log($('input[type="radio"][name="buildingLocation"]:checked').val())
 
   var upperLeftTile = $('#xy'+xCoord.toString()+upperY.toString());
   var upperRightTile = $('#xy'+rightX.toString()+upperY.toString());
@@ -136,3 +131,4 @@ function checkButton() {
 $(':radio').removeAttr('checked');
 
 }
+})

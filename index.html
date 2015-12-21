@@ -1,17 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title> </title>
+    <title> Settlers Of CandyLand </title>
     <meta charset="utf-8"></meta>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="styles/hexagon.css">
+    <link rel="stylesheet" type="text/css" href="styles/dice.css">
 
   </head>
 
 
   <body>
     <h1 id='main-header'> SETTLERS OF CANDYLAND </h1>
-    <button id='rollDice' name ='rollDice' onclick='rollTheDice()'>Roll Dice </button>
+
+    <div id='diceWrapper'>
+      <div id='die1' class='dice'>0</div>
+      <div id='die2' class='dice'>0</div>
+
+      <p>Total: </p>
+      <div id='displayTotal' class='dice'></div>
+    </div>
+    <button id='rollDiceButton'>Roll Dice</button>
+
     <fieldset id='roadSelection'>
       <legend> Add Churro </legend>
       <input type='radio' name='roadLocation' value= 'topLeft'>  Top left </input> <br />
@@ -57,20 +67,20 @@
         <img  class='imageSize' src='graphics/stripes-tile.gif'>
       </div>
 
-      <div class='tiles' id = 'xy31'>
+      <div class='tiles sugar' id = 'xy31'>
         <img class='imageSize' src='graphics/sugar-tile.gif'>
         <div class='check'> </div>
-        <div class='numberTile number2'>2 </div>
+        <img src='numberIMG/number2.gif' class='numberTile number2'>
       </div>
-      <div class='tiles' id = 'xy41'>
-        <img class='imageSize' src='graphics/batter-tile.gif'>
+      <div class='tiles batter' id = 'xy41'>
+        <img class='imageSize ' src='graphics/batter-tile.gif'>
         <div class='check'> </div>
-        <div class='numberTile number9'>9 </div>
+        <img src='numberIMG/number9.gif' class='numberTile number9'>
       </div>
-      <div class='tiles' id = 'xy51'>
-        <img class='imageSize' src='graphics/sprinkles-tile.gif'>
+      <div class='tiles sprinkles' id = 'xy51'>
+        <img class='imageSize ' src='graphics/sprinkles-tile.gif'>
         <div class='check'> </div>
-        <div class='numberTile number4'>4 </div>
+        <img src='numberIMG/number4.gif' class='numberTile number4'>
       </div>
       <div class='tiles' id = 'boarder6'>
         <img  class='imageSize' src='graphics/stripes---tile-1.gif'>
@@ -82,25 +92,25 @@
       <div class='tiles' id = 'boarder7'>
         <img  class='imageSize' src='graphics/stripes-icecream-tile.gif'>
       </div>
-      <div class='tiles' id = 'xy22'>
-        <img class='imageSize' src='graphics/frosting-tile.gif'>
+      <div class='tiles frosting' id = 'xy22'>
+        <img class='imageSize ' src='graphics/frosting-tile.gif'>
         <div class='check'> </div>
-        <div class='numberTile number5'>5 </div>
+        <img src='numberIMG/number5.gif' class='numberTile number5'>
       </div>
-      <div class='tiles' id = 'xy32'>
-        <img class='imageSize' src='graphics/sprinkles-tile.gif'>
+      <div class='tiles sprinkles' id = 'xy32'>
+        <img class='imageSize ' src='graphics/sprinkles-tile.gif'>
         <div class='check'> </div>
-        <div class='numberTile number8'>8 </div>
+        <img src='numberIMG/number8.gif' class='numberTile number8'>
       </div>
-      <div class='tiles' id = 'xy42'>
-        <img class='imageSize' src='graphics/sugar-tile.gif'>
+      <div class='tiles sugar' id = 'xy42'>
+        <img class='imageSize ' src='graphics/sugar-tile.gif'>
         <div class='check'> </div>
-        <div class='numberTile number3'>3 </div>
+        <img src='numberIMG/number3.gif' class='numberTile number3'>
       </div>
-      <div class='tiles' id = 'xy52'>
-        <img class='imageSize' src='graphics/icecream-tile.gif'>
+      <div class='tiles icecream' id = 'xy52'>
+        <img class='imageSize ' src='graphics/icecream-tile.gif'>
         <div class='check'> </div>
-        <div class='numberTile number10'>10 </div>
+        <img src='numberIMG/number10.gif' class='numberTile number10'>
       </div>
       <div class='tiles' id = 'boarder8'>
         <img  class='imageSize' src='graphics/stripes-tile.gif'>
@@ -111,30 +121,30 @@
       <div class='tiles' id = 'boarder9'>
         <img  class='imageSize' src='graphics/stripes-tile.gif'>
       </div>
-      <div class='tiles' id = 'xy13'>
+      <div class='tiles icecream' id = 'xy13'>
         <img class='imageSize' src='graphics/icecream-tile.gif'>
         <div class='check'> </div>
-        <div class='numberTile number11'>11 </div>
+        <img src='numberIMG/number11.gif' class='numberTile number11'>
       </div>
-      <div class='tiles' id = 'xy23'>
+      <div class='tiles sugar' id = 'xy23'>
         <img class='imageSize' src='graphics/sugar-tile.gif'>
         <div class='check'> </div>
-        <div class='numberTile number5'>5 </div>
+        <img src='numberIMG/number5.gif' class='numberTile number5'>
       </div>
-      <div class='tiles' id = 'xy33'>
-        <img class='imageSize' src='graphics/batter-tile.gif'>
+      <div class='tiles batter' id = 'xy33'>
+        <img class='imageSize ' src='graphics/batter-tile.gif'>
         <div class='check'>  </div>
-        <div class='numberTile number4'>4 </div>
+        <img src='numberIMG/number4.gif' class='numberTile number4'>
       </div>
-      <div class='tiles' id = 'xy43'>
+      <div class='tiles sugar' id = 'xy43'>
         <img class='imageSize' src='graphics/sugar-tile.gif'>
         <div class='check'> </div>
-        <div class='numberTile number12'>12 </div>
+        <img src='numberIMG/number12.gif' class='numberTile number12'>
       </div>
-      <div class='tiles' id = 'xy53'>
-        <img class='imageSize' src='graphics/frosting-tile.gif'>
+      <div class='tiles frosting' id = 'xy53'>
+        <img class='imageSize ' src='graphics/frosting-tile.gif'>
         <div class='check'> </div>
-        <div class='numberTile number6'>6 </div>
+        <img src='numberIMG/number6.gif' class='numberTile number6'>
       </div>
       <div class='tiles' id = 'boarder10'>
         <img  class='imageSize' src='graphics/stripes-batter-tile.gif'>
@@ -146,25 +156,25 @@
         <img  class='imageSize' src='graphics/stripes---tile-3.gif'>
 
       </div>
-      <div class='tiles' id = 'xy14'>
-        <img class='imageSize' src='graphics/fudge-tile.gif'>
+      <div class='tiles fudge' id = 'xy14'>
+        <img class='imageSize ' src='graphics/fudge-tile.gif'>
         <div class='check'> </div>
         <img id='thief' class='numberTile' src='graphics/gingerbreadMan.gif'>
       </div>
-      <div class='tiles' id = 'xy24'>
+      <div class='tiles icecream' id = 'xy24'>
         <img class='imageSize' src='graphics/icecream-tile.gif'>
         <div class='check'> </div>
-        <div class='numberTile number9'>9 </div>
+        <img src='numberIMG/number9.gif' class='numberTile number9'>
       </div>
-      <div class='tiles' id = 'xy34'>
+      <div class='tiles sprinkles' id = 'xy34'>
         <img class='imageSize' src='graphics/sprinkles-tile.gif'>
         <div class='check'> </div>
-        <div class='numberTile number6'>6 </div>
+        <img src='numberIMG/number6.gif' class='numberTile number6'>
       </div>
-      <div class='tiles' id = 'xy44'>
+      <div class='tiles frosting' id = 'xy44'>
         <img class='imageSize' src='graphics/frosting-tile.gif'>
         <div class='check'> </div>
-        <div class='numberTile number11'>11 </div>
+        <img src='numberIMG/number11.gif' class='numberTile number11'>
       </div>
       <div class='tiles' id = 'boarder12'>
         <img  class='imageSize' src='graphics/stripes-tile.gif'>
@@ -176,20 +186,20 @@
         <img  class='imageSize' src='graphics/stripes-tile.gif'>
 
       </div>
-      <div class='tiles' id = 'xy15'>
+      <div class='tiles frosting' id = 'xy15'>
         <img class='imageSize' src='graphics/frosting-tile.gif'>
         <div class='check'> </div>
-        <div class='numberTile number8'>8 </div>
+        <img src='numberIMG/number8.gif' class='numberTile number8'>
       </div>
-      <div class='tiles' id = 'xy25'>
+      <div class='tiles sprinkles' id = 'xy25'>
         <img class='imageSize' src='graphics/sprinkles-tile.gif'>
         <div class='check'> </div>
-        <div class='numberTile number3'>3 </div>
+        <img src='numberIMG/number3.gif' class='numberTile number3'>
       </div>
-      <div class='tiles' id = 'xy35'>
+      <div class='tiles batter' id = 'xy35'>
         <img class='imageSize' src='graphics/batter-tile.gif'>
         <div class='check'> </div>
-        <div  class='numberTile number10'>10 </div>
+        <img src='numberIMG/number10.gif' class='numberTile number10'>
       </div>
       <div class='tiles' id = 'boarder14'>
         <img  class='imageSize' src='graphics/stripes-frosting-tile.gif'>
@@ -242,8 +252,10 @@
 
   <script src="script/jquery-2.1.4.min.js"></script>
   <script src='script/building.js'></script>
+  <script src='script/rolledDice.js'></script>
   <script src='script/road.js'></script>
   <script src='script/test.js'></script>
+  <script src='script/diceRoll.js'></script>
 
   </body>
 
