@@ -16,6 +16,34 @@ body {
     margin: 50px auto;
 }
 
+#lightBoxTile {
+  width: 300px;
+  z-index: 100000;
+  margin: auto;
+  display: none;
+}
+
+#blackbox {
+  height: 500px;
+  width: 500px;
+  background-color: white;
+  position: absolute;
+  z-index: -1;
+  left: 390px;
+  top: 150px;
+}
+
+#darkness {
+  background:rgba(0, 0, 0, 0.5);
+  display:none;
+  height:100%;
+  left:0;
+  position:absolute;
+  top:0;
+  width:100%;
+  z-index:99999;
+}
+
 .radioTile {
   width: 150px;
 }
