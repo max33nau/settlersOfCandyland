@@ -33,6 +33,11 @@ my.$gameBoard = $('#gameBoard');
 my.totalPlayers = 3;
 
 $(function(){
+var hasTouch = 'ontouchstart' in window;
+console.log(hasTouch);
+if (hasTouch) {
+  my.currentPlayer = 3;
+} 
 my.currentPlayerFieldset.empty();
 my.currentPlayerFieldset.css('background-color',playerInfo[my.currentPlayer].color);
 my.currentPlayerFieldset.append('<img class="currentPlayerImage" src='+playerInfo[my.currentPlayer].imageUrl+'>');
@@ -68,7 +73,7 @@ $('.dessertLocation').on('click touchstart', function() {
 
 
 var $tiles = $('.check');
-$tiles.on('click touchstart',checkButton)
+$tiles.on('click touchstart',checkButton);
 function checkButton() {
   my.thiefButton=$('input[type="radio"][name="thiefLocation"]:checked').val();
   $tile = $(this).parent();
