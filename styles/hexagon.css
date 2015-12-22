@@ -1,6 +1,32 @@
+header {
+  max-width: 100%;
+  text-align: center;
+}
+
+.title {
+  text-align: center;
+}
+
 body {
   margin: auto;
   max-width: 100%;
+}
+
+.nav {
+  font-size: 1.5em;
+  margin: auto;
+  list-style: none;
+  text-align: center;
+}
+
+.cupCakeFinal {
+  fill: blue;
+  position: absolute;
+  left: 100px;
+}
+
+.icecreamSundae {
+  fill: red;
 }
 
 #gameBoard {
@@ -339,7 +365,6 @@ body {
 }
 
 .currentPlayerImage {
-  width: 100px;
   height: 100px;
   padding: 10px;
 

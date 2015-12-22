@@ -14,9 +14,9 @@ function PlayerInfo (name, color,imageUrl) {
 
 my = {};
 
-player1 = new PlayerInfo('King Kandy', 'rgb(255, 255, 0)','graphics/King_kandy.jpg');
-player2 = new PlayerInfo('Lord Licorice', 'rgb(255, 0, 0)','graphics/Lord-Licorice.png');
-player3 = new PlayerInfo('Queen Frostine', 'rgb(0, 0, 255)','graphics/queenFrostine.jpg');
+player1 = new PlayerInfo('King Kandy', 'rgb(250, 161, 17)','graphics/KingKandy.png');
+player2 = new PlayerInfo('Lord Licorice', 'rgb(255, 0, 0)','graphics/lordLicorice.png');
+player3 = new PlayerInfo('Queen Frostine', 'rgb(0, 0, 255)','graphics/queenFrostine.png');
 player4 = new PlayerInfo('Gloppy', 'rgb(0, 0, 0)','graphics/gloppy.png');
 var playerInfo = [player1,player2,player3,player4];
 my.currentPlayer = 0;
