@@ -1,16 +1,32 @@
+header {
+  max-width: 100%;
+  text-align: center;
+}
+
+.title {
+  text-align: center;
+}
+
 body {
   margin: auto;
   max-width: 100%;
 }
 
+.nav {
+  font-size: 1.5em;
+  margin: auto;
+  list-style: none;
+  text-align: center;
+}
+
 .cupCakeFinal {
-  fill: red;
+  fill: blue;
   position: absolute;
   left: 100px;
 }
 
 .icecreamSundae {
-  fill: hotpink;
+  fill: red;
 }
 
 #gameBoard {
@@ -24,34 +40,6 @@ body {
     width: 1000px;
     max-width: 100%;
     margin: 50px auto;
-}
-
-#lightBoxTile {
-  width: 300px;
-  z-index: 100000;
-  margin: auto;
-  display: none;
-}
-
-#blackbox {
-  height: 500px;
-  width: 500px;
-  background-color: white;
-  position: absolute;
-  z-index: -1;
-  left: 390px;
-  top: 150px;
-}
-
-#darkness {
-  background:rgba(0, 0, 0, 0.5);
-  display:none;
-  height:100%;
-  left:0;
-  position:absolute;
-  top:0;
-  width:100%;
-  z-index:99999;
 }
 
 .radioTile {
@@ -344,7 +332,6 @@ body {
 }
 
 .currentPlayerImage {
-  width: 100px;
   height: 100px;
   padding: 10px;
 
