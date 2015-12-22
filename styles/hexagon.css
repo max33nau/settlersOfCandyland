@@ -16,6 +16,12 @@ body {
     margin: 50px auto;
 }
 
+#startNewGame {
+  position: fixed;
+  top: 35%;
+  left: 1%;
+}
+
 .radioTile {
   width: 150px;
 }

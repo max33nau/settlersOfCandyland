@@ -25,12 +25,29 @@ my.playersTurnColor = '';
 my.playersTurnName = '';
 my.currentPlayerFieldset = $('#currentPlayer');
 
-
+my.$gameBoard = $('#gameBoard');
 
 //my.totalPlayers = Number(prompt('How many players are playing?'))-1
 
 my.totalPlayers = 3;
+
 $(function(){
+
+$('#startNewGame').click(function() {
+  localStorage.clear();
+
+})
+
+my.currentGame = localStorage.getItem('currentGame');
+
+if(my.currentGame) {
+  my.$gameBoard.html(my.currentGame);
+  playerInfo = [];
+  playerInfo = JSON.parse(localStorage.getItem('currentPlayerInfo'));
+  console.log('here',playerInfo);
+  my.currentPlayer = localStorage.getItem('currentPlayer');
+
+}
 
 var $tiles = $('.check');
 $tiles.click(checkButton)
@@ -122,12 +139,16 @@ function checkButton() {
 } else if (my.thiefButton == 'moveThief') {
   $thief = $('#thief');
   $thief.remove();
-  $tile.append('<img id="thief" class="numberTile" src="graphics/gingerbreadMan.gif">');
+  $tile.append('<img id="thief" class="numbers" src="graphics/gingerbreadMan.gif">');
 
 } else {
   alert('You did not make a selection, please try again.');
 }
 
+
+localStorage.setItem('currentGame', my.$gameBoard.html() );
+localStorage.setItem('currentPlayerInfo',JSON.stringify(playerInfo));
+localStorage.setItem('currentPlayer', my.currentPlayer);
 $(':radio').removeAttr('checked');
 
 }
