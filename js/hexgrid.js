@@ -10,6 +10,17 @@ var evenHours = [ 0, 2, 4, 6, 8, 10 ];
 var allHours =  [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ];
 var tileIndex = new TileIndex();
 
+// basic set of Catan tiles, ordered for beginner's game, original theme
+var basicCatanTiles = [ "sheep", "ore", "wheat", "wheat", "wood", "brick",
+			"wheat", "sheep", "sheep", "ore", "brick", "wood",
+			"brick", "wood", "ore", "wheat", "wood", "sheep",
+			"desert" ];
+
+// the sequence of Token values used for a beginner's game
+var basicNumberTokens = [ 2, 10, 12, 9, 8, 5,
+			  6, 11, 5, 8, 10, 9,
+			  6, 11, 3, 4, 3, 4 ];
+
 // Note for directions: odd hours are adjacent tiles,
 // but even hours are actually "two" steps away.
 // This comes in handy, eventually.
@@ -31,13 +42,17 @@ var isNull = function( x ) {
 }
 
 var invert = function( hour ) {
+    // return hour 180 degrees away on a clock
     return  ( Number(hour) + 6 )  % 12;
 } 
 
 function TileIndex() {
+    // This Object is just an array of Tile references but with member methods.
     var my = [ ];
     
     my.findTileByCoord = function(coord) {
+	// Requires an actual Coordinate object, i.e. (q, r) won't work.
+	// Returns exactly one tile or null
 	var foundTile = my.filter( function(tile) {
 	    return ( coord.x === tile.coord.x && coord.z === tile.coord.z );
 	});
@@ -56,6 +71,7 @@ function TileIndex() {
     };
 
     my.logTiles = function(){
+	//Output tile coords in a readable format
 	var output =
 	    "TileIndex: " +
 	    my.map(function(tile){
@@ -68,6 +84,9 @@ function TileIndex() {
 }
     
 function Neighbor() {
+    // I don't want to add vertex or tile keys unless they will eventually have
+    // non-null values. This object gets a constructor so .isNull(key)
+    // can check to see if an arbitrary key exists but is null.
     var self = this;
     self.edge = null;
     self.isNull = function(key) { return (key in self) && isNull(self[key]); };
@@ -75,12 +94,13 @@ function Neighbor() {
 
 
 function NeighborSet() {
+    // NeighborSet is an array of exactly 12 Neighbor objects where the array
+    // index corresponds to positions on a clock face.
     var my = [ null, null, null, null, null, null,
 	       null, null, null, null, null, null ];
-    // Using stringified integers as keys is abusive syntax
-    // but it makes our life so much easier later.
     allHours.forEach( function(hour){
 	var neighbor = new Neighbor;
+	// Add a "tile" key at odd positions, "vertex" at even positions
 	if( hour % 2 ) { neighbor.tile = null;}   // hour is odd
 	else { neighbor.vertex = null; }          // hour is even
 	return my[hour] = neighbor; });
@@ -89,21 +109,24 @@ function NeighborSet() {
 }
 
 function Coordinate( q, r ) {
-    // We're using axial coordinated as described here:
+    // We're mostly use axial coordinated as described here:
     // http://www.redblobgames.com/grids/hexagons/#coordinates
+    // but we store coordinates in cubic coordinates and convert as necessary
     var self = this;
     self.x = q;
-    self.y = null; // this is just so x, y, z show in correct order in the inspector
+    self.y = null; // this line is just so x, y, z show in correct order in the inspector
     self.z = r;
     self.y =  0 - ( self.x + self.z );
     
     self.move = function(direction) {
+	// Calculates a new location and returns it as a Coordinate object
 	var q = self.x + direction.x;
 	var r = self.z + direction.z;
 	//console.log( "q: " + q + ", r: " + r );
 	return new Coordinate(q, r);
     }
 
+    // Mostly only need this function for testing purposes...
     self.isNull = function(self) { return ( isNull(x) || isNull(y) || isNull(z) ); };
 }
 
@@ -122,21 +145,24 @@ function Tile( q, r ) {
     }
 
     self.logNeighbors = function() {
+	//Output neighboring tile coords in a readable format
 	var output =  "At (" + self.coord.x + ", "
 	                  + self.coord.z + "): \n" +
 	    self.neighbors
 	    .map( function(neighbor, hour){
 		if( Number(hour) % 2 == 0 ) {
 		    return "";
-		} else { return hour + ": ("
+		} else  if( neighbor.tile == null ) {
+		    return "";
+		} else {
+		    return hour + ": ("
 		       + neighbor.tile.coord.x + ", "
 		       + neighbor.tile.coord.z + ")   "; } })
 	    .join("");
 	console.log(output);
     };
 
-    
-    // Put existing neighbor detection code here.
+
     oddHours.forEach( function(hour) {
 	// Check to see if we've already set neighbor relationships for tiles
 	// at adjacent coords. If not, and neighboring tiles exist in the index,
@@ -159,7 +185,7 @@ function Tile( q, r ) {
 		    tile.neighbors[ (invert(hour) + 1) % 12 ].edge;
 		self.neighbors[ (hour + 11) % 12].vertex =
 		    tile.neighbors[ (invert(hour) + 1) % 12].vertex;
-		tile.setNeighbor(self);
+		tile.setNeighbor(self);           // this line is probably always redundant
 	    }
 	}
     });
@@ -185,14 +211,13 @@ function Tile( q, r ) {
 function Edge() {
     var self = this;
     self.whatAmI = "edge";
-    self.hasRobber = false;             // this never changes
+    self.hasRobber = false;                       // this should never change
     self.neighbors = new NeighborSet();
     self.findMyself = findMyself;
     self.road = null;
 
     self.setNeighbor = function(tile) {
 	var hour = self.findMyself(tile);
-	//console.log("ed");
 	self.neighbors[ hour ].edge = tile.neighbors[invert(hour)].edge;
     }
 }
@@ -200,14 +225,13 @@ function Edge() {
 function Vertex() {
     var self = this;
     self.whatAmI = "vertex";
-    self.hasRobber = false;             // this never changes
+    self.hasRobber = false;                       // this should never change
     self.neighbors = new NeighborSet();
     self.findMyself = findMyself;
     self.building = { type: null,
 		      color: null };
     self.setNeighbor = function(tile) {
 	var hour = self.findMyself(tile);
-	//console.log("vert");
 	self.neighbors[ hour ].vertex = tile.neighbors[invert(hour)].vertex;
     }
 }
@@ -227,7 +251,6 @@ function HexBoard(radius) {
     self.radius = radius;
     self.center = new Tile( 0, 0 );
     tileIndex.push(self.center);
-
     
     self.init = function(){
 	// see: http://www.redblobgames.com/grids/hexagons/#rings
@@ -247,6 +270,10 @@ function HexBoard(radius) {
 
 	self.center.logNeighbors();
 	tileIndex.logTiles();
+
+	console.log( self.center.neighbors[1].tile );
+	self.center.neighbors[1].tile.logNeighbors();
+	self.center.neighbors[3].tile.logNeighbors();
     }
 }
 
@@ -269,7 +296,6 @@ var HEX_BOARD_MODULE = (function() {
     
     my.board = new HexBoard( radius );
     my.board.init();
-
     
     return my;
 })();
