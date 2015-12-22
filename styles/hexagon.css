@@ -305,10 +305,11 @@ body {
   left: 0;
   right: 0;
   top: 0;
-  bottom: 0;
+  bottom: 5px;
   margin: auto;
-  height: 65px;
-  width: 75px;
+  height: 93px;
+  width: 93px;
+  border-radius: 100%;
   background-color: transparent;
   z-index: 10000;
 }
