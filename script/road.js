@@ -604,7 +604,7 @@ road.bottomLeft = function($specificTile, $previousTile, $nextTile, $upperLeftTi
     $tileBottomRightLeftRode = $bottomRightTile.find('.leftRoad');
 
     $tileBottomRightRoad = $specificTile.find('.bottomRightRoad');
-    $tileBottomRightUpperLeftRoad = $bottomRightTile.find('.upperLeftRoad');
+    $tileBottomRightUpperLeftRoad = $bottomRightTile.find('.topLeftRoad');
 
     $tilePreviousBottomRightRoad = $previousTile.find('.bottomRightRoad');
     $tileBottomLeftUpperLeftRoad = $bottomLeftTile.find('.upperLeftRoad');
@@ -742,10 +742,10 @@ road.bottomRight = function($specificTile, $previousTile, $nextTile, $upperLeftT
     $tileBottomRightLeftRode = $bottomRightTile.find('.leftRoad');
 
     $tileBottomLeftRoad = $specificTile.find('.bottomLeftRoad');
-    $tileBottomLeftUpperRightRoad = $bottomLeftTile.find('.upperRightRoad');
+    $tileBottomLeftUpperRightRoad = $bottomLeftTile.find('.topRightRoad');
 
     $tileNextBottomLeftRoad = $nextTile.find('.bottomLeftRoad');
-    $tileBottomRightUpperRightRoad = $bottomRightTile.find('.upperRightRoad');
+    $tileBottomRightUpperRightRoad = $bottomRightTile.find('.topRightRoad');
   }
 // CHECK BOTTOM RIGHT BUILDING SPOT
   if ($tileNextBottomLeftBuilding.length > 0) {

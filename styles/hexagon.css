@@ -333,7 +333,7 @@ body {
 }
 
 #thief {
-  z-index: 10000;
+  z-index: 1000;
   border-radius: 100%;
   width: 45px;
   height: 45px;
