@@ -65,6 +65,8 @@ $('.dessertLocation').on('click touchstart', function() {
   my.dessertLocation = $thisLocation.attr('id');
 });
 
+
+
 var $tiles = $('.check');
 $tiles.on('click touchstart',checkButton)
 function checkButton() {
