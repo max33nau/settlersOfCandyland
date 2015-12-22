@@ -6,26 +6,31 @@ body {
 header {
   max-width: 100%;
   text-align: center;
+  margin-top: 20px;
 }
 
 .title {
   text-align: center;
 }
 
-.main-header {
-  text-align: center;
-  display: block;
-}
 .nav {
   font-size: 1.5em;
   margin: auto;
   list-style: none;
   text-align: center;
   padding: 0px;
+  margin-top: 10px;
 }
 
-li {
+.nav li {
+  margin: 25px;
   display: inline;
+  font-family: Arial Black, Arial Bold, Gadget, sans-serif;
+  color: #90D3C1;
+}
+
+li:hover {
+  color: #FF6969;
 }
 
 a {

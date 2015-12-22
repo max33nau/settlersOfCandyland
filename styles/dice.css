@@ -12,8 +12,6 @@
   left: 1%;
 }
 
-
-
 .dice {
   display: inline-block;
   width: 20px;
@@ -59,4 +57,8 @@
 	background:-ms-linear-gradient(top, #bc3315 5%, #d0451b 100%);
 	background:linear-gradient(to bottom, #bc3315 5%, #d0451b 100%);
   background-color:#bc3315;
+}
+
+#diceWrapper p {
+  display: inline;
 }

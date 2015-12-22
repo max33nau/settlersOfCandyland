@@ -1,33 +1,17 @@
-header {
-  max-width: 100%;
-  text-align: center;
-}
-
-.title {
-  text-align: center;
-}
-
 body {
   margin: auto;
   max-width: 100%;
 }
 
-.nav {
-  font-size: 1.5em;
-  margin: auto;
-  list-style: none;
-  text-align: center;
-}
-
-.cupCakeFinal {
-  fill: blue;
+/*.cupCakeFinal {
+  fill: rgb(255,0,255);
   position: absolute;
   left: 100px;
 }
 
 .icecreamSundae {
   fill: red;
-}
+}*/
 
 #gameBoard {
     display: -webkit-box;
@@ -356,10 +340,10 @@ body {
 
 #currentPlayer {
   height: 120px;
-  width: 200px;
+  width: 150px;
   position: fixed;
   bottom: 5px;
-  left: 0;
+  left: 8px;
   text-align: center;
   margin: auto;
 }
