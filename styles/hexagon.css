@@ -35,40 +35,58 @@ body {
   left: 0;
 }
 
-#topLeftChurro {
+.churroLocation {
   position: absolute;
-  top: 33px;
-  left: 38px;
+  height: 55px;
+  width: 10px;
+  z-index: 20;
+  background-color: red;
+  display: inline;
 }
 
-#topRightChurro {
-  position: absolute;
-  top: 33px;
-  left: 110px;
+.churroLocation:hover {
+  background-color: green;
 }
 
-#middleLeftChurro {
-  position: absolute;
-  top: 100px;
-  left: 5px;
+#locationTopLeftChurro {
+  left: 43px;
+  top: 17px;
+  -ms-transform: rotate(60deg); /* IE 9 */
+  -webkit-transform: rotate(60deg); /* Chrome, Safari, Opera */
+  transform: rotate(60deg);
+}
+#locationTopRightChurro {
+  right: 43px;
+  top: 17px;
+  -ms-transform: rotate(-60deg); /* IE 9 */
+  -webkit-transform: rotate(-60deg); /* Chrome, Safari, Opera */
+  transform: rotate(-60deg);
 }
 
-#middleRightChurro {
-  position: absolute;
-  top: 100px;
-  left: 148px;
+#locationMiddleLeftChurro {
+  top: 80px;
+  left: 8px;
 }
 
-#bottomLeftChurro {
-  position: absolute;
-  bottom: 35px;
-  left: 38px;
+#locationMiddleRightChurro {
+  top: 80px;
+  right: 8px;
 }
 
-#bottomRightChurro {
-  position: absolute;
-  bottom: 35px;
-  left: 110px;
+#locationBottomRightChurro {
+  right: 43px;
+  bottom: 17px;
+  -ms-transform: rotate(60deg); /* IE 9 */
+  -webkit-transform: rotate(60deg); /* Chrome, Safari, Opera */
+  transform: rotate(60deg);
+}
+
+#locationBottomLeftChurro {
+  left: 43px;
+  bottom: 17px;
+  -ms-transform: rotate(-60deg); /* IE 9 */
+  -webkit-transform: rotate(-60deg); /* Chrome, Safari, Opera */
+  transform: rotate(-60deg);
 }
 
 #buildingSelection {
@@ -80,37 +98,45 @@ body {
   right: 0;
 }
 
-#top {
+.dessertLocation {
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  background-color: red;
   position: absolute;
+}
+
+.dessertLocation:hover {
+  background-color: green;
+}
+
+#locationTopDessert {
   top: 14px;
   left: 76px;
 }
 
-#topLeft {
-  position: absolute;
+#locationTopLeftDessert {
   top: 54px;
   left: 4px;
 }
 
-#topRight {
-  position: absolute;
+#locationTopRightDessert {
   top: 54px;
   right: 4px;
 }
 
-#bottomLeft {
-  position: absolute;
+#locationBottomLeftDessert {
   bottom: 55px;
   left: 4px;
 }
 
-#bottomRight {
+#locationBottomRightDessert {
   position: absolute;
   bottom: 55px;
   right: 4px;
 }
 
-#bottom {
+#locationBottomDessert {
   position: absolute;
   bottom: 15px;
   left: 76px;
