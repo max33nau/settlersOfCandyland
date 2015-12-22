@@ -34,10 +34,7 @@ my.totalPlayers = 3;
 
 $(function(){
 var hasTouch = 'ontouchstart' in window;
-console.log(hasTouch);
-if (hasTouch) {
-  my.currentPlayer = 3;
-} 
+
 my.currentPlayerFieldset.empty();
 my.currentPlayerFieldset.css('background-color',playerInfo[my.currentPlayer].color);
 my.currentPlayerFieldset.append('<img class="currentPlayerImage" src='+playerInfo[my.currentPlayer].imageUrl+'>');
@@ -59,21 +56,30 @@ if(my.currentGame) {
   my.currentPlayerFieldset.append('<img class="currentPlayerImage" src='+playerInfo[my.currentPlayer].imageUrl+'>');
 }
 
-$('.churroLocation').on('click touchstart', function() {
-  $thisLocation = $(this);
-  my.churroLocation = $thisLocation.attr('id');
-
-});
-
-$('.dessertLocation').on('click touchstart', function() {
-  $thisLocation = $(this);
-  my.dessertLocation = $thisLocation.attr('id');
-});
-
-
-
 var $tiles = $('.check');
-$tiles.on('click touchstart',checkButton);
+// Checks if on a touch screen device
+if (hasTouch) {
+  $('.churroLocation').on('touchstart', function() {
+    $thisLocation = $(this);
+    my.churroLocation = $thisLocation.attr('id');
+  });
+  $('.dessertLocation').on('touchstart', function() {
+    $thisLocation = $(this);
+    my.dessertLocation = $thisLocation.attr('id');
+  });
+  $tiles.on('touchstart',checkButton);
+} else {
+  $('.churroLocation').on('click', function() {
+    $thisLocation = $(this);
+    my.churroLocation = $thisLocation.attr('id');
+  });
+  $('.dessertLocation').on('click', function() {
+    $thisLocation = $(this);
+    my.dessertLocation = $thisLocation.attr('id');
+  });
+  $tiles.on('click',checkButton);
+}
+
 function checkButton() {
   my.thiefButton=$('input[type="radio"][name="thiefLocation"]:checked').val();
   $tile = $(this).parent();
