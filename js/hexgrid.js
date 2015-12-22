@@ -8,7 +8,7 @@
 var oddHours =  [ 1, 3, 5, 7, 9, 11 ];
 var evenHours = [ 0, 2, 4, 6, 8, 10 ];
 var allHours =  [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ];
-var tileIndex = new TileIndex();
+var tileList = new TileList();
 
 // basic set of Catan tiles, ordered for beginner's game, original theme
 var basicCatanTiles = [ "sheep", "ore", "wheat", "wheat", "wood", "brick",
@@ -46,7 +46,7 @@ var invert = function( hour ) {
     return  ( Number(hour) + 6 )  % 12;
 } 
 
-function TileIndex() {
+function TileList() {
     // This Object is just an array of Tile references but with member methods.
     var my = [ ];
     
@@ -73,7 +73,7 @@ function TileIndex() {
     my.logTiles = function(){
 	//Output tile coords in a readable format
 	var output =
-	    "TileIndex: " +
+	    "TileList: " +
 	    my.map(function(tile){
 		return "(" + tile.coord.x + ", " + tile.coord.z + ")";
 	    })
@@ -165,15 +165,15 @@ function Tile( q, r ) {
 
     oddHours.forEach( function(hour) {
 	// Check to see if we've already set neighbor relationships for tiles
-	// at adjacent coords. If not, and neighboring tiles exist in the index,
-	// set neighboring tile, edge, and vertex relationships.
+	// at adjacent coords. If not, and neighboring tiles exist in the 
+	// tileList, set neighboring tile, edge, and vertex relationships.
 	if( self.neighbors[hour].tile === null) {
 	    // If null, then the tile key exists, but no relationship has been set
 	    
-	    var tile = tileIndex.findTileByCoord( self.coord.move(direction[hour]) );
+	    var tile = tileList.findTileByCoord( self.coord.move(direction[hour]) );
 
-	    // We may be redundantly setting vertex and edge relationships,
-	    // but it's okay
+	    // We may be redundantly setting some vertex and edge relationships,
+	    // but it's okay for now.
 	    if( tile != null ) {
 		self.neighbors[hour].tile = tile;
 		self.neighbors[hour].edge = tile.neighbors[invert(hour)].edge;
@@ -250,26 +250,46 @@ function HexBoard(radius) {
     var self = this;
     self.radius = radius;
     self.center = new Tile( 0, 0 );
-    tileIndex.push(self.center);
+    tileList.push(self.center);
+
+    // This is just so we can generate a array of sequential numbers
+    // using declaritive code (no for loops) without pulling in a whole
+    // library for it.
+    var range = function(start, count) {
+        return Array.apply(0, Array(count))
+                 .map(function (element, index) { 
+                     return index + start;  
+                 }); }
     
     self.init = function(){
-	// see: http://www.redblobgames.com/grids/hexagons/#rings
-	var currentTile = self.center;  //temp
-	for ( var i = 1; i < 2; i++ ) {
-	    oddHours.forEach(function(hour) {
+	/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+	 * This nested loop looks odd, but it saves a lot of unneeded computation.   *
+	 * The tileList array stores our objects in the order they are created, so   *
+	 * for a map of radius r ( including water tiles) tileList.length() =        *
+	 * 1 + SUM_n=1->r(6n). Conveniently, because we index our array from 0, we   *
+	 * can drop the 1 and use the summation to calculate the array index for a   *
+	 * particular tile. The closed form of the summation is 3*r*(r+1), which we  *
+	 * use for our bounds in the internal loop, rather than looking though the   *
+	 * entire array each time looking for tiles with null neighbors.             *
+	 * See: http://www.redblobgames.com/grids/hexagons/#rings                    *
+	 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-		//console.log( tileIndex.findTileByCoord( currentTile.coord.move(direction[hour]) ) );
-		if ( tileIndex.findTileByCoord( currentTile.coord.move(direction[hour]) ) == null ) {
-		    var currentCoord = currentTile.coord.move(direction[hour]);
-		    currentTile.neighbors[hour].tile =
-			new Tile(currentCoord.x, currentCoord.z);
-		    tileIndex.push(currentTile.neighbors[hour].tile);
-		}
+	range(0, radius).forEach(function(r) {
+	    //console.log( "r="+r+": [ "+ ( r==0 ? 0 : (3*r*(r-1)+1) )+", "+(3*r*(r+1)+1)+" )" );
+	    //console.log(tileList.slice( ( r==0 ? 0 : (3*r*(r-1)+1) ),     (3*r*(r+1)+1) ) );
+	    tileList.slice( ( r==0 ? 0 : (3*r*(r-1)+1) ), (3*r*(r+1)+1) ).forEach(function(tile){
+		oddHours.forEach(function(hour) {
+		    var newCoord = tile.coord.move(direction[hour])
+		    if( tileList.findTileByCoord( newCoord ) == null ) {
+			tile.neighbors[hour].tile = new Tile(newCoord.x, newCoord.z);
+			tileList.push(tile.neighbors[hour].tile);
+		    }
+		});
 	    });
-	}
+	});
 
 	self.center.logNeighbors();
-	tileIndex.logTiles();
+	tileList.logTiles();
 
 	console.log( self.center.neighbors[1].tile );
 	self.center.neighbors[1].tile.logNeighbors();
@@ -292,7 +312,7 @@ var findMyself  = function( their ) {
 
 var HEX_BOARD_MODULE = (function() {
     var my = {};
-    var radius = 2;
+    var radius = 3;
     
     my.board = new HexBoard( radius );
     my.board.init();
