@@ -415,7 +415,7 @@ body {
   left: 72px;
 }
 
-@media (orientation: portrait) {
+@media only handheld and (orientation: portrait) {
   html {
     -webkit-transform: rotate(-90deg);
     -moz-transform: rotate(-90deg);
@@ -424,5 +424,6 @@ body {
     transform: rotate(-90deg);
     min-height: 100vh;
     min-width: 100vh;
+    -webkit-transition: all 1s ease-in-out;
   }
 }
