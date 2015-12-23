@@ -61,32 +61,36 @@ body {
 
 .upperBuilding {
   top: -17px;
-  right: 35px;
+  right: 0px;
+  left: 0px;
+  margin: auto;
 }
 
 .topRightBuilding {
-  top: 18px;
-  left: 91px;
+  top: 5px;
+  right: -15px;
 }
 
 .topLeftBuilding {
-  top: 18px;
-  left: -11px;
+  top: 5px;
+  left: -15px;
 }
 
 .bottomRightBuilding {
-  top: 78px;
-  left: 91px;
+  top: 68px;
+  right: -15px;
 }
 
 .bottomLeftBuilding {
-  top: 78px;
-  left: -11px;
+  top: 68px;
+  left: -15px;
 }
 
 .bottomBuilding {
-  top: 103px;
-  right: 40px;
+  top: 90px;
+  right: 0px;
+  left: 0px;
+  margin: auto;
 }
 
 /*----------GAME PIECES PLACEMENT (roads)----------*/
