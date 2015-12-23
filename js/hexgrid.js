@@ -233,23 +233,41 @@ function Tile( q, r ) {
 	if( self.neighbors[hour].tile === null) {
 	    // If null, then the tile key exists, but no relationship has been set
 	    var tile = tileList.findTileByCoord( self.coord.move(direction[hour]) );
-	    // We may be redundantly setting some vertex and edge relationships,
+	    console.log(tile);
+	    // We're redundantly setting some vertex and edge relationships,
 	    // but it's okay for now.
 	    if( tile != null ) {
+		// an adjacent tile already exists, set relationships:
+		// set the tile relationship
 		self.neighbors[hour].tile = tile;
+		// set our shared edge
 		self.neighbors[hour].edge = tile.neighbors[invert(hour)].edge;
-		self.neighbors[ (hour + 1) % 12 ].edge =
-		    tile.neighbors[ (invert(hour) + 11) % 12 ].edge;
+		// we share vertices one hour clockwaise and counterclockwise
+		// from our shared edge
 		self.neighbors[ (hour + 1) % 12].vertex =
 		    tile.neighbors[ (invert(hour) + 11) % 12].vertex;
-		self.neighbors[ (hour + 11) % 12 ].edge =
-		    tile.neighbors[ (invert(hour) + 1) % 12 ].edge;
 		self.neighbors[ (hour + 11) % 12].vertex =
 		    tile.neighbors[ (invert(hour) + 1) % 12].vertex;
+		// The edge incident to me, one hour clockwise for me
+		// is his edge two hours counterclockwise for him,
+		// and vice-versa.
+		
+		self.neighbors[ (hour + 1) % 12 ].edge =
+		    tile.neighbors[ (invert(hour) + 10) % 12 ].edge;
+		tile.neighbors[ (invert(hour) + 11) % 12 ].edge =
+		    self.neighbors[ (hour + 2) % 12 ].edge;
+		
+		// Now the incident edges on the other side.
+		self.neighbors[ (hour + 11) % 12 ].edge =
+		    tile.neighbors[ (invert(hour) + 2) % 12 ].edge;
+		tile.neighbors[ (invert(hour) + 1) % 12 ].edge =
+		    self.neighbors[ (hour + 10) % 12 ].edge;
+		
 		tile.setNeighbor(self);           // this line is probably always redundant
 	    }
 	}
     });
+    
     // Add remaining adjacent vertices and edges to tile.
     oddHours.forEach( function(hour){
 	if( self.neighbors[hour].isNull("edge") ) {
@@ -373,6 +391,7 @@ function HexBoard(radius, deck) {
 }
 
 var findMyself  = function( their ) {
+    
     var self = this;
     for ( var hour in their.neighbors ) {
 	if ( self === their.neighbors[hour][self.whatAmI] ) {
@@ -386,13 +405,16 @@ var findMyself  = function( their ) {
 
 
 var HEX_BOARD_MODULE = (function() {
+    // Stuff starts happening here
     var my = {};
     var radius = 3;
 
+    // deck is in the global namespace, but gets initialized here
     deck = new TileSet("beginner");
     //deck = new TileSet("random");
     deck.init();
-    
+
+    // initialize a game board
     my.board = new HexBoard( radius, deck );
     my.board.init();
     
