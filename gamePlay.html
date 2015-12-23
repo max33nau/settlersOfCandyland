@@ -12,7 +12,9 @@
 
 
   <body>
-    <header><img class= 'title' src='graphics/settlersTitle.png'></header>
+    <div class='titleContainer'>
+      <header><img class= 'title' src='graphics/settlersTitle.png'></header>
+    </div>
     <ul class='nav'>
       <a class='pagelink' href="index.html"><li>start new game</li></a>
       <a class='pagelink' href="instructions.html"><li>instructions</li></a>
@@ -30,24 +32,28 @@
 
     <fieldset id='roadSelection'>
       <legend> Add Churro </legend>
-      <div id='locationTopLeftChurro' class='churroLocation location'></div>
-      <div id='locationTopRightChurro' class='churroLocation location'></div>
-      <div id='locationMiddleLeftChurro' class='churroLocation location'></div>
-      <div id='locationMiddleRightChurro' class='churroLocation location'></div>
-      <div id='locationBottomLeftChurro' class='churroLocation location'></div>
-      <div id='locationBottomRightChurro' class='churroLocation location'></div>
-      <img class= 'radioTile' src='graphics/plainTile.gif'>
+      <div class='contolsContainer'>
+        <img class= 'radioTile' src='graphics/plainTile.gif'>
+        <div id='locationTopLeftChurro' class='churroLocation location'></div>
+        <div id='locationTopRightChurro' class='churroLocation location'></div>
+        <div id='locationMiddleLeftChurro' class='churroLocation location'></div>
+        <div id='locationMiddleRightChurro' class='churroLocation location'></div>
+        <div id='locationBottomLeftChurro' class='churroLocation location'></div>
+        <div id='locationBottomRightChurro' class='churroLocation location'></div>
+      </div>
     </fieldset>
 
     <fieldset id='buildingSelection'>
       <legend> Add Dessert </legend>
-      <img class= 'radioTile' src='graphics/plainTile.gif'>
-      <div id='locationTopDessert' class='dessertLocation location'> </div>
-      <div id='locationTopRightDessert' class='dessertLocation location'> </div>
-      <div id='locationTopLeftDessert' class='dessertLocation location'> </div>
-      <div id='locationBottomLeftDessert' class='dessertLocation location'> </div>
-      <div id='locationBottomRightDessert' class='dessertLocation location'> </div>
-      <div id='locationBottomDessert' class='dessertLocation location'> </div>
+      <div class='contolsContainer'>
+        <img class= 'radioTile' src='graphics/plainTile.gif'>
+        <div id='locationTopDessert' class='dessertLocation location'> </div>
+        <div id='locationTopRightDessert' class='dessertLocation location'> </div>
+        <div id='locationTopLeftDessert' class='dessertLocation location'> </div>
+        <div id='locationBottomLeftDessert' class='dessertLocation location'> </div>
+        <div id='locationBottomRightDessert' class='dessertLocation location'> </div>
+        <div id='locationBottomDessert' class='dessertLocation location'> </div>
+      </div>
     </fieldset>
 
     <fieldset id='moveThief'>

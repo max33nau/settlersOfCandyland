@@ -271,33 +271,33 @@ body {
 }
 
 #locationTopLeftChurro {
-  left: 54px;
-  top: 24px;
+  left: 45px;
+  top: 7px;
   -ms-transform: rotate(60deg); /* IE 9 */
   -webkit-transform: rotate(60deg); /* Chrome, Safari, Opera */
   transform: rotate(60deg);
 }
 
 #locationTopRightChurro {
-  right: 54px;
-  top: 24px;
+  right: 45px;
+  top: 7px;
   -ms-transform: rotate(-60deg); /* IE 9 */
   -webkit-transform: rotate(-60deg); /* Chrome, Safari, Opera */
   transform: rotate(-60deg);
 }
 
 #locationMiddleLeftChurro {
-  top: 85px;
-  left: 17px;
+  top: 70px;
+  left: 8px;
 }
 
 #locationMiddleRightChurro {
-  top: 85px;
-  right: 17px;
+  top: 70px;
+  right: 8px;
 }
 
 #locationBottomRightChurro {
-  right: 54px;
+  right: 45px;
   bottom: 7px;
   -ms-transform: rotate(60deg); /* IE 9 */
   -webkit-transform: rotate(60deg); /* Chrome, Safari, Opera */
@@ -305,7 +305,7 @@ body {
 }
 
 #locationBottomLeftChurro {
-  left: 54px;
+  left: 45px;
   bottom: 7px;
   -ms-transform: rotate(-60deg); /* IE 9 */
   -webkit-transform: rotate(-60deg); /* Chrome, Safari, Opera */
@@ -335,32 +335,36 @@ body {
   background-color: green !important;
 }
 
+.contolsContainer {
+  position: relative;
+}
+
 #locationTopDessert {
-  top: 22px;
-  left: 81px;
+  top: 0px;
+  left: 72px;
 }
 
 #locationTopLeftDessert {
-  top: 60px;
-  left: 10px;
+  top: 45px;
+  left: 0px;
 }
 
 #locationTopRightDessert {
-  top: 60px;
-  right: 10px;
+  top: 45px;
+  right: 0px;
 }
 
 #locationBottomLeftDessert {
-  bottom: 42px;
-  left: 10px;
+  bottom: 45px;
+  left: 0px;
 }
 
 #locationBottomRightDessert {
   bottom: 42px;
-  right: 10px;
+  right: 0px;
 }
 
 #locationBottomDessert {
-  bottom: 3px;
-  left: 81px;
+  bottom: 5px;
+  left: 72px;
 }
