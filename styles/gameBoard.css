@@ -105,12 +105,12 @@ body {
 }
 
 .leftRoad {
-  left: -2px;
+  right: 96px;
   top: 35px;
 }
 
 .rightRoad {
-  left: 97.5px;
+  left: 96px;
   top: 35px;
 }
 
@@ -236,6 +236,7 @@ body {
 
 .radioTile {
   width: 150px;
+  padding: 10px;
 }
 
 #roadSelection {
@@ -244,7 +245,7 @@ body {
   font-size: .8em;
   position: fixed;
   top: 0;
-  left: 0;
+  left: 5px;
 }
 
 .churroLocation {
@@ -261,42 +262,42 @@ body {
 }
 
 #locationTopLeftChurro {
-  left: 43px;
-  top: 17px;
+  left: 54px;
+  top: 24px;
   -ms-transform: rotate(60deg); /* IE 9 */
   -webkit-transform: rotate(60deg); /* Chrome, Safari, Opera */
   transform: rotate(60deg);
 }
 
 #locationTopRightChurro {
-  right: 43px;
-  top: 17px;
+  right: 54px;
+  top: 24px;
   -ms-transform: rotate(-60deg); /* IE 9 */
   -webkit-transform: rotate(-60deg); /* Chrome, Safari, Opera */
   transform: rotate(-60deg);
 }
 
 #locationMiddleLeftChurro {
-  top: 80px;
-  left: 8px;
+  top: 85px;
+  left: 17px;
 }
 
 #locationMiddleRightChurro {
-  top: 80px;
-  right: 8px;
+  top: 85px;
+  right: 17px;
 }
 
 #locationBottomRightChurro {
-  right: 43px;
-  bottom: 17px;
+  right: 54px;
+  bottom: 7px;
   -ms-transform: rotate(60deg); /* IE 9 */
   -webkit-transform: rotate(60deg); /* Chrome, Safari, Opera */
   transform: rotate(60deg);
 }
 
 #locationBottomLeftChurro {
-  left: 43px;
-  bottom: 17px;
+  left: 54px;
+  bottom: 7px;
   -ms-transform: rotate(-60deg); /* IE 9 */
   -webkit-transform: rotate(-60deg); /* Chrome, Safari, Opera */
   transform: rotate(-60deg);
@@ -310,7 +311,7 @@ body {
   font-size: .8em;
   position: fixed;
   top: 0;
-  right: 0;
+  right: 5px;
 }
 
 .dessertLocation {
