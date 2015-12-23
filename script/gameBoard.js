@@ -3,6 +3,7 @@ my = {};
 
 $(function(){
   my.currentPlayer = 0;
+  my.thiefButton = '';
   my.dessertLocationClick = '';
   my.churroLocationClick = '';
   my.playersTurnColor = '';
@@ -19,6 +20,7 @@ var hasTouch = 'ontouchstart' in window;
 my.currentPlayerFieldset.empty();
 my.currentPlayerFieldset.css('background-color',playerInfo[my.currentPlayer].color);
 my.currentPlayerFieldset.append('<h6 id="playerName">Current Player:  '+ playerInfo[my.currentPlayer].userName +'</h6');
+my.currentPlayerFieldset.append('<ul> <li class="gameData"> churros left: '+ playerInfo[my.currentPlayer].numberOfChurros+'</li> <li class="gameData"> cupcakes left: '+ playerInfo[my.currentPlayer].numberOfCupcakes+'</li><li class="gameData"> sundaes left: '+ playerInfo[my.currentPlayer].numberOfIceCreamSundaes+'</li>');
 my.currentPlayerFieldset.append('<img class="currentPlayerImage" src='+playerInfo[my.currentPlayer].imageUrl+'>');
 my.churroLocation.css('background-color',playerInfo[my.currentPlayer].color);
 my.dessertLocation.css('background-color',playerInfo[my.currentPlayer].color);
@@ -29,10 +31,10 @@ if(my.currentGame) {
   my.$gameBoard.html(my.currentGame);
   playerInfo = [];
   playerInfo = JSON.parse(localStorage.getItem('currentPlayerInfo'));
-  console.log('here',playerInfo);
   my.currentPlayer = localStorage.getItem('currentPlayer');
   my.currentPlayerFieldset.empty();
   my.currentPlayerFieldset.append('<h6 id="playerName">Current Player:  '+ playerInfo[my.currentPlayer].userName +'</h6');
+  my.currentPlayerFieldset.append('<ul> <li class="gameData"> churros left: '+ playerInfo[my.currentPlayer].numberOfChurros+'</li> <li class="gameData"> cupcakes left: '+ playerInfo[my.currentPlayer].numberOfCupcakes+'</li><li class="gameData"> sundaes left: '+ playerInfo[my.currentPlayer].numberOfIceCreamSundaes+'</li>');
   my.churroLocation.css('background-color',playerInfo[my.currentPlayer].color);
   my.dessertLocation.css('background-color',playerInfo[my.currentPlayer].color);
   my.currentPlayerFieldset.css('background-color',playerInfo[my.currentPlayer].color);
@@ -52,7 +54,9 @@ if (hasTouch) {
   });
   $tiles.on('touchend',checkButton);
   $('#rollDiceButton').on('touchend',diceRolled);
-
+  $('#moveThiefButton').on('touchend', function(){
+    my.thiefButton=$(this).attr('id');
+  });
 } else {
   $('.churroLocation').on('click', function() {
     $thisLocation = $(this);
@@ -64,6 +68,9 @@ if (hasTouch) {
   });
   $tiles.on('click',checkButton);
   $('#rollDiceButton').on('click',diceRolled);
+  $('#moveThiefButton').on('click', function(){
+    my.thiefButton=$(this).attr('id');
+  });
 }
 
 function diceRolled() {
@@ -83,13 +90,14 @@ function diceRolled() {
    }
   my.currentPlayer++;
   my.currentPlayerFieldset.append('<h6 id="playerName">Current Player:  '+ playerInfo[my.currentPlayer].userName +'</h6');
+  my.currentPlayerFieldset.append('<ul> <li class="gameData"> churros left: '+ playerInfo[my.currentPlayer].numberOfChurros+'</li> <li class="gameData"> cupcakes left: '+ playerInfo[my.currentPlayer].numberOfCupcakes+'</li><li class="gameData"> sundaes left: '+ playerInfo[my.currentPlayer].numberOfIceCreamSundaes+'</li>');
   my.churroLocation.css('background-color',playerInfo[my.currentPlayer].color);
   my.dessertLocation.css('background-color',playerInfo[my.currentPlayer].color);
   my.currentPlayerFieldset.css('background-color',playerInfo[my.currentPlayer].color);
   my.currentPlayerFieldset.append('<img class="currentPlayerImage" src='+playerInfo[my.currentPlayer].imageUrl+'>');
 }
 function checkButton() {
-  my.thiefButton=$('input[type="radio"][name="thiefLocation"]:checked').val();
+
   $tile = $(this).parent();
   var xCoord = Number($tile.attr('id').slice(2,3));
   var yCoord = Number($tile.attr('id').slice(3,4));
@@ -108,7 +116,7 @@ function checkButton() {
   var nextTile = $('#xy'+rightX.toString()+yCoord.toString());
   var bottomLeftTile = $('#xy'+leftX.toString()+bottomY.toString());
   var bottomRightTile = $('#xy'+xCoord.toString()+bottomY.toString());
-  console.log(my.churroLocationClick);
+
   if(my.churroLocationClick) {
     if (playerInfo[my.currentPlayer].numberOfChurros == 0) {
       alert('You have ran out of churros sorry');
@@ -139,7 +147,7 @@ function checkButton() {
   var nextUpperRightTile = $('#xy'+nextLeftX.toString()+upperY.toString());
   var previousBottomLeftTile = $('#xy'+previousLeftX.toString()+bottomY.toString());
   var nextBottomRightTile = $('#xy'+rightX.toString()+bottomY.toString());
-  if (playerInfo[my.currentPlayer].numberOfCupcakes == 0) {
+  if (playerInfo[my.currentPlayer].numberOfCupcakes == 0 && playerInfo[my.currentPlayer].numberOfIceCreamSundaes ==0 ) {
     alert('You have ran out of cupcakes sorry');
   } else if (my.dessertLocationClick == 'locationTopDessert') {
     building.upper($tile,previousTile,nextTile,upperLeftTile, upperRightTile, bottomLeftTile, bottomRightTile,straightAboveTile,playerInfo[my.currentPlayer].color);
@@ -147,7 +155,6 @@ function checkButton() {
   } else if (my.dessertLocationClick == 'locationTopRightDessert') {
 
     building.topRight($tile,previousTile,nextTile,upperLeftTile, upperRightTile, bottomLeftTile, bottomRightTile,nextUpperRightTile,playerInfo[my.currentPlayer].color);
-
 
   } else if (my.dessertLocationClick == 'locationTopLeftDessert') {
     building.topLeft($tile,previousTile,nextTile,upperLeftTile, upperRightTile, bottomLeftTile, bottomRightTile,previousUpperLeftTile,playerInfo[my.currentPlayer].color);
@@ -168,7 +175,7 @@ function checkButton() {
     console.log('truthy');
   }
 
-} else if (my.thiefButton == 'moveThief') {
+} else if (my.thiefButton == 'moveThiefButton') {
   $thief = $('#thief');
   $thief.remove();
   $tile.append('<img id="thief" class="numbers" src="graphics/gingerbreadMan.gif">');
