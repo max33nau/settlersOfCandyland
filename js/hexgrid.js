@@ -247,6 +247,32 @@ function Tile( q, r ) {
 	self.neighbors[6].vertex.setNeighbor(self);
     }
     self.init();
+
+    function matchNeighbors(leftReference, rightReference) {
+	// This if-else flow is over-specified, but it improves readibility for me.
+	 if ( (leftReference === null) && (rightReference === null) ) {
+	     //console.log("Error: both neighbors are null");
+	     return false;
+	 } else if( (leftReference !== null) &&
+		    (rightReference !== null) &&
+		    (leftReference !== rightReference) ) {
+	     console.log("Error: conflicting elements!");
+	     return false;
+	 } else if( leftReference === rightReference ) {
+	     return true;
+	 } else if ( (leftReference !== null) && (rightReference === null) ) {
+	     console.log("-> ", leftReference, rightReference);
+	     rightReference = leftReference;
+	     return true;
+	 } else if( (leftReference === null) && (rightReference !== null) ) {
+	     console.log("<- ", leftReference, rightReference);
+	     leftReference = rightReference;
+	     return true;
+	 } else {
+	     console.log("ERROR: You shouldn't be here.")
+	     return false;
+	 }
+    }
     
     self.setAdjacents = function() {
 	oddHours.forEach( function(hour) {
@@ -258,40 +284,36 @@ function Tile( q, r ) {
 		var tile = tileList.findTileByCoord( self.coord.move(direction[hour]) );
 		// We're redundantly setting some vertex and edge relationships,
 		// but it's okay for now.
-		if( tile != null ) {
-		    // an adjacent tile already exists, set relationships:
-		    
+		if( tile != null ) {              // an adjacent tile already exists, set relationships:
 		    // set the tile relationship
 		    self.neighbors[hour].tile = tile;
+		    
 		    // set our shared edge
-		    self.neighbors[hour].edge = tile.neighbors[invert(hour)].edge;
+		    matchNeighbors( self.neighbors[hour].edge, tile.neighbors[invert(hour)].edge);
+
 		    // we share vertices one hour clockwaise and counterclockwise
 		    // from our shared edge
-		    self.neighbors[ (hour + 1) % 12].vertex =
-			tile.neighbors[ (invert(hour) + 11) % 12].vertex;
-		    self.neighbors[ (hour + 11) % 12].vertex =
-			tile.neighbors[ (invert(hour) + 1) % 12].vertex;
+		    //(currently producing lots of nulls)
+		    matchNeighbors( self.neighbors[ (hour + 1) % 12].vertex, tile.neighbors[ (invert(hour) + 11) % 12].vertex );
+		    matchNeighbors( self.neighbors[ (hour + 11) % 12].vertex, tile.neighbors[ (invert(hour) + 1) % 12].vertex );
+
 		    // The edge incident to me, one hour clockwise for me
 		    // is his edge two hours counterclockwise for him,
 		    // and vice-versa.
 		    
-		    self.neighbors[ (hour + 1) % 12 ].edge =
-			tile.neighbors[ (invert(hour) + 10) % 12 ].edge;
-		    tile.neighbors[ (invert(hour) + 11) % 12 ].edge =
-			self.neighbors[ (hour + 2) % 12 ].edge;
+		    matchNeighbors( self.neighbors[ (hour + 1) % 12 ].edge, tile.neighbors[ (invert(hour) + 10) % 12 ].edge );
+		    matchNeighbors( self.neighbors[ (hour + 2) % 12 ].edge, tile.neighbors[ (invert(hour) + 11) % 12 ].edge );
 		    
 		    // Now the incident edges on the other side.
-		    self.neighbors[ (hour + 11) % 12 ].edge =
-			tile.neighbors[ (invert(hour) + 2) % 12 ].edge;
-		    tile.neighbors[ (invert(hour) + 1) % 12 ].edge =
-			self.neighbors[ (hour + 10) % 12 ].edge;
+		    matchNeighbors( self.neighbors[ (hour + 11) % 12 ].edge, tile.neighbors[ (invert(hour) + 2) % 12 ].edge );
+		    matchNeighbors( self.neighbors[ (hour + 10) % 12 ].edge, tile.neighbors[ (invert(hour) + 1) % 12 ].edge );
 		    
 		    //tile.setNeighbor(self);           // this line is probably always redundant
 		}
 	    }
 	});
     }
-    self.setAdjacents();
+    //self.setAdjacents();
 
     /*
     // Add remaining adjacent vertices and edges to tile.
@@ -381,7 +403,7 @@ function HexBoard(radius, deck) {
     
     self.init = function(){
 	/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
-	 * This nested loop looks odd, but it saves a lot of unneeded computation.   *
+	 * This nested loops looks odd, but it saves a lot of unneeded computation.  *
 	 * The tileList array stores our objects in the order they are created, so   *
 	 * for a map of radius r ( including water tiles) tileList.length() =        *
 	 * 1 + SUM_n=1->r(6n). Conveniently, because we index our array from 0, we   *
@@ -406,7 +428,18 @@ function HexBoard(radius, deck) {
 	    });
 	});
 
-	console.log(tileList.length);
+	//console.log(tileList.length);
+
+	console.log(self.center);
+	self.center.setAdjacents();
+	self.center.neighbors[1].tile.setAdjacents();
+	self.center.neighbors[3].tile.setAdjacents();
+	self.center.neighbors[5].tile.setAdjacents();
+	self.center.neighbors[7].tile.setAdjacents();
+	self.center.neighbors[9].tile.setAdjacents();
+	self.center.neighbors[11].tile.setAdjacents();
+	
+	//tileList.forEach( function(tile) { tile.setAdjacents(); } );
 
 	var fixEdges = function() {
 	    for(var ii=0; ii <= Math.floor(tileList.length / 2); ii++) {
