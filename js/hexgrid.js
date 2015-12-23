@@ -5,7 +5,7 @@
  * Fall 2015             *
  * * * * * * * * * * * * */
 
-var debug;
+var debug, test;
 var oddHours =  [ 1, 3, 5, 7, 9, 11 ];
 var evenHours = [ 0, 2, 4, 6, 8, 10 ];
 var allHours =  [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ];
@@ -206,10 +206,8 @@ function Tile( q, r ) {
     self.type = null;
     self.numberToken = null;
     self.findMyself = findMyself;
-    self.setNeighbor = function(tile) {
-	var hour = self.findMyself(tile);
-	self.neighbors[ hour ].tile = tile;
-    }
+    self.setNeighbor = setNeighbor;
+    
     self.logNeighbors = function() {
 	//Output neighboring tile coords in a readable format
 	var output =  "At (" + self.coord.x + ", "
@@ -232,21 +230,59 @@ function Tile( q, r ) {
 	console.log( "("+ self.coord.x + ", " + self.coord.z + ")" );
     }
 
+    self.makeNeighborVertexAndEdge = function(vertexHour, orientation) {
+	var edgeHour, vertexNeighborHour;
+	
+	if(orientation == "clockwise") {
+	    edgeHour = (vertexHour + 1) % 12;
+	    vertexNeighborHour = (vertexHour + 4) % 12;
+	} else if (orientation == "counterClockwise") {
+	    edgeHour = (vertexHour + 11) % 12;
+	    vertexNeighborHour = (vertexHour + 8) % 12;
+	} else {
+	    console.log("ERROR: bad orientation");
+	}
+	
+	if(!self.neighbors[vertexHour].vertex){
+	    // If vertex doesn't exist, make it
+	    self.neighbors[vertexHour].vertex = new Vertex();
+	    self.neighbors[vertexHour].vertex.setNeighbor(self);
+	}
+	var vertex = self.neighbors[vertexHour].vertex;
+
+	if(!self.neighbors[edgeHour].edge) {
+	    self.neighbors[edgeHour].edge = new Edge();
+	    self.neighbors[edgeHour].edge.setNeighbor(self);
+	}
+	var edge = self.neighbors[edgeHour].edge;
+
+	vertex.neighbors[vertexNeighborHour].edge = edge;
+	edge.setNeighbor(vertex);
+	
+    }
+    
     self.init = function() {
 	// I know that for each tile I create, I can safely add all
-	// these neighbors without accidentally creating any duplicates.
-	self.neighbors[1].edge = new Edge();
-	self.neighbors[1].edge.setNeighbor(self);
-	self.neighbors[5].edge = new Edge();
-	self.neighbors[5].edge.setNeighbor(self);
+	// these neighbor edges and vertices without accidentally
+	// creating any duplicates. We add neighbor relationships
+	// between edges and vertices as appropriate.
+
+	self.makeNeighborVertexAndEdge(0, "clockwise");
+	self.makeNeighborVertexAndEdge(6, "counterClockwise");
+
 	self.neighbors[9].edge = new Edge();
 	self.neighbors[9].edge.setNeighbor(self);
-	self.neighbors[0].vertex = new Vertex();
-	self.neighbors[0].vertex.setNeighbor(self);
-	self.neighbors[6].vertex = new Vertex();
-	self.neighbors[6].vertex.setNeighbor(self);
+	
     }
     self.init();
+
+    self.initSomeMore = function() {
+	[2, 4, 8, 10].forEach(function(hour) {
+	    self.makeNeighborVertexAndEdge(hour, "clockwise");
+	    self.makeNeighborVertexAndEdge(hour, "counterClockwise");
+	});
+    }
+    
 
     function matchNeighbors(leftReference, rightReference) {
 	// This if-else flow is over-specified, but it improves readibility for me.
@@ -261,11 +297,11 @@ function Tile( q, r ) {
 	 } else if( leftReference === rightReference ) {
 	     return true;
 	 } else if ( (leftReference !== null) && (rightReference === null) ) {
-	     console.log("-> ", leftReference, rightReference);
+	     //console.log("-> ", leftReference, rightReference);
 	     rightReference = leftReference;
 	     return true;
 	 } else if( (leftReference === null) && (rightReference !== null) ) {
-	     console.log("<- ", leftReference, rightReference);
+	     //console.log("<- ", leftReference, rightReference);
 	     leftReference = rightReference;
 	     return true;
 	 } else {
@@ -340,10 +376,7 @@ function Edge() {
     self.findMyself = findMyself;
     self.road = null;
 
-    self.setNeighbor = function(tile) {
-	var hour = self.findMyself(tile);
-	self.neighbors[ hour ].edge = tile.neighbors[invert(hour)].edge;
-    }
+    self.setNeighbor = setNeighbor;
 }
 
 function Vertex() {
@@ -354,10 +387,7 @@ function Vertex() {
     self.findMyself = findMyself;
     self.building = { type: null,
 		      color: null };
-    self.setNeighbor = function(tile) {
-	var hour = self.findMyself(tile);
-	self.neighbors[ hour ].vertex = tile.neighbors[invert(hour)].vertex;
-    }
+    self.setNeighbor = setNeighbor;
 }
 
 function Robber() {
@@ -430,14 +460,16 @@ function HexBoard(radius, deck) {
 
 	//console.log(tileList.length);
 
-	console.log(self.center);
-	self.center.setAdjacents();
-	self.center.neighbors[1].tile.setAdjacents();
-	self.center.neighbors[3].tile.setAdjacents();
-	self.center.neighbors[5].tile.setAdjacents();
-	self.center.neighbors[7].tile.setAdjacents();
-	self.center.neighbors[9].tile.setAdjacents();
-	self.center.neighbors[11].tile.setAdjacents();
+	console.log("Before:", self.center);
+	self.center.initSomeMore();
+	console.log("After:", self.center);
+	//self.center.setAdjacents();
+	//self.center.neighbors[1].tile.setAdjacents();
+	//self.center.neighbors[3].tile.setAdjacents();
+	//self.center.neighbors[5].tile.setAdjacents();
+	//self.center.neighbors[7].tile.setAdjacents();
+	//self.center.neighbors[9].tile.setAdjacents();
+	//self.center.neighbors[11].tile.setAdjacents();
 	
 	//tileList.forEach( function(tile) { tile.setAdjacents(); } );
 
@@ -482,7 +514,7 @@ function HexBoard(radius, deck) {
 
 
 	    
-	if(debug) {
+	if(test) {
 	    console.log("Edge Assertions");
 	    tileList.forEach(function(tile, index) {
 		var assert = [
@@ -506,7 +538,7 @@ function HexBoard(radius, deck) {
 	    
 	//tileList.forEach(function(tile) { return tile.setAdjacentEdges; });
 	
-	console.log(self.center);
+	//console.log(self.center);
 	//self.center.logNeighbors();
 	//tileList.logTiles();
 	//console.log("Number of tiles: " + tileList.length);
@@ -518,7 +550,6 @@ function HexBoard(radius, deck) {
 }
 
 var findMyself  = function( their ) {
-    
     var self = this;
     for ( var hour in their.neighbors ) {
 	if ( self === their.neighbors[hour][self.whatAmI] ) {
@@ -526,16 +557,31 @@ var findMyself  = function( their ) {
 	    return invert(hour);
 	}
     }
-    console.log( "ERROR: ", self, " couldn't find itself in ", their.neighbors );
+    //console.log( "ERROR: ", self, " couldn't find itself in ", their.neighbors );
     return null;
+}
+
+var setNeighbor = function(them) {
+    var self = this;
+    var whatItIs = them.whatAmI;
+    var hour = self.findMyself(them);
+    if(hour) {
+	if (whatItIs != "tile") {
+	    //console.log("setting a " + whatItIs);
+	}
+	self.neighbors[ hour ][whatItIs] = them;
+    } else {
+	//console.log("didn't find a " + whatItIs);
+    }
 }
 
 
 var HEX_BOARD_MODULE = (function() {
     // Stuff starts happening here
     var my = {};
-    var radius = 3;
+    var radius = 1;
     debug = false;
+    test = false;
 
     // deck is in the global namespace, but gets initialized here
     deck = new TileSet("beginner");
