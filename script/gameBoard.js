@@ -9,23 +9,19 @@ $(function(){
   my.playersTurnName = '';
   my.currentPlayerFieldset = $('#currentPlayer');
   my.churroLocation = $('.churroLocation');
-  console.log(my.churroLocation);
   my.dessertLocation = $('.dessertLocation');
   my.$gameBoard = $('#gameBoard');
-  my.totalPlayers = 3;
+  my.totalPlayers = JSON.parse(localStorage.getItem('totalPlayers'))-1;
+  playerInfo = JSON.parse(localStorage.getItem('currentPlayerInfo'));
 
 var hasTouch = 'ontouchstart' in window;
 
 my.currentPlayerFieldset.empty();
 my.currentPlayerFieldset.css('background-color',playerInfo[my.currentPlayer].color);
+my.currentPlayerFieldset.append('<h6 id="playerName">Current Player:  '+ playerInfo[my.currentPlayer].userName +'</h6');
 my.currentPlayerFieldset.append('<img class="currentPlayerImage" src='+playerInfo[my.currentPlayer].imageUrl+'>');
 my.churroLocation.css('background-color',playerInfo[my.currentPlayer].color);
 my.dessertLocation.css('background-color',playerInfo[my.currentPlayer].color);
-
-$('#startNewGame').click(function() {
-  localStorage.clear();
-  location.reload();
-})
 
 my.currentGame = localStorage.getItem('currentGame');
 
@@ -36,6 +32,7 @@ if(my.currentGame) {
   console.log('here',playerInfo);
   my.currentPlayer = localStorage.getItem('currentPlayer');
   my.currentPlayerFieldset.empty();
+  my.currentPlayerFieldset.append('<h6 id="playerName">Current Player:  '+ playerInfo[my.currentPlayer].userName +'</h6');
   my.churroLocation.css('background-color',playerInfo[my.currentPlayer].color);
   my.dessertLocation.css('background-color',playerInfo[my.currentPlayer].color);
   my.currentPlayerFieldset.css('background-color',playerInfo[my.currentPlayer].color);
@@ -85,6 +82,7 @@ function diceRolled() {
     my.currentPlayer = -1;
    }
   my.currentPlayer++;
+  my.currentPlayerFieldset.append('<h6 id="playerName">Current Player:  '+ playerInfo[my.currentPlayer].userName +'</h6');
   my.churroLocation.css('background-color',playerInfo[my.currentPlayer].color);
   my.dessertLocation.css('background-color',playerInfo[my.currentPlayer].color);
   my.currentPlayerFieldset.css('background-color',playerInfo[my.currentPlayer].color);

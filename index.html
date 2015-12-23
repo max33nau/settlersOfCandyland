@@ -1,248 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title> Settlers Of CandyLand </title>
-    <meta charset="utf-8"></meta>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <link rel="stylesheet" type="text/css" href="styles/gameBoard.css">
-    <link rel="stylesheet" type="text/css" href="styles/dice.css">
-    <link rel="stylesheet" type="text/css" href="styles/nav.css">
+<html>
+<head>
+  <title> Settlers Of CandyLand </title>
+  <meta charset="utf-8"></meta>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="styles/nav.css">
+  <link rel="stylesheet" type="text/css" href="styles/landingPage.css">
 
-  </head>
+</head>
+<body>
+  <header><img class= 'title' src='graphics/settlersTitle.png'></header>
+  <ul class='nav'>
+    <a href="gamePlay.html"><li>game board</li></a>
+    <a href="instructions.html"><li>instructions</li></a>
+    <a href="about.html"><li>about</li></a>
+  </ul>
 
+  <button id= 'startNewGame'> Start New Game </button>
 
-  <body>
-    <header><img class= 'title' src='graphics/settlersTitle.png'></header>
-    <ul class='nav'>
-      <a class='pagelink' href="index.html"><li>home</li></a>
-      <a class='pagelink' href="instructions.html"><li>instructions</li></a>
-      <a class='pagelink' href="about.html"><li>about</li></a>
-    </ul>
-
-    <div id='diceWrapper'>
-      <div id='die1' class='dice'>0</div>
-      <div id='die2' class='dice'>0</div>
-      <br>
-      <p>Total: </p>
-      <div id='displayTotal' class='dice'>0</div>
-    </div>
-    <button id='rollDiceButton'>Roll Dice</button>
-    <button id= 'startNewGame'> Start New Game </button>
-    <fieldset id='roadSelection'>
-      <legend> Add Churro </legend>
-      <div id='locationTopLeftChurro' class='churroLocation location'></div>
-      <div id='locationTopRightChurro' class='churroLocation location'></div>
-      <div id='locationMiddleLeftChurro' class='churroLocation location'></div>
-      <div id='locationMiddleRightChurro' class='churroLocation location'></div>
-      <div id='locationBottomLeftChurro' class='churroLocation location'></div>
-      <div id='locationBottomRightChurro' class='churroLocation location'></div>
-      <img class= 'radioTile' src='graphics/plainTile.gif'>
-    </fieldset>
-
-    <fieldset id='buildingSelection'>
-      <legend> Add Dessert </legend>
-      <img class= 'radioTile' src='graphics/plainTile.gif'>
-      <div id='locationTopDessert' class='dessertLocation location'> </div>
-      <div id='locationTopRightDessert' class='dessertLocation location'> </div>
-      <div id='locationTopLeftDessert' class='dessertLocation location'> </div>
-      <div id='locationBottomLeftDessert' class='dessertLocation location'> </div>
-      <div id='locationBottomRightDessert' class='dessertLocation location'> </div>
-      <div id='locationBottomDessert' class='dessertLocation location'> </div>
-    </fieldset>
-
-    <fieldset id='moveThief'>
-      <input type='radio' name='thiefLocation' value= 'moveThief'>  Move Thief </input>
-    </fieldset>
-
-    <div id='gameBoard'>
-    <div class='row' id='topBoarder'>
-      <div class='tiles' id = 'boarder1'>
-        <img  class='tileSize' src='graphics/stripes---tile-4.gif'>
-      </div>
-      <div class='tiles' id = 'boarder2'>
-        <img  class='tileSize' src='graphics/stripes-tile.gif'>
-      </div>
-      <div class='tiles' id = 'boarder3'>
-        <img  class='tileSize' src='graphics/stripes-sugar-tile.gif'>
-      </div>
-      <div class='tiles' id = 'boarder4'>
-        <img  class='tileSize' src='graphics/stripes-tile.gif'>
-      </div>
-    </div>
-    <div  class= 'row' id='topRow'>
-      <div class='tiles' id = 'boarder5'>
-        <img  class='tileSize' src='graphics/stripes-tile.gif'>
-      </div>
-
-      <div class='tiles sugar' id = 'xy31'>
-        <img class='tileSize' src='graphics/sugar-tile.gif'>
-        <div class='check'></div>
-        <img class='numbers' src='numberIMG/number2.gif' >
-      </div>
-      <div class='tiles batter' id = 'xy41'>
-        <img class='tileSize ' src='graphics/batter-tile.gif'>
-        <div class='check'></div>
-        <img class='numbers' src='numberIMG/number9.gif' >
-      </div>
-      <div class='tiles sprinkles' id = 'xy51'>
-        <img class='tileSize ' src='graphics/sprinkles-tile.gif'>
-        <div class='check'></div>
-        <img class='numbers' src='numberIMG/number4.gif'>
-      </div>
-      <div class='tiles' id = 'boarder6'>
-        <img  class='tileSize' src='graphics/stripes---tile-1.gif'>
-
-      </div>
-    </div>
-
-    <div class='row' id='BelowTopRow'>
-      <div class='tiles' id = 'boarder7'>
-        <img  class='tileSize' src='graphics/stripes-icecream-tile.gif'>
-      </div>
-      <div class='tiles frosting' id = 'xy22'>
-        <img class='tileSize ' src='graphics/frosting-tile.gif'>
-        <div class='check'></div>
-        <img class='numbers' src='numberIMG/number5.gif'>
-      </div>
-      <div class='tiles sprinkles' id = 'xy32'>
-        <img class='tileSize ' src='graphics/sprinkles-tile.gif'>
-        <div class='check'></div>
-        <img class='numbers' src='numberIMG/number8.gif'>
-      </div>
-      <div class='tiles sugar' id = 'xy42'>
-        <img class='tileSize ' src='graphics/sugar-tile.gif'>
-        <div class='check'> </div>
-        <img class='numbers' src='numberIMG/number3.gif'>
-      </div>
-      <div class='tiles icecream' id = 'xy52'>
-        <img class='tileSize ' src='graphics/icecream-tile.gif'>
-        <div class='check'> </div>
-        <img class='numbers' src='numberIMG/number10.gif'>
-      </div>
-      <div class='tiles' id = 'boarder8'>
-        <img  class='tileSize' src='graphics/stripes-tile.gif'>
-      </div>
-    </div>
-
-    <div class='row' id='middleRow'>
-      <div class='tiles' id = 'boarder9'>
-        <img  class='tileSize' src='graphics/stripes-tile.gif'>
-      </div>
-      <div class='tiles icecream' id = 'xy13'>
-        <img class='tileSize' src='graphics/icecream-tile.gif'>
-        <div class='check'></div>
-        <img class='numbers' src='numberIMG/number11.gif'>
-      </div>
-      <div class='tiles sugar' id = 'xy23'>
-        <img class='tileSize' src='graphics/sugar-tile.gif'>
-        <div class='check'></div>
-        <img class='numbers' src='numberIMG/number5.gif'>
-      </div>
-      <div class='tiles batter' id = 'xy33'>
-        <img class='tileSize ' src='graphics/batter-tile.gif'>
-        <div class='check'></div>
-        <img class='numbers' src='numberIMG/number4.gif'>
-      </div>
-      <div class='tiles sugar' id = 'xy43'>
-        <img class='tileSize' src='graphics/sugar-tile.gif'>
-        <div class='check'></div>
-        <img class='numbers' src='numberIMG/number12.gif'>
-      </div>
-      <div class='tiles frosting' id = 'xy53'>
-        <img class='tileSize ' src='graphics/frosting-tile.gif'>
-        <div class='check'></div>
-        <img class='numbers' src='numberIMG/number6.gif' >
-      </div>
-      <div class='tiles' id = 'boarder10'>
-        <img  class='tileSize' src='graphics/stripes-batter-tile.gif'>
-      </div>
-    </div>
-
-    <div class='row' id='AboveBottomRow'>
-      <div class='tiles' id = 'boarder11'>
-        <img  class='tileSize' src='graphics/stripes---tile-3.gif'>
-
-      </div>
-      <div class='tiles fudge' id = 'xy14'>
-        <img class='tileSize ' src='graphics/fudge-tile.gif'>
-        <div class='check'></div>
-        <img id='thief' class='numbers' src='graphics/gingerbreadMan.gif'>
-      </div>
-      <div class='tiles icecream' id = 'xy24'>
-        <img class='tileSize' src='graphics/icecream-tile.gif'>
-        <div class='check'></div>
-        <img class='numbers' src='numberIMG/number9.gif'>
-      </div>
-      <div class='tiles sprinkles' id = 'xy34'>
-        <img class='tileSize' src='graphics/sprinkles-tile.gif'>
-        <div class='check'></div>
-        <img class='numbers' src='numberIMG/number6.gif'>
-      </div>
-      <div class='tiles frosting' id = 'xy44'>
-        <img class='tileSize' src='graphics/frosting-tile.gif'>
-        <div class='check'></div>
-        <img class='numbers' src='numberIMG/number11.gif'>
-      </div>
-      <div class='tiles' id = 'boarder12'>
-        <img  class='tileSize' src='graphics/stripes-tile.gif'>
-      </div>
-    </div>
-
-    <div class='row' id='bottomRow'>
-      <div class='tiles' id = 'boarder13'>
-        <img  class='tileSize' src='graphics/stripes-tile.gif'>
-
-      </div>
-      <div class='tiles frosting' id = 'xy15'>
-        <img class='tileSize' src='graphics/frosting-tile.gif'>
-        <div class='check'></div>
-        <img class='numbers' src='numberIMG/number8.gif'>
-      </div>
-      <div class='tiles sprinkles' id = 'xy25'>
-        <img class='tileSize' src='graphics/sprinkles-tile.gif'>
-        <div class='check'></div>
-        <img class='numbers' src='numberIMG/number3.gif'>
-      </div>
-      <div class='tiles batter' id = 'xy35'>
-        <img class='tileSize' src='graphics/batter-tile.gif'>
-        <div class='check'></div>
-        <img class='numbers' src='numberIMG/number10.gif'>
-      </div>
-      <div class='tiles' id = 'boarder14'>
-        <img  class='tileSize' src='graphics/stripes-frosting-tile.gif'>
-      </div>
+  <h2>number of players</h2>
+  <div id='playerNumberContainer'>
+    <div class='playerNumber'>3</div>
+    <div class='playerNumber'>4</div>
   </div>
-    <div class='row' id='bottomBoarder'>
-      <div class='tiles' id = 'boarder15'>
-        <img  class='tileSize' src='graphics/stripes-sprinkles-tile.gif'>
-      </div>
-      <div class='tiles' id = 'boarder16'>
-        <img  class='tileSize' src='graphics/stripes-tile.gif'>
-      </div>
-      <div class='tiles' id = 'boarder17'>
-        <img  class='tileSize' src='graphics/stripes---tile-2.gif'>
-      </div>
-      <div class='tiles' id = 'boarder18'>
-        <img  class='tileSize' src='graphics/stripes-tile.gif'>
-      </div>
-    </div>
-</div>
 
-    <fieldset id='currentPlayer'>
-      <legend> Current Player </legend>
-    </fieldset>
-
-
-    <img class='bakingInstructions' src='graphics/bakingInstructions.gif'>
-    <a id='startNewGameLink' href='index.html'> Start New Game </a>
+  <fieldset>
+    <legend> Add Player Names </legend>
+    <img class='characterImages' id='king' src="graphics/KingKandy.png"><input type="text" id='player1name' placeholder="player 1" name="" value="">
+    <br>
+    <img class='characterImages' id='queen' src="graphics/lordLicorice.png"><input type="text" id='player2name' placeholder="player 2" name="" value="">
+    <br>
+    <img class='characterImages' id='lord' src="graphics/queenFrostine.png"><input type="text" id='player3name' placeholder="player 3" name="" value="">
+    <br>
+    <img class='characterImages' id='gloppy' src="graphics/gloppy.png"><input type="text" placeholder="player 4" id='player4name' name="" value="">
+    <br>
+    <button id='submit' type='button'> Submit </button>
+  </fieldset>
 
   <script src="script/jquery-2.1.4.min.js"></script>
-  <script src='script/building.js'></script>
-  <script src='script/road.js'></script>
-  <script src='script/gameInfo.js'></script>
+  <script src="script/gameInfo.js"></script>
   <script src='script/gameBoard.js'></script>
-
-
-  </body>
-
+</body>
 </html>

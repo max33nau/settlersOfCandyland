@@ -196,10 +196,19 @@ body {
   margin: auto;
 }
 
+#playerName {
+  position: absolute;
+  top: 5px;
+  left: 0;
+  right: 0;
+  margin: auto;
+
+}
+
 .currentPlayerImage {
   height: 100px;
+  margin-top: 10px;
   padding: 10px;
-
 }
 
 #bakingRequirements {
