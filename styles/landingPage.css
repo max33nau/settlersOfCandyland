@@ -1,6 +1,21 @@
+.headLines {
+  font-size: 1.3em;
+  font-family: Arial Black, Arial Bold, Gadget, sans-serif;
+  color: #45B0E5;
+  max-width: 60%;
+  margin: auto;
+}
+
+p {
+  font-family: Arial, Gadget, sans-serif;
+  margin-left: 22%;
+}
+
 #playerNumberContainer {
-  width: 100%;
+  width: 90%;
+  margin: auto;
   text-align: center;
+  margin-top: 55px;
 }
 
 .playerNumber {
@@ -11,7 +26,7 @@
   color: white;
   text-align: center;
   line-height: 75px;
-  font-size: 2em;
+  font-size: 2.2em;
   display: inline-block;
   margin: 40px;
   font-family: Arial Black, Arial Bold, Gadget, sans-serif;
