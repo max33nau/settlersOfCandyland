@@ -231,8 +231,24 @@ function Tile( q, r ) {
     self.logCoords = function() {
 	console.log( "("+ self.coord.x + ", " + self.coord.z + ")" );
     }
+
+    self.init = function() {
+	// I know that for each tile I create, I can safely add all
+	// these neighbors without accidentally creating any duplicates.
+	self.neighbors[1].edge = new Edge();
+	self.neighbors[1].edge.setNeighbor(self);
+	self.neighbors[5].edge = new Edge();
+	self.neighbors[5].edge.setNeighbor(self);
+	self.neighbors[9].edge = new Edge();
+	self.neighbors[9].edge.setNeighbor(self);
+	self.neighbors[0].vertex = new Vertex();
+	self.neighbors[0].vertex.setNeighbor(self);
+	self.neighbors[6].vertex = new Vertex();
+	self.neighbors[6].vertex.setNeighbor(self);
+    }
+    self.init();
     
-    self.setAdjacentEdges = function() {
+    self.setAdjacents = function() {
 	oddHours.forEach( function(hour) {
 	    // Check to see if we've already set neighbor relationships for tiles
 	    // at adjacent coords. If not, and neighboring tiles exist in the 
@@ -275,9 +291,9 @@ function Tile( q, r ) {
 	    }
 	});
     }
-    self.setAdjacentEdges();
+    self.setAdjacents();
 
-	
+    /*
     // Add remaining adjacent vertices and edges to tile.
     oddHours.forEach( function(hour){
 	if( self.neighbors[hour].isNull("edge") ) {
@@ -291,6 +307,7 @@ function Tile( q, r ) {
 	    self.neighbors[hour].vertex.setNeighbor(self);
 	}
     });
+    */
 }
 
 function Edge() {
