@@ -1,0 +1,428 @@
+body {
+  margin: auto;
+  max-width: 100%;
+}
+
+#gameBoard {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-flow: column nowrap;
+        -ms-flex-flow: column nowrap;
+            flex-flow: column nowrap;
+    width: 1000px;
+    max-width: 100%;
+    margin: 50px auto;
+}
+
+.cupcake {
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+}
+
+.iceCreamSundae {
+  width: 25px;
+  height: 25px;
+  border-radius: 0;
+}
+
+/*----------TILES----------*/
+
+.row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: -31px;
+}
+
+.tiles {
+  position: relative;
+}
+
+.tileSize {
+  width: 100px;
+  max-width: 100%;
+}
+
+/*----------GAME PIECES PLACEMENT (buildings)----------*/
+
+.building {
+  position: absolute;
+  display: inline;
+  z-index: 30;
+}
+
+.upperBuilding {
+  top: -17px;
+  right: 0px;
+  left: 0px;
+  margin: auto;
+}
+
+.topRightBuilding {
+  top: 5px;
+  right: -15px;
+}
+
+.topLeftBuilding {
+  top: 5px;
+  left: -15px;
+}
+
+.bottomRightBuilding {
+  top: 68px;
+  right: -15px;
+}
+
+.bottomLeftBuilding {
+  top: 68px;
+  left: -15px;
+}
+
+.bottomBuilding {
+  top: 90px;
+  right: 0px;
+  left: 0px;
+  margin: auto;
+}
+
+/*----------GAME PIECES PLACEMENT (roads)----------*/
+
+.road {
+  position: absolute;
+  z-index: 20;
+  display: inline;
+  height: 45px;
+  width: 5px;
+  border: 1px solid black;
+}
+
+.leftRoad {
+  right: 96px;
+  top: 35px;
+}
+
+.rightRoad {
+  left: 96px;
+  top: 35px;
+}
+
+.topLeftRoad {
+  left: 23px;
+  top: -8px;
+  -ms-transform: rotate(60deg); /* IE 9 */
+  -webkit-transform: rotate(60deg); /* Chrome, Safari, Opera */
+  transform: rotate(60deg);
+}
+
+.topRightRoad {
+  left: 73px;
+  top: -8px;
+  -ms-transform: rotate(-60deg); /* IE 9 */
+  -webkit-transform: rotate(-60deg); /* Chrome, Safari, Opera */
+  transform: rotate(-60deg);
+}
+
+.bottomLeftRoad {
+  left: 23px;
+  top: 78px;
+  -ms-transform: rotate(-60deg); /* IE 9 */
+  -webkit-transform: rotate(-60deg); /* Chrome, Safari, Opera */
+  transform: rotate(-60deg);
+}
+
+.bottomRightRoad {
+  left: 73px;
+  top: 78px;
+  -ms-transform: rotate(60deg); /* IE 9 */
+  -webkit-transform: rotate(60deg); /* Chrome, Safari, Opera */
+  transform: rotate(60deg);
+}
+
+/*----------EMPTY DIVS FOR SELECTING TILES----------*/
+
+.check {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 5px;
+  margin: auto;
+  height: 93px;
+  width: 93px;
+  border-radius: 100%;
+  background-color: transparent;
+  z-index: 10000;
+}
+
+/*----------NUMBER TILES----------*/
+
+
+.numbers {
+  max-width: 100%;
+  position: absolute;
+  height: 55px;
+  width: 55px;
+  z-index: 50;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+/*----------CONTROLS AND DISPLAYS AROUND THE GAMEBOARD----------*/
+
+#startNewGame {
+  position: fixed;
+  top: 35%;
+  left: 1%;
+}
+
+#currentPlayer {
+  height: 120px;
+  width: 170px;
+  position: fixed;
+  bottom: 5px;
+  left: 8px;
+  text-align: right;
+  margin: auto;
+}
+
+#playerName {
+  margin: auto;
+  font-size: .9em;
+}
+
+.gameData {
+  font-size: .8em;
+  display: inline-block;
+  font-weight: bold;
+
+}
+
+
+
+.currentPlayerImage {
+  position: absolute;
+  left: 3px;
+  top: 25px;
+  height: 100px;
+
+}
+
+#bakingRequirements {
+  position: fixed;
+  bottom: 5px;
+  right: 0;
+  width: 180px;
+  height: 300px;
+}
+
+#moveThief {
+  position: fixed;
+  top: 40%;
+  right: 1%;
+  border: none;
+  max-width: 175px;
+  text-align: center;
+}
+
+#moveThiefButton {
+  -moz-box-shadow: 0px 10px 14px -7px #cf866c;
+  -webkit-box-shadow: 0px 10px 14px -7px #cf866c;
+  box-shadow: 0px 10px 14px -7px #cf866c;
+  background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #FF6969), color-stop(1, #E54242));
+  background:-moz-linear-gradient(top, #FF6969 5%, #E54242 100%);
+  background:-webkit-linear-gradient(top, #FF6969 5%, #E54242 100%);
+  background:-o-linear-gradient(top, #FF6969 5%, #E54242 100%);
+  background:-ms-linear-gradient(top, #FF6969 5%, #E54242 100%);
+  background:linear-gradient(to bottom, #FF6969 5%, #E54242 100%);
+  background-color:#FF6969;
+  -moz-border-radius:8px;
+  -webkit-border-radius:8px;
+  border-radius:8px;
+  display:inline-block;
+  cursor:pointer;
+  color:#ffffff;
+  font-family:Verdana;
+  font-size:12px;
+  font-weight:bold;
+  padding:12px 24px;
+  text-decoration:none;
+  text-shadow:0px 1px 0px #854629;
+  border: none;
+}
+
+#moveThiefButton:hover {
+  background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #E54242), color-stop(1, #FF6969));
+  background:-moz-linear-gradient(top, #E54242 5%, #FF6969 100%);
+  background:-webkit-linear-gradient(top, #E54242 5%, #FF6969 100%);
+  background:-o-linear-gradient(top, #E54242 5%, #FF6969 100%);
+  background:-ms-linear-gradient(top, #E54242 5%, #FF6969 100%);
+  background:linear-gradient(to bottom, #E54242 5%, #FF6969 100%);
+  background-color:#E54242;
+}
+
+#thief {
+  z-index: 1000;
+  border-radius: 100%;
+  width: 45px;
+  height: 45px;
+}
+
+.bakingInstructions {
+  position: fixed;
+  bottom: 5px;
+  right: 0;
+  width: 250px;
+  height: 300px;
+  margin-right: -20px;
+}
+
+/*----------TILE SELECTOR CONTROLS (churros)----------*/
+
+.radioTile {
+  width: 150px;
+  padding: 10px;
+}
+
+#roadSelection {
+  width: 150px;
+  height: 200px;
+  font-size: .8em;
+  position: fixed;
+  top: 0;
+  left: 5px;
+}
+
+.churroLocation {
+  position: absolute;
+  height: 55px;
+  width: 10px;
+  z-index: 20;
+  background-color: red;
+  display: inline;
+}
+
+.churroLocation:hover {
+  background-color: green !important;
+}
+
+#locationTopLeftChurro {
+  left: 45px;
+  top: 7px;
+  -ms-transform: rotate(60deg); /* IE 9 */
+  -webkit-transform: rotate(60deg); /* Chrome, Safari, Opera */
+  transform: rotate(60deg);
+}
+
+#locationTopRightChurro {
+  right: 45px;
+  top: 7px;
+  -ms-transform: rotate(-60deg); /* IE 9 */
+  -webkit-transform: rotate(-60deg); /* Chrome, Safari, Opera */
+  transform: rotate(-60deg);
+}
+
+#locationMiddleLeftChurro {
+  top: 70px;
+  left: 8px;
+}
+
+#locationMiddleRightChurro {
+  top: 70px;
+  right: 8px;
+}
+
+#locationBottomRightChurro {
+  right: 45px;
+  bottom: 7px;
+  -ms-transform: rotate(60deg); /* IE 9 */
+  -webkit-transform: rotate(60deg); /* Chrome, Safari, Opera */
+  transform: rotate(60deg);
+}
+
+#locationBottomLeftChurro {
+  left: 45px;
+  bottom: 7px;
+  -ms-transform: rotate(-60deg); /* IE 9 */
+  -webkit-transform: rotate(-60deg); /* Chrome, Safari, Opera */
+  transform: rotate(-60deg);
+}
+
+/*----------TILE SELECTOR CONTROLS (desserts)----------*/
+
+#buildingSelection {
+  width: 150px;
+  height: 200px;
+  font-size: .8em;
+  position: fixed;
+  top: 0;
+  right: 5px;
+}
+
+.dessertLocation {
+  width: 25px;
+  height: 25px;
+  border-radius: 20px;
+  background-color: red;
+  position: absolute;
+}
+
+.dessertLocation:hover {
+  background-color: green !important;
+}
+
+.contolsContainer {
+  position: relative;
+}
+
+#locationTopDessert {
+  top: 0px;
+  left: 72px;
+}
+
+#locationTopLeftDessert {
+  top: 45px;
+  left: 0px;
+}
+
+#locationTopRightDessert {
+  top: 45px;
+  right: 0px;
+}
+
+#locationBottomLeftDessert {
+  bottom: 45px;
+  left: 0px;
+}
+
+#locationBottomRightDessert {
+  bottom: 42px;
+  right: 0px;
+}
+
+#locationBottomDessert {
+  bottom: 5px;
+  left: 72px;
+}
+
+@media (orientation: portrait) {
+  html {
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+    min-height: 100vh;
+    min-width: 100vh;
+  }
+}

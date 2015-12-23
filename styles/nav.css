@@ -1,0 +1,49 @@
+body {
+  max-width: 80%;
+  margin: auto;
+}
+
+.titleContainer {
+  max-width: 100%;
+  text-align: center;
+  margin: auto;
+}
+
+.title {
+  max-width: 100%;
+  margin-top: 20px;
+}
+
+.nav {
+  font-size: 1.5em;
+  margin: auto;
+  list-style: none;
+  text-align: center;
+  padding: 0px;
+  margin-top: 10px;
+  max-width: 650px;
+}
+
+.nav li {
+  margin: 25px;
+  display: inline;
+  font-family: Arial Black, Arial Bold, Gadget, sans-serif;
+  color: #90D3C1;
+}
+
+#startNewGameLink {
+  position: absolute;
+  font-family: Arial Black, Arial Bold, Gadget, sans-serif;
+  color: #90D3C1;
+  bottom: -60px;
+  right: 43%;
+
+}
+.nav li:hover, #startNewGameLink:hover {
+  color: #FF6969;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
