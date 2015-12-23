@@ -415,7 +415,7 @@ body {
   left: 72px;
 }
 
-@media (max-device-width: 500px) and (orientation: portrait) {
+@media (orientation: portrait) {
   html {
     -webkit-transform: rotate(-90deg);
     -moz-transform: rotate(-90deg);
@@ -424,6 +424,5 @@ body {
     transform: rotate(-90deg);
     min-height: 100vh;
     min-width: 100vh;
-    -webkit-transition: all 1s ease-in-out;
   }
 }
