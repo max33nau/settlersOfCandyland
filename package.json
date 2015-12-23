@@ -1,0 +1,34 @@
+{
+  "name": "settlers-of-candyland",
+  "version": "1.0.0",
+  "description": "codefellows final project pdx301",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://git.heroku.com/settlersofcandyland.git"
+  },
+  "keywords": [
+    "settlers",
+    "game",
+    "kay",
+    "max",
+    "john",
+    "candyland"
+  ],
+  "dependencies": {
+  "ejs": "2.3.3",
+  "node-static": "^0.7.7",
+  "pushstate-server": "^1.8.1",
+  "express": "4.13.3"
+},
+  "author": "teamcupcake",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/max33nau/settlersOfCandyland/issues"
+  },
+  "homepage": "https://github.com/max33nau/settlersOfCandyland#readme"
+}
