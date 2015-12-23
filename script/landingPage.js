@@ -1,3 +1,0 @@
-$( "playerNumber" ).click(function() {
-  var ;
-});

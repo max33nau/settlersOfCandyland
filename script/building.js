@@ -85,14 +85,29 @@ building.upper = function($specificTile, $previousTile, $nextTile, $upperLeftTil
   $tileTopRightBottomLeftBuilding = $upperRightTile.find('.bottomLeftBuilding');
 
   if ($tileTopBuilding.length > 0) {
-    building.buildUpperIceCreamSundae($specificTile);
-    return;
+    var $tileTopBuildingColor = $tile.find('.upperBuilding').css('color');
+    if($tileTopBuildingColor == playerColor) {
+      building.buildUpperIceCreamSundae($specificTile);
+      return;
+    } else {
+      return;
+    }
   } else if($tileTopLeftBottomRightBuilding.length > 0) {
-    building.buildBottomRightIceCreamSundae($upperLeftTile);
-    return;
+    var $tileTopLeftBottomRightBuildingColor = $upperLeftTile.find('.bottomRightBuilding').css('color');
+    if ($tileTopLeftBottomRightBuildingColor == playerColor) {
+      building.buildBottomRightIceCreamSundae($upperLeftTile);
+      return;
+    } else {
+      return;
+    }
   } else if ($tileTopRightBottomLeftBuilding.length > 0) {
-    building.buildBottomLeftIceCreamSundae($upperRightTile);
-    return;
+    var tileTopRightBottomLeftBuildingColor = $upperRightTile.find('.bottomLeftBuilding').css('color');
+    if(tileTopRightBottomLeftBuildingColor == playerColor) {
+      building.buildBottomLeftIceCreamSundae($upperRightTile);
+      return;
+    } else {
+      return;
+    }
   } else {
     $tileUpperLeftUpperRightBuilding = $upperLeftTile.find('.topRightBuilding');
     $tileUpperRightUpperLeftBuilding = $upperRightTile.find('.topLeftBuilding');
@@ -129,14 +144,29 @@ building.topLeft = function($specificTile, $previousTile, $nextTile, $upperLeftT
   $tilePreviousTopRightBuilding = $previousTile.find('.topRightBuilding');
 
   if ($tileTopLeftBuilding.length > 0) {
-    building.buildTopLeftIceCreamSundae($specificTile);
-    return;
+    var $tileTopLeftBuildingColor = $specificTile.find('.topLeftBuilding').css('color');
+    if($tileTopLeftBuildingColor == playerColor) {
+      building.buildTopLeftIceCreamSundae($specificTile);
+      return;
+    } else {
+      return;
+    }
   } else if ($tileUpperLeftBottomBuilding.length > 0) {
-    building.buildBottomIceCreamSundae($upperLeftTile);
-    return;
+    var $tileUpperLeftBottomBuildingColor = $upperLeftTile.find('.bottomBuilding').css('color');
+    if ($tileUpperLeftBottomBuildingColor == playerColor) {
+      building.buildBottomIceCreamSundae($upperLeftTile);
+      return;
+    } else {
+      return;
+    }
   } else if($tilePreviousTopRightBuilding.length > 0) {
-    building.buildTopRightIceCreamSundae($previousTile);
-    return;
+    var $tilePreviousTopRightBuildingColor= $previousTile.find('.topRightBuilding').css('color');
+    if($tilePreviousTopRightBuildingColor == playerColor) {
+      building.buildTopRightIceCreamSundae($previousTile);
+      return;
+    } else {
+      return;
+    }
   } else {
 
     // CHECKS TOP BUILDING SPOT
@@ -176,14 +206,29 @@ building.topRight = function($specificTile, $previousTile, $nextTile, $upperLeft
   $tileUpperRightBottomBuilding = $upperRightTile.find('.bottomBuilding');
 
   if ($tileTopRightBuilding.length > 0) {
-    building.buildTopRightIceCreamSundae($specificTile);
-    return;
+    var $tileTopRightBuildingColor = $specificTile.find('.topRightBuilding').css('color');
+    if ($tileTopRightBuildingColor == playerColor) {
+      building.buildTopRightIceCreamSundae($specificTile);
+      return;
+    } else {
+      return;
+    }
   } else if($tileNextTopLeftBuilding.length > 0) {
-    building.buildTopLeftIceCreamSundae($nextTile);
-    return;
+    var $tileNextTopLeftBuildingColor = $nextTile.find('.topLeftBuilding').css('color');
+    if ($tileNextTopLeftBuildingColor == playerColor) {
+      building.buildTopLeftIceCreamSundae($nextTile);
+      return;
+    } else {
+      return;
+    }
   } else if($tileUpperRightBottomBuilding.length > 0) {
-    building.buildBottomIceCreamSundae($upperRightTile);
-    return;
+    var $tileUpperRightBottomBuildingColor = $upperRightTile.find('.bottomBuilding').css('color');
+    if($tileUpperRightBottomBuildingColor == playerColor) {
+      building.buildBottomIceCreamSundae($upperRightTile);
+      return;
+    } else {
+      return;
+    }
   } else {
 
     // CHECKS TOP BUILDING SPOT
@@ -223,14 +268,29 @@ building.bottom = function($specificTile, $previousTile, $nextTile, $upperLeftTi
   $tileBottomRightUpperLeftBuilding = $bottomRightTile.find('.topLeftBuilding');
 
   if ($tileBottomBuilding.length > 0 ) {
-    building.buildBottomIceCreamSundae($specificTile);
-    return;
+    var $tileBottomBuildingColor = $specificTile.find('.bottomBuilding').css('color');
+    if ($tileBottomBuildingColor == playerColor) {
+      building.buildBottomIceCreamSundae($specificTile);
+      return;
+    } else {
+      return;
+    }
   } else if ($tileBottomLeftUpperRightBuilding.length > 0) {
-    building.buildTopRightIceCreamSundae($bottomLeftTile);
-    return;
+    var $tileBottomLeftUpperRightBuildingColor = $bottomLeftTile.find('.topRightBuilding').css('color');
+    if ($tileBottomLeftUpperRightBuildingColor == playerColor) {
+      building.buildTopRightIceCreamSundae($bottomLeftTile);
+      return;
+    } else {
+      return;
+    }
   } else if ($tileBottomRightUpperLeftBuilding.length > 0) {
-    building.buildTopLeftIceCreamSundae($bottomRightTile);
-    return;
+    var $tileBottomRightUpperLeftBuildingColor = $bottomRightTile.find('.topLeftBuilding');
+    if($tileBottomRightUpperLeftBuildingColor == playerColor) {
+      building.buildTopLeftIceCreamSundae($bottomRightTile);
+      return;
+    } else {
+      return;
+    }
   } else {
 
     // CHECKS BOTTOM RIGHT BUILDING SPOT
@@ -270,14 +330,29 @@ building.bottomLeft = function($specificTile, $previousTile, $nextTile, $upperLe
   $tileBottomLeftUpperBuilding = $bottomLeftTile.find('.upperBuilding');
 
   if ($tilePreviousBottomRightBuilding.length > 0) {
-    building.buildBottomRightIceCreamSundae($previousTile);
-    return;
+    var $tilePreviousBottomRightBuildingColor = $previousTile.find('.bottomRightBuilding').css('color');
+    if($tilePreviousBottomRightBuildingColor == playerColor) {
+      building.buildBottomRightIceCreamSundae($previousTile);
+      return;
+    } else {
+      return;
+    }
   } else if ($tileBottomLeftBuilding.length > 0) {
-    building.buildBottomLeftIceCreamSundae($specificTile);
-    return;
+    var $tileBottomLeftBuildingColor = $specificTile.find('.bottomLeftBuilding').css('color');
+    if ($tileBottomLeftBuildingColor == playerColor) {
+      building.buildBottomLeftIceCreamSundae($specificTile);
+      return;
+    } else {
+      return;
+    }
   } else if ($tileBottomLeftUpperBuilding.length > 0) {
-    building.buildUpperIceCreamSundae($bottomLeftTile);
-    return;
+    var $tileBottomLeftUpperBuildingColor = $bottomLeftTile.find('.upperBuilding').css('color');
+    if($tileBottomLeftUpperBuildingColor == playerColor) {
+      building.buildUpperIceCreamSundae($bottomLeftTile);
+      return;
+    } else {
+      return;
+    }
   } else {
 
     // CHECKS TOP LEFT BUILDING SPOT
@@ -317,14 +392,29 @@ building.bottomRight = function($specificTile, $previousTile, $nextTile, $upperL
   $tileBottomRightUpperBuilding = $bottomRightTile.find('.upperBuilding');
 
   if ($tileBottomRightBuilding.length > 0) {
-    building.buildBottomRightIceCreamSundae($specificTile);
-    return;
+    var $tileBottomRightBuildingColor = $specificTile.find('.bottomRightBuilding').css('color');
+    if($tileBottomRightBuildingColor == playerColor) {
+      building.buildBottomRightIceCreamSundae($specificTile);
+      return;
+    } else {
+      return;
+    }
   } else if ($tileNextBottomLeftBuilding.length > 0) {
-    building.buildBottomLeftIceCreamSundae($nextTile);
-    return;
+    var $tileNextBottomLeftBuildingColor = $nextTile.find('.bottomLeftBuilding').css('color');
+    if($tileNextBottomLeftBuildingColor == playerColor) {
+      building.buildBottomLeftIceCreamSundae($nextTile);
+      return;
+    } else {
+      return;
+    }
   } else if ($tileBottomRightUpperBuilding.length > 0) {
-    building.buildUpperIceCreamSundae($bottomRightTile);
-    return;
+    var $tileBottomRightUpperBuildingColor = $bottomRightTile.find('.upperBuilding').css('color');
+    if($tileBottomRightUpperBuildingColor == playerColor) {
+      building.buildUpperIceCreamSundae($bottomRightTile);
+      return;
+    } else {
+      return;
+    }
   } else {
 
     // CHECKS TOP RIGHT BUILDING SPOT

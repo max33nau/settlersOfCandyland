@@ -139,7 +139,7 @@ function checkButton() {
   var nextUpperRightTile = $('#xy'+nextLeftX.toString()+upperY.toString());
   var previousBottomLeftTile = $('#xy'+previousLeftX.toString()+bottomY.toString());
   var nextBottomRightTile = $('#xy'+rightX.toString()+bottomY.toString());
-  if (playerInfo[my.currentPlayer].numberOfCupcakes == 0) {
+  if (playerInfo[my.currentPlayer].numberOfCupcakes == 0 && playerInfo[my.currentPlayer].numberOfIceCreamSundaes ==0 ) {
     alert('You have ran out of cupcakes sorry');
   } else if (my.dessertLocationClick == 'locationTopDessert') {
     building.upper($tile,previousTile,nextTile,upperLeftTile, upperRightTile, bottomLeftTile, bottomRightTile,straightAboveTile,playerInfo[my.currentPlayer].color);
@@ -147,7 +147,6 @@ function checkButton() {
   } else if (my.dessertLocationClick == 'locationTopRightDessert') {
 
     building.topRight($tile,previousTile,nextTile,upperLeftTile, upperRightTile, bottomLeftTile, bottomRightTile,nextUpperRightTile,playerInfo[my.currentPlayer].color);
-
 
   } else if (my.dessertLocationClick == 'locationTopLeftDessert') {
     building.topLeft($tile,previousTile,nextTile,upperLeftTile, upperRightTile, bottomLeftTile, bottomRightTile,previousUpperLeftTile,playerInfo[my.currentPlayer].color);
