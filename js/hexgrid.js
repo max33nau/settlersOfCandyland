@@ -5,6 +5,7 @@
  * Fall 2015             *
  * * * * * * * * * * * * */
 
+var debug;
 var oddHours =  [ 1, 3, 5, 7, 9, 11 ];
 var evenHours = [ 0, 2, 4, 6, 8, 10 ];
 var allHours =  [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ];
@@ -226,48 +227,57 @@ function Tile( q, r ) {
 	    .join("");
 	console.log(output);
     };
-    oddHours.forEach( function(hour) {
-	// Check to see if we've already set neighbor relationships for tiles
-	// at adjacent coords. If not, and neighboring tiles exist in the 
-	// tileList, set neighboring tile, edge, and vertex relationships.
-	if( self.neighbors[hour].tile === null) {
-	    // If null, then the tile key exists, but no relationship has been set
-	    var tile = tileList.findTileByCoord( self.coord.move(direction[hour]) );
-	    console.log(tile);
-	    // We're redundantly setting some vertex and edge relationships,
-	    // but it's okay for now.
-	    if( tile != null ) {
-		// an adjacent tile already exists, set relationships:
-		// set the tile relationship
-		self.neighbors[hour].tile = tile;
-		// set our shared edge
-		self.neighbors[hour].edge = tile.neighbors[invert(hour)].edge;
-		// we share vertices one hour clockwaise and counterclockwise
-		// from our shared edge
-		self.neighbors[ (hour + 1) % 12].vertex =
-		    tile.neighbors[ (invert(hour) + 11) % 12].vertex;
-		self.neighbors[ (hour + 11) % 12].vertex =
-		    tile.neighbors[ (invert(hour) + 1) % 12].vertex;
-		// The edge incident to me, one hour clockwise for me
-		// is his edge two hours counterclockwise for him,
-		// and vice-versa.
-		
-		self.neighbors[ (hour + 1) % 12 ].edge =
-		    tile.neighbors[ (invert(hour) + 10) % 12 ].edge;
-		tile.neighbors[ (invert(hour) + 11) % 12 ].edge =
-		    self.neighbors[ (hour + 2) % 12 ].edge;
-		
-		// Now the incident edges on the other side.
-		self.neighbors[ (hour + 11) % 12 ].edge =
-		    tile.neighbors[ (invert(hour) + 2) % 12 ].edge;
-		tile.neighbors[ (invert(hour) + 1) % 12 ].edge =
-		    self.neighbors[ (hour + 10) % 12 ].edge;
-		
-		tile.setNeighbor(self);           // this line is probably always redundant
-	    }
-	}
-    });
+
+    self.logCoords = function() {
+	console.log( "("+ self.coord.x + ", " + self.coord.z + ")" );
+    }
     
+    self.setAdjacentEdges = function() {
+	oddHours.forEach( function(hour) {
+	    // Check to see if we've already set neighbor relationships for tiles
+	    // at adjacent coords. If not, and neighboring tiles exist in the 
+	    // tileList, set neighboring tile, edge, and vertex relationships.
+	    if( self.neighbors[hour].tile === null) {
+		// If null, then the tile key exists, but no relationship has been set
+		var tile = tileList.findTileByCoord( self.coord.move(direction[hour]) );
+		// We're redundantly setting some vertex and edge relationships,
+		// but it's okay for now.
+		if( tile != null ) {
+		    // an adjacent tile already exists, set relationships:
+		    
+		    // set the tile relationship
+		    self.neighbors[hour].tile = tile;
+		    // set our shared edge
+		    self.neighbors[hour].edge = tile.neighbors[invert(hour)].edge;
+		    // we share vertices one hour clockwaise and counterclockwise
+		    // from our shared edge
+		    self.neighbors[ (hour + 1) % 12].vertex =
+			tile.neighbors[ (invert(hour) + 11) % 12].vertex;
+		    self.neighbors[ (hour + 11) % 12].vertex =
+			tile.neighbors[ (invert(hour) + 1) % 12].vertex;
+		    // The edge incident to me, one hour clockwise for me
+		    // is his edge two hours counterclockwise for him,
+		    // and vice-versa.
+		    
+		    self.neighbors[ (hour + 1) % 12 ].edge =
+			tile.neighbors[ (invert(hour) + 10) % 12 ].edge;
+		    tile.neighbors[ (invert(hour) + 11) % 12 ].edge =
+			self.neighbors[ (hour + 2) % 12 ].edge;
+		    
+		    // Now the incident edges on the other side.
+		    self.neighbors[ (hour + 11) % 12 ].edge =
+			tile.neighbors[ (invert(hour) + 2) % 12 ].edge;
+		    tile.neighbors[ (invert(hour) + 1) % 12 ].edge =
+			self.neighbors[ (hour + 10) % 12 ].edge;
+		    
+		    //tile.setNeighbor(self);           // this line is probably always redundant
+		}
+	    }
+	});
+    }
+    self.setAdjacentEdges();
+
+	
     // Add remaining adjacent vertices and edges to tile.
     oddHours.forEach( function(hour){
 	if( self.neighbors[hour].isNull("edge") ) {
@@ -286,7 +296,7 @@ function Tile( q, r ) {
 function Edge() {
     var self = this;
     self.whatAmI = "edge";
-    self.hasRobber = false;                       // this should never change
+    //self.hasRobber = false;                     // this should never change
     self.neighbors = new NeighborSet();
     self.findMyself = findMyself;
     self.road = null;
@@ -300,7 +310,7 @@ function Edge() {
 function Vertex() {
     var self = this;
     self.whatAmI = "vertex";
-    self.hasRobber = false;                       // this should never change
+    //self.hasRobber = false;                     // this should never change
     self.neighbors = new NeighborSet();
     self.findMyself = findMyself;
     self.building = { type: null,
@@ -379,13 +389,80 @@ function HexBoard(radius, deck) {
 	    });
 	});
 
+	console.log(tileList.length);
+
+	var fixEdges = function() {
+	    for(var ii=0; ii <= Math.floor(tileList.length / 2); ii++) {
+		var tile = tileList[ii];
+
+		tile.logCoords();
+		
+		function helper(a, b, c) {
+		    var t1 = tile.neighbors[a];
+		    var t2 = tile.neighbors[b].tile.neighbors[c];
+		    
+		    console.log("->" + a + "  ->" + b + "->" + c);
+		    if ( (t1.edge === null) && (t2.edge === null) ) {
+			console.log("Error: both null");
+			return null;
+		    } else if( (t1.edge !== null) &&
+			       (t2.edge !== null) &&
+			       (t1.edge !== t2.edge) ) {
+			console.log("Error: conflicting edges!");
+			return null;
+		    } else {
+		    }
+		}
+
+		helper( 0, 11, 3 );
+		helper( 0, 1, 9 );
+		helper( 2, 1, 5 );
+		helper( 2, 3, 11 );
+		helper( 4, 3, 7 );
+		helper( 4, 5, 1 );
+		helper( 6, 5, 9 );
+		helper( 6, 7, 3 );
+		helper( 8, 7, 11 );
+		helper( 8, 9, 5 );
+		helper( 10, 9, 1 );
+		helper( 10, 11, 7 );
+	    }
+	}
+	//fixEdges();
+
+
+	    
+	if(debug) {
+	    console.log("Edge Assertions");
+	    tileList.forEach(function(tile, index) {
+		var assert = [
+		    (tile.neighbors[0].edge === tile.neighbors[11].tile.neighbors[3].edge ),
+		    (tile.neighbors[0].edge === tile.neighbors[1].tile.neighbors[9].edge ),
+		    (tile.neighbors[2].edge === tile.neighbors[1].tile.neighbors[5].edge ),
+		    (tile.neighbors[2].edge === tile.neighbors[3].tile.neighbors[11].edge ),
+		    (tile.neighbors[4].edge === tile.neighbors[3].tile.neighbors[7].edge ),
+		    (tile.neighbors[4].edge === tile.neighbors[5].tile.neighbors[1].edge ),
+		    (tile.neighbors[6].edge === tile.neighbors[5].tile.neighbors[9].edge ),
+		    (tile.neighbors[6].edge === tile.neighbors[7].tile.neighbors[3].edge ),
+		    (tile.neighbors[8].edge === tile.neighbors[7].tile.neighbors[11].edge ),
+		    (tile.neighbors[8].edge === tile.neighbors[9].tile.neighbors[5].edge ),
+		    (tile.neighbors[10].edge === tile.neighbors[9].tile.neighbors[1].edge ),
+		    (tile.neighbors[10].edge === tile.neighbors[11].tile.neighbors[7].edge )
+		];
+		console.log( "("+ tile.coord.x + ", " + tile.coord.z + ")" );
+		console.log(assert);
+	    });
+	}
+	    
+	//tileList.forEach(function(tile) { return tile.setAdjacentEdges; });
+	
 	console.log(self.center);
 	//self.center.logNeighbors();
 	//tileList.logTiles();
 	//console.log("Number of tiles: " + tileList.length);
 
 	//console.log( self.center.neighbors[1].tile );
-	console.log(self.center.neighbors[1].tile.neighbors[3].tile.neighbors[5].tile);//.logNeighbors();
+	//console.log(self.center.neighbors[1].tile.neighbors[3].tile.neighbors[5].tile).logNeighbors();
 	//self.center.neighbors[3].tile.logNeighbors();
     }
 }
@@ -408,6 +485,7 @@ var HEX_BOARD_MODULE = (function() {
     // Stuff starts happening here
     var my = {};
     var radius = 3;
+    debug = false;
 
     // deck is in the global namespace, but gets initialized here
     deck = new TileSet("beginner");
