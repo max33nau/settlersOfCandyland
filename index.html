@@ -29,24 +29,24 @@
     <button id= 'startNewGame'> Start New Game </button>
     <fieldset id='roadSelection'>
       <legend> Add Churro </legend>
-      <div id='locationTopLeftChurro' class='churroLocation'></div>
-      <div id='locationTopRightChurro' class='churroLocation'></div>
-      <div id='locationMiddleLeftChurro' class='churroLocation'></div>
-      <div id='locationMiddleRightChurro' class='churroLocation'></div>
-      <div id='locationBottomLeftChurro' class='churroLocation'></div>
-      <div id='locationBottomRightChurro' class='churroLocation'></div>
+      <div id='locationTopLeftChurro' class='churroLocation location'></div>
+      <div id='locationTopRightChurro' class='churroLocation location'></div>
+      <div id='locationMiddleLeftChurro' class='churroLocation location'></div>
+      <div id='locationMiddleRightChurro' class='churroLocation location'></div>
+      <div id='locationBottomLeftChurro' class='churroLocation location'></div>
+      <div id='locationBottomRightChurro' class='churroLocation location'></div>
       <img class= 'radioTile' src='graphics/plainTile.gif'>
     </fieldset>
 
     <fieldset id='buildingSelection'>
       <legend> Add Dessert </legend>
       <img class= 'radioTile' src='graphics/plainTile.gif'>
-      <div id='locationTopDessert' class='dessertLocation'> </div>
-      <div id='locationTopRightDessert' class='dessertLocation'> </div>
-      <div id='locationTopLeftDessert' class='dessertLocation'> </div>
-      <div id='locationBottomLeftDessert' class='dessertLocation'> </div>
-      <div id='locationBottomRightDessert' class='dessertLocation'> </div>
-      <div id='locationBottomDessert' class='dessertLocation'> </div>
+      <div id='locationTopDessert' class='dessertLocation location'> </div>
+      <div id='locationTopRightDessert' class='dessertLocation location'> </div>
+      <div id='locationTopLeftDessert' class='dessertLocation location'> </div>
+      <div id='locationBottomLeftDessert' class='dessertLocation location'> </div>
+      <div id='locationBottomRightDessert' class='dessertLocation location'> </div>
+      <div id='locationBottomDessert' class='dessertLocation location'> </div>
     </fieldset>
 
     <fieldset id='moveThief'>
@@ -54,8 +54,6 @@
     </fieldset>
 
     <div id='gameBoard'>
-      <object data="graphics/cupCakeFinal.svg" type="image/svg+xml"></object>
-      <object data="graphics/icecreamSundae.svg" type="image/svg+xml"></object>
 
     <div class='row' id='topBoarder'>
       <div class='tiles' id = 'boarder1'>
@@ -240,10 +238,9 @@
 
   <script src="script/jquery-2.1.4.min.js"></script>
   <script src='script/building.js'></script>
-  <script src='script/rolledDice.js'></script>
   <script src='script/road.js'></script>
   <script src='script/test.js'></script>
-  <script src='script/diceRoll.js'></script>
+
 
   </body>
 

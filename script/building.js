@@ -1,72 +1,70 @@
 var building = {};
 
 building.buildUpperBuilding = function($tile) {
-  $tile.append('<div class="upperBuilding cupcake"></div>');
-  $tile.find('.upperBuilding').css('background-color',playerInfo[my.currentPlayer].color);
+  $tile.append('<object class="upperBuilding building" data='+playerInfo[my.currentPlayer].cupCake+' type="image/svg+xml"></object>');
   playerInfo[my.currentPlayer].numberOfCupcakes--;
 }
 
 building.buildUpperLeftBuilding = function($tile) {
-  $tile.append('<div class="topLeftBuilding cupcake"></div>');
-  $tile.find('.topLeftBuilding').css('background-color',playerInfo[my.currentPlayer].color);
+  $tile.append('<object class="topLeftBuilding building" data='+playerInfo[my.currentPlayer].cupCake+' type="image/svg+xml"></object>');
   playerInfo[my.currentPlayer].numberOfCupcakes--;
 }
 
 building.buildUpperRightBuilding = function($tile) {
-  $tile.append('<div class="topRightBuilding cupcake"></div>');
-  $tile.find('.topRightBuilding').css('background-color',playerInfo[my.currentPlayer].color);
+  $tile.append('<object class="topRightBuilding building" data='+playerInfo[my.currentPlayer].cupCake+' type="image/svg+xml"></object>');
   playerInfo[my.currentPlayer].numberOfCupcakes--;
 }
 
 building.buildBottomBuilding = function($tile) {
-  $tile.append('<div class="bottomBuilding cupcake"></div>');
-  $tile.find('.bottomBuilding').css('background-color',playerInfo[my.currentPlayer].color);
+  $tile.append('<object class="bottomBuilding building" data='+playerInfo[my.currentPlayer].cupCake+' type="image/svg+xml"></object>');
   playerInfo[my.currentPlayer].numberOfCupcakes--;
 }
 
 building.buildBottomLeftBuilding = function($tile) {
-  $tile.append('<div class="bottomLeftBuilding cupcake"></div>');
-  $tile.find('.bottomLeftBuilding').css('background-color',playerInfo[my.currentPlayer].color);
+  $tile.append('<object class="bottomLeftBuilding building" data='+playerInfo[my.currentPlayer].cupCake+' type="image/svg+xml"></object>');
   playerInfo[my.currentPlayer].numberOfCupcakes--;
 }
 
 building.buildBottomRightBuilding = function($tile) {
-  $tile.append('<div class="bottomRightBuilding cupcake"></div>');
-  $tile.find('.bottomRightBuilding').css('background-color',playerInfo[my.currentPlayer].color);
+  $tile.append('<object class="bottomRightBuilding building" data='+playerInfo[my.currentPlayer].cupCake+' type="image/svg+xml"></object>');
   playerInfo[my.currentPlayer].numberOfCupcakes--;
 }
 
 building.buildBottomRightIceCreamSundae = function($tile) {
-  $tile.find('.bottomRightBuilding').removeClass('cupcake').addClass('iceCreamSundae');
+  $tile.find('.bottomRightBuilding').remove();
+  $tile.append('<object class="bottomRightBuilding building" data='+playerInfo[my.currentPlayer].iceCream+' type="image/svg+xml"></object>');
   playerInfo[my.currentPlayer].numberOfIceCreamSundaes--;
 }
 
 building.buildBottomLeftIceCreamSundae = function($tile) {
-  $tile.find('.bottomLeftBuilding').removeClass('cupcake').addClass('iceCreamSundae');
+  $tile.find('.bottomLeftBuilding').remove();
+  $tile.append('<object class="bottomLeftBuilding building" data='+playerInfo[my.currentPlayer].iceCream+' type="image/svg+xml"></object>');
   playerInfo[my.currentPlayer].numberOfIceCreamSundaes--;
 }
 
 building.buildBottomIceCreamSundae = function($tile) {
-  $tile.find('.bottomBuilding').removeClass('cupcake').addClass('iceCreamSundae');
+  $tile.find('.bottomBuilding').remove();
+  $tile.append('<object class="bottomBuilding building" data='+playerInfo[my.currentPlayer].iceCream+' type="image/svg+xml"></object>');
   playerInfo[my.currentPlayer].numberOfIceCreamSundaes--;
 }
 
 building.buildUpperIceCreamSundae = function($tile) {
-  $tile.find('.upperBuilding').removeClass('cupcake').addClass('iceCreamSundae');
+  $tile.find('.upperBuilding').remove();
+  $tile.append('<object class="upperBuilding building" data='+playerInfo[my.currentPlayer].iceCream+' type="image/svg+xml"></object>');
   playerInfo[my.currentPlayer].numberOfIceCreamSundaes--;
 }
 
 building.buildTopRightIceCreamSundae = function($tile) {
-  $tile.find('.topRightBuilding').removeClass('cupcake').addClass('iceCreamSundae');
+  $tile.find('.topRightBuilding').remove();
+  $tile.append('<object class="topRightBuilding building" data='+playerInfo[my.currentPlayer].iceCream+' type="image/svg+xml"></object>');
   playerInfo[my.currentPlayer].numberOfIceCreamSundaes--;
 }
 
 building.buildTopLeftIceCreamSundae = function($tile) {
-  $tile.find('.topLeftBuilding').removeClass('cupcake').addClass('iceCreamSundae');
+  $tile.find('.topLeftBuilding').remove();
+  $tile.append('<object class="topLeftBuilding building" data='+playerInfo[my.currentPlayer].iceCream+' type="image/svg+xml"></object>');
   playerInfo[my.currentPlayer].numberOfIceCreamSundaes--;
 }
-
-
 
 building.upper = function($specificTile, $previousTile, $nextTile, $upperLeftTile, $upperRightTile, $bottomLeftTile, $bottomRightTile,$straightAboveTile, playerColor) {
   // CHECKS TOP BUILDING SPOT
