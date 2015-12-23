@@ -1,7 +1,130 @@
 
 my = {};
+var gameBoardData = [
+  {
+    xy31: 'graphics/sugar-tile.gif',
+    xy31Number: 'numberIMG/number2.gif',
+    xy41: 'graphics/batter-tile.gif',
+    xy41Number:'numberIMG/number9.gif',
+    xy51: 'graphics/sprinkles-tile.gif',
+    xy51Number:'numberIMG/number4.gif',
+    xy22: 'graphics/frosting-tile.gif',
+    xy22Number:'numberIMG/number5.gif',
+    xy32:'graphics/sprinkles-tile.gif',
+    xy32Number:'numberIMG/number8.gif',
+    xy42:'graphics/sugar-tile.gif',
+    xy42Number:'numberIMG/number3.gif',
+    xy52: 'graphics/icecream-tile.gif',
+    xy52Number: 'numberIMG/number10.gif',
+    xy13: 'graphics/icecream-tile.gif',
+    xy13Number: 'numberIMG/number11.gif',
+    xy23: 'graphics/sugar-tile.gif',
+    xy23Number: 'numberIMG/number5.gif',
+    xy33: 'graphics/batter-tile.gif',
+    xy33Number: 'numberIMG/number4.gif',
+    xy43: 'graphics/sugar-tile.gif',
+    xy43Number: 'numberIMG/number12.gif',
+    xy53: 'graphics/frosting-tile.gif',
+    xy53Number:'numberIMG/number6.gif',
+    xy14: 'graphics/fudge-tile.gif',
+    xy24: 'graphics/icecream-tile.gif',
+    xy24Number:'numberIMG/number9.gif',
+    xy34: 'graphics/sprinkles-tile.gif',
+    xy34Number: 'numberIMG/number6.gif',
+    xy44: 'graphics/frosting-tile.gif',
+    xy44Number: 'numberIMG/number11.gif',
+    xy15: 'graphics/frosting-tile.gif',
+    xy15Number: 'numberIMG/number8.gif',
+    xy25: 'graphics/sprinkles-tile.gif',
+    xy25Number: 'numberIMG/number3.gif',
+    xy35: 'graphics/batter-tile.gif',
+    xy35Number: 'numberIMG/number10.gif'
+  },
+  {
+    xy31: 'graphics/frosting-tile.gif',
+    xy31Number: 'numberIMG/number8.gif',
+    xy41: 'graphics/icecream-tile.gif',
+    xy41Number:'numberIMG/number4.gif',
+    xy51: 'graphics/sprinkles-tile.gif',
+    xy51Number:'numberIMG/number5.gif',
+    xy22: 'graphics/sugar-tile.gif',
+    xy22Number:'numberIMG/number2.gif',
+    xy32:'graphics/batter-tile.gif',
+    xy32Number:'numberIMG/number9.gif',
+    xy42:'graphics/sugar-tile.gif',
+    xy42Number:'numberIMG/number11.gif',
+    xy52: 'graphics/sprinkles-tile.gif',
+    xy52Number: 'numberIMG/number6.gif',
+    xy13: 'graphics/frosting-tile.gif',
+    xy13Number: 'numberIMG/number8.gif',
+    xy23: 'graphics/icecream-tile.gif',
+    xy23Number: 'numberIMG/number10.gif',
+    xy33: 'graphics/fudge-tile.gif',
+    xy43: 'graphics/icecream-tile.gif',
+    xy43Number: 'numberIMG/number3.gif',
+    xy53: 'graphics/batter-tile.gif',
+    xy53Number:'numberIMG/number10.gif',
+    xy14: 'graphics/sugar-tile.gif',
+    xy14Number: 'numberIMG/number3.gif',
+    xy24: 'graphics/sprinkles-tile.gif',
+    xy24Number:'numberIMG/number6.gif',
+    xy34: 'graphics/batter-tile.gif',
+    xy34Number: 'numberIMG/number4.gif',
+    xy44: 'graphics/frosting-tile.gif',
+    xy44Number: 'numberIMG/number11.gif',
+    xy15: 'graphics/frosting-tile.gif',
+    xy15Number: 'numberIMG/number12.gif',
+    xy25: 'graphics/sugar-tile.gif',
+    xy25Number: 'numberIMG/number5.gif',
+    xy35: 'graphics/sprinkles-tile.gif',
+    xy35Number: 'numberIMG/number9.gif',
+  },
+  {
+    xy31: 'graphics/frosting-tile.gif',
+    xy31Number: 'numberIMG/number8.gif',
+    xy41: 'graphics/icecream-tile.gif',
+    xy41Number:'numberIMG/number6.gif',
+    xy51: 'graphics/sprinkles-tile.gif',
+    xy51Number:'numberIMG/number8.gif',
+    xy22: 'graphics/sugar-tile.gif',
+    xy22Number:'numberIMG/number6.gif',
+    xy32:'graphics/batter-tile.gif',
+    xy32Number:'numberIMG/number8.gif',
+    xy42:'graphics/sugar-tile.gif',
+    xy42Number:'numberIMG/number6.gif',
+    xy52: 'graphics/sprinkles-tile.gif',
+    xy52Number: 'numberIMG/number8.gif',
+    xy13: 'graphics/frosting-tile.gif',
+    xy13Number: 'numberIMG/number8.gif',
+    xy23: 'graphics/icecream-tile.gif',
+    xy23Number: 'numberIMG/number6.gif',
+    xy33: 'graphics/fudge-tile.gif',
+    xy43: 'graphics/icecream-tile.gif',
+    xy43Number: 'numberIMG/number8.gif',
+    xy53: 'graphics/batter-tile.gif',
+    xy53Number:'numberIMG/number6.gif',
+    xy14: 'graphics/sugar-tile.gif',
+    xy14Number: 'numberIMG/number6.gif',
+    xy24: 'graphics/sprinkles-tile.gif',
+    xy24Number:'numberIMG/number6.gif',
+    xy34: 'graphics/batter-tile.gif',
+    xy34Number: 'numberIMG/number8.gif',
+    xy44: 'graphics/frosting-tile.gif',
+    xy44Number: 'numberIMG/number8.gif',
+    xy15: 'graphics/frosting-tile.gif',
+    xy15Number: 'numberIMG/number6.gif',
+    xy25: 'graphics/sugar-tile.gif',
+    xy25Number: 'numberIMG/number8.gif',
+    xy35: 'graphics/sprinkles-tile.gif',
+    xy35Number: 'numberIMG/number6.gif',
+  }
+];
 
 $(function(){
+  var handleBarTemplate = Handlebars.compile($('#gameBoardTemplate').html());
+  var insertTemplate = handleBarTemplate(gameBoardData[0]);
+  $('#gameBoard').append(insertTemplate);
+
   my.currentPlayer = 0;
   my.thiefButton = '';
   my.dessertLocationClick = '';
@@ -44,17 +167,17 @@ if(my.currentGame) {
 var $tiles = $('.check');
 // Checks if on a touch screen device
 if (hasTouch) {
-  $('.churroLocation').on('touchend', function() {
+  $('.churroLocation').on('touchstart', function() {
     $thisLocation = $(this);
     my.churroLocationClick = $thisLocation.attr('id');
   });
-  $('.dessertLocation').on('touchend', function() {
+  $('.dessertLocation').on('touchstart', function() {
     $thisLocation = $(this);
     my.dessertLocationClick = $thisLocation.attr('id');
   });
-  $tiles.on('touchend',checkButton);
-  $('#rollDiceButton').on('touchend',diceRolled);
-  $('#moveThiefButton').on('touchend', function(){
+  $tiles.on('touchstart',checkButton);
+  $('#rollDiceButton').on('touchstart',diceRolled);
+  $('#moveThiefButton').on('touchstart', function(){
     my.thiefButton=$(this).attr('id');
   });
 } else {

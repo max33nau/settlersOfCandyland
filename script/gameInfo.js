@@ -80,11 +80,11 @@ $(function() {
 var hasTouch = 'ontouchstart' in window;
 
 if (hasTouch) {
-  $('#startNewGame').on('touchend',resetGame);
+  $('#startNewGame').on('touchstart',resetGame);
 
-  $('.playerNumber').on('touchend',checkNumberOfPlayers);
+  $('.playerNumber').on('touchstart',checkNumberOfPlayers);
 
-  $('#submit').click('touchend',checkPlayerNames);
+  $('#submit').click('touchstart',checkPlayerNames);
 
 } else {
 
