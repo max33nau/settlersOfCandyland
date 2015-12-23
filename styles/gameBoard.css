@@ -230,18 +230,43 @@ body {
   position: fixed;
   top: 40%;
   right: 1%;
-  background-color: brown;
+  border: none;
 }
 
 #moveThiefButton {
-  background-color: black;
-  color: white;
-  cursor: pointer;
-  padding: 4px;
+  -moz-box-shadow: 0px 10px 14px -7px #cf866c;
+  -webkit-box-shadow: 0px 10px 14px -7px #cf866c;
+  box-shadow: 0px 10px 14px -7px #cf866c;
+  background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #FF6969), color-stop(1, #E54242));
+  background:-moz-linear-gradient(top, #FF6969 5%, #E54242 100%);
+  background:-webkit-linear-gradient(top, #FF6969 5%, #E54242 100%);
+  background:-o-linear-gradient(top, #FF6969 5%, #E54242 100%);
+  background:-ms-linear-gradient(top, #FF6969 5%, #E54242 100%);
+  background:linear-gradient(to bottom, #FF6969 5%, #E54242 100%);
+  background-color:#FF6969;
+  -moz-border-radius:8px;
+  -webkit-border-radius:8px;
+  border-radius:8px;
+  display:inline-block;
+  cursor:pointer;
+  color:#ffffff;
+  font-family:Verdana;
+  font-size:12px;
+  font-weight:bold;
+  padding:12px 24px;
+  text-decoration:none;
+  text-shadow:0px 1px 0px #854629;
+  border: none;
 }
 
 #moveThiefButton:hover {
-  background-color: green !important;
+  background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #E54242), color-stop(1, #FF6969));
+  background:-moz-linear-gradient(top, #E54242 5%, #FF6969 100%);
+  background:-webkit-linear-gradient(top, #E54242 5%, #FF6969 100%);
+  background:-o-linear-gradient(top, #E54242 5%, #FF6969 100%);
+  background:-ms-linear-gradient(top, #E54242 5%, #FF6969 100%);
+  background:linear-gradient(to bottom, #E54242 5%, #FF6969 100%);
+  background-color:#E54242;
 }
 
 #thief {

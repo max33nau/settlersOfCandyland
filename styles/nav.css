@@ -39,7 +39,7 @@ body {
   right: 43%;
 
 }
-li:hover, #startNewGameLink:hover {
+.nav li:hover, #startNewGameLink:hover {
   color: #FF6969;
 }
 
