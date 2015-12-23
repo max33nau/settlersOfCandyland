@@ -230,6 +230,82 @@ function Tile( q, r ) {
 	console.log( "("+ self.coord.x + ", " + self.coord.z + ")" );
     }
 
+    self.setAdjacents = function() {
+	oddHours.forEach( function(hour) {
+	    // Check to see if we've already set neighbor relationships for tiles
+	    // at adjacent coords. If not, and neighboring tiles exist in the 
+	    // tileList, set neighboring tile, edge, and vertex relationships.
+	    if( self.neighbors[hour].tile === null) {
+		// If null, then the tile key exists, but no relationship has been set
+		var tile = tileList.findTileByCoord( self.coord.move(direction[hour]) );
+		// We're redundantly setting some vertex and edge relationships,
+		// but it's okay for now.
+		if( tile != null ) {              // an adjacent tile already exists, set relationships:
+		    // set the tile relationship
+		    self.neighbors[hour].tile = tile;
+		    
+		    // set our shared edge
+		    matchNeighbors( self.neighbors[hour].edge, tile.neighbors[invert(hour)].edge);
+
+		    // we share vertices one hour clockwaise and counterclockwise
+		    // from our shared edge
+		    //(currently producing lots of nulls)
+		    matchNeighbors( self.neighbors[ (hour + 1) % 12].vertex, tile.neighbors[ (invert(hour) + 11) % 12].vertex );
+		    matchNeighbors( self.neighbors[ (hour + 11) % 12].vertex, tile.neighbors[ (invert(hour) + 1) % 12].vertex );
+
+		    // The edge incident to me, one hour clockwise for me
+		    // is his edge two hours counterclockwise for him,
+		    // and vice-versa.
+		    
+		    matchNeighbors( self.neighbors[ (hour + 1) % 12 ].edge, tile.neighbors[ (invert(hour) + 10) % 12 ].edge );
+		    matchNeighbors( self.neighbors[ (hour + 2) % 12 ].edge, tile.neighbors[ (invert(hour) + 11) % 12 ].edge );
+		    
+		    // Now the incident edges on the other side.
+		    matchNeighbors( self.neighbors[ (hour + 11) % 12 ].edge, tile.neighbors[ (invert(hour) + 2) % 12 ].edge );
+		    matchNeighbors( self.neighbors[ (hour + 10) % 12 ].edge, tile.neighbors[ (invert(hour) + 1) % 12 ].edge );
+		    
+		    //tile.setNeighbor(self);           // this line is probably always redundant
+		}
+	    }
+	});
+    }
+    
+    self.makeVertexAndTwoEdgesAt = function(hour) {
+	// Make a vertex at hour if it doesn't exist.
+	// do likewise for edges at clockwise and counter-clockwise
+	// positions. Set all neighbor relationships.
+	var cw1 = (hour + 1) % 12;
+	var cw4 = (hour + 4) % 12;
+	var ccw1 = (hour + 11) % 12;
+	var ccw4 = (hour + 8) % 12;
+	
+	
+	if(!self.neighbors[hour].vertex){
+	    // If vertex doesn't exist, make it
+	    self.neighbors[hour].vertex = new Vertex();
+	    self.neighbors[hour].vertex.setNeighbor(self);
+	}
+	var vertex = self.neighbors[hour].vertex;
+
+	if(!self.neighbors[cw1].edge) {
+	    self.neighbors[cw1].edge = new Edge();
+	    self.neighbors[cw1].edge.setNeighbor(self);
+	}
+	var cwEdge = self.neighbors[cw1].edge;
+
+	if(!self.neighbors[ccw1].edge) {
+	    self.neighbors[ccw1].edge = new Edge();
+	    self.neighbors[ccw1].edge.setNeighbor(self);
+	}
+	var ccwEdge = self.neighbors[ccw1].edge;
+
+	vertex.neighbors[cw4].edge = cwEdge;
+	cwEdge.setNeighbor(vertex);
+	vertex.neighbors[ccw4].edge = ccwEdge;
+	ccwEdge.setNeighbor(vertex);
+
+    }
+    
     self.makeNeighborVertexAndEdge = function(vertexHour, orientation) {
 	var edgeHour, vertexNeighborHour;
 	
@@ -274,14 +350,13 @@ function Tile( q, r ) {
 	self.neighbors[9].edge.setNeighbor(self);
 	
     }
-    self.init();
+    //self.init();
 
-    self.initSomeMore = function() {
-	[2, 4, 8, 10].forEach(function(hour) {
-	    self.makeNeighborVertexAndEdge(hour, "clockwise");
-	    self.makeNeighborVertexAndEdge(hour, "counterClockwise");
-	});
+    self.initAll = function() {
+	//self.setAdjacents();
+	[0, 2, 4, 6, 8, 10].forEach(function(hour) { self.makeVertexAndTwoEdgesAt(hour); });
     }
+    self.initAll();
     
 
     function matchNeighbors(leftReference, rightReference) {
@@ -310,46 +385,6 @@ function Tile( q, r ) {
 	 }
     }
     
-    self.setAdjacents = function() {
-	oddHours.forEach( function(hour) {
-	    // Check to see if we've already set neighbor relationships for tiles
-	    // at adjacent coords. If not, and neighboring tiles exist in the 
-	    // tileList, set neighboring tile, edge, and vertex relationships.
-	    if( self.neighbors[hour].tile === null) {
-		// If null, then the tile key exists, but no relationship has been set
-		var tile = tileList.findTileByCoord( self.coord.move(direction[hour]) );
-		// We're redundantly setting some vertex and edge relationships,
-		// but it's okay for now.
-		if( tile != null ) {              // an adjacent tile already exists, set relationships:
-		    // set the tile relationship
-		    self.neighbors[hour].tile = tile;
-		    
-		    // set our shared edge
-		    matchNeighbors( self.neighbors[hour].edge, tile.neighbors[invert(hour)].edge);
-
-		    // we share vertices one hour clockwaise and counterclockwise
-		    // from our shared edge
-		    //(currently producing lots of nulls)
-		    matchNeighbors( self.neighbors[ (hour + 1) % 12].vertex, tile.neighbors[ (invert(hour) + 11) % 12].vertex );
-		    matchNeighbors( self.neighbors[ (hour + 11) % 12].vertex, tile.neighbors[ (invert(hour) + 1) % 12].vertex );
-
-		    // The edge incident to me, one hour clockwise for me
-		    // is his edge two hours counterclockwise for him,
-		    // and vice-versa.
-		    
-		    matchNeighbors( self.neighbors[ (hour + 1) % 12 ].edge, tile.neighbors[ (invert(hour) + 10) % 12 ].edge );
-		    matchNeighbors( self.neighbors[ (hour + 2) % 12 ].edge, tile.neighbors[ (invert(hour) + 11) % 12 ].edge );
-		    
-		    // Now the incident edges on the other side.
-		    matchNeighbors( self.neighbors[ (hour + 11) % 12 ].edge, tile.neighbors[ (invert(hour) + 2) % 12 ].edge );
-		    matchNeighbors( self.neighbors[ (hour + 10) % 12 ].edge, tile.neighbors[ (invert(hour) + 1) % 12 ].edge );
-		    
-		    //tile.setNeighbor(self);           // this line is probably always redundant
-		}
-	    }
-	});
-    }
-    //self.setAdjacents();
 
     /*
     // Add remaining adjacent vertices and edges to tile.
@@ -458,11 +493,8 @@ function HexBoard(radius, deck) {
 	    });
 	});
 
-	//console.log(tileList.length);
 
-	console.log("Before:", self.center);
-	self.center.initSomeMore();
-	console.log("After:", self.center);
+	console.log(self.center);
 	//self.center.setAdjacents();
 	//self.center.neighbors[1].tile.setAdjacents();
 	//self.center.neighbors[3].tile.setAdjacents();
