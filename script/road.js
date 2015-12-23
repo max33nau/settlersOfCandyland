@@ -4,6 +4,7 @@ road.buildLeftRoad = function($tile) {
   $tile.append('<div class="leftRoad road"></div>');
   $tile.find('.leftRoad').css('background-color',playerInfo[my.currentPlayer].color);
   playerInfo[my.currentPlayer].numberOfChurros--;
+  console.log("here");
 }
 
 road.buildRightRoad = function($tile) {
@@ -51,7 +52,8 @@ road.middleLeft = function($specificTile, $previousTile, $nextTile, $upperLeftTi
     $tileUpperLeftBottomBuilding = $upperLeftTile.find('.bottomBuilding');
     $tileTopLeftBuilding = $specificTile.find('.topLeftBuilding');
     $tilePreviousTopRightBuilding = $previousTile.find('.topRightBuilding');
-
+    console.log($tileBottomLeftBuilding.attr('src'));
+    console.log(playerColor);
 
     $tileBottomLeftRoad = $specificTile.find('.bottomLeftRoad');
     $tileBottomLeftUpperRightRoad = $bottomLeftTile.find('.topRightRoad');
@@ -67,21 +69,21 @@ road.middleLeft = function($specificTile, $previousTile, $nextTile, $upperLeftTi
   }
 // CHECK TOP LEFT BUILDING SPOT AND TOP RIGHT BUILDING SPOT OF PREVIOUS TILE AND UPPLER LEFT TILE BOTTOM BUILDING SPOT
   if ($tileTopLeftBuilding.length > 0) {
-    $tileTopLeftBuildingColor = $tileTopLeftBuilding.css('background-color');
+    $tileTopLeftBuildingColor = $tileTopLeftBuilding.css('color');
     if ($tileTopLeftBuildingColor == playerColor) {
       road.buildLeftRoad($specificTile);
       return;
     }
   }
  if( $tilePreviousTopRightBuilding.length > 0) {
-    $tilePreviousTopRightBuildingColor = $tilePreviousTopRightBuilding.css('background-color');
+    $tilePreviousTopRightBuildingColor = $tilePreviousTopRightBuilding.css('color');
     if ($tilePreviousTopRightBuildingColor == playerColor) {
       road.buildLeftRoad($specificTile);
       return;
     }
   }
  if ($tileUpperLeftBottomBuilding.length > 0) {
-    $tileUpperLeftBottomBuildingColor = $tileUpperLeftBottomBuilding.css('background-color');
+    $tileUpperLeftBottomBuildingColor = $tileUpperLeftBottomBuilding.css('color');
     if ($tileUpperLeftBottomBuildingColor == playerColor) {
       road.buildLeftRoad($specificTile);
       return;
@@ -89,21 +91,21 @@ road.middleLeft = function($specificTile, $previousTile, $nextTile, $upperLeftTi
   }
 // CHECK BOTTOM LEFT BUILDING SPOT AND PREVIOUS TILE BOTTOM RIGHT SPOT AND BOTTOM LEFT UPPER BUILDING SPOT
   if ($tileBottomLeftBuilding.length > 0 ) {
-    $tileBottomLeftBuildingColor = $tileBottomLeftBuilding.css('background-color');
+    $tileBottomLeftBuildingColor = $tileBottomLeftBuilding.css('color');
     if($tileBottomLeftBuildingColor == playerColor) {
       road.buildLeftRoad($specificTile);
       return;
     }
   }
  if($tilePreviousBottomRightBuilding.length > 0) {
-      $tilePreviousBottomRightBuildingColor = $tilePreviousBottomRightBuilding.css('background-color');
+      $tilePreviousBottomRightBuildingColor = $tilePreviousBottomRightBuilding.css('color');
       if ($tilePreviousBottomRightBuildingColor == playerColor) {
         road.buildLeftRoad($specificTile);
         return;
       }
   }
  if($tileBottomLeftUpperBuilding.length > 0) {
-      $tileBottomLeftUpperBuildingColor = $tileBottomLeftUpperBuilding.css('background-color');
+      $tileBottomLeftUpperBuildingColor = $tileBottomLeftUpperBuilding.css('color');
       if ($tileBottomLeftUpperBuildingColor == playerColor) {
         road.buildLeftRoad($specificTile);
         return;
@@ -197,21 +199,21 @@ road.middleRight = function($specificTile, $previousTile, $nextTile, $upperLeftT
   }
 // CHECK TOP LEFT BUILDING SPOT AND TOP RIGHT BUILDING SPOT OF PREVIOUS TILE AND UPPLER LEFT TILE BOTTOM BUILDING SPOT
   if ($tileTopRightBuilding.length > 0) {
-    $tileTopRightBuildingColor = $tileTopRightBuilding.css('background-color');
+    $tileTopRightBuildingColor = $tileTopRightBuilding.css('color');
     if ($tileTopRightBuildingColor == playerColor) {
       road.buildRightRoad($specificTile);
       return;
     }
   }
  if( $tileNextTopLeftBuilding.length > 0) {
-    $tileNextTopLeftBuildingColor = $tileNextTopLeftBuilding.css('background-color');
+    $tileNextTopLeftBuildingColor = $tileNextTopLeftBuilding.css('color');
     if ($tileNextTopLeftBuildingColor == playerColor) {
       road.buildRightRoad($specificTile);
       return;
     }
   }
  if ($tileUpperRightBottomBuilding.length > 0) {
-    $tileUpperRightBottomBuildingColor = $tileUpperRightBottomBuilding.css('background-color');
+    $tileUpperRightBottomBuildingColor = $tileUpperRightBottomBuilding.css('color');
     if ($tileUpperRightBottomBuildingColor == playerColor) {
       road.buildRightRoad($specificTile);
       return;
@@ -219,21 +221,21 @@ road.middleRight = function($specificTile, $previousTile, $nextTile, $upperLeftT
   }
 // CHECK BOTTOM LEFT BUILDING SPOT AND PREVIOUS TILE BOTTOM RIGHT SPOT AND BOTTOM LEFT UPPER BUILDING SPOT
   if ($tileBottomRightBuilding.length > 0 ) {
-    $tileBottomRightBuildingColor = $tileBottomRightBuilding.css('background-color');
+    $tileBottomRightBuildingColor = $tileBottomRightBuilding.css('color');
     if($tileBottomRightBuildingColor == playerColor) {
       road.buildRightRoad($specificTile);
       return;
     }
   }
  if($tileNextBottomLeftBuilding.length > 0) {
-      $tileNextBottomLeftBuildingColor = $tileNextBottomLeftBuilding.css('background-color');
+      $tileNextBottomLeftBuildingColor = $tileNextBottomLeftBuilding.css('color');
       if ($tileNextBottomLeftBuildingColor == playerColor) {
         road.buildRightRoad($specificTile);
         return;
       }
   }
  if($tileBottomRightUpperBuilding.length > 0) {
-      $tileBottomRightUpperBuildingColor = $tileBottomRightUpperBuilding.css('background-color');
+      $tileBottomRightUpperBuildingColor = $tileBottomRightUpperBuilding.css('color');
       if ($tileBottomRightUpperBuildingColor == playerColor) {
         road.buildRightRoad($specificTile);
         return;
@@ -335,21 +337,21 @@ road.upperRight = function($specificTile, $previousTile, $nextTile, $upperLeftTi
   }
 // CHECK TOP BUILDING SPOT
   if ($tileTopBuilding.length > 0) {
-    $tileTopBuildingColor = $tileTopBuilding.css('background-color');
+    $tileTopBuildingColor = $tileTopBuilding.css('color');
     if ($tileTopBuildingColor == playerColor) {
       road.buildTopRightRoad($specificTile);
       return;
     }
   }
  if( $tileTopLeftBottomRightBuilding.length > 0) {
-    $tileTopLeftBottomRightBuildingColor = $tileTopLeftBottomRightBuilding.css('background-color');
+    $tileTopLeftBottomRightBuildingColor = $tileTopLeftBottomRightBuilding.css('color');
     if ($tileTopLeftBottomRightBuildingColor == playerColor) {
       road.buildTopRightRoad($specificTile);
       return;
     }
   }
  if ($tileTopRightBottomLeftBuilding.length > 0) {
-    $tileTopRightBottomLeftBuildingColor = $tileTopRightBottomLeftBuilding.css('background-color');
+    $tileTopRightBottomLeftBuildingColor = $tileTopRightBottomLeftBuilding.css('color');
     if ($tileTopRightBottomLeftBuildingColor == playerColor) {
       road.buildTopRightRoad($specificTile);
       return;
@@ -357,21 +359,21 @@ road.upperRight = function($specificTile, $previousTile, $nextTile, $upperLeftTi
   }
 // CHECK TOP RIGHT BUILDING SPOT
   if ($tileTopRightBuilding.length > 0 ) {
-    $tileTopRightBuildingColor = $tileTopRightBuilding.css('background-color');
+    $tileTopRightBuildingColor = $tileTopRightBuilding.css('color');
     if($tileTopRightBuildingColor == playerColor) {
       road.buildTopRightRoad($specificTile);
       return;
     }
   }
  if($tileNextTopLeftBuilding.length > 0) {
-      $tileNextTopLeftBuildingColor = $tileNextTopLeftBuilding.css('background-color');
+      $tileNextTopLeftBuildingColor = $tileNextTopLeftBuilding.css('color');
       if ($tileNextTopLeftBuildingColor == playerColor) {
         road.buildTopRightRoad($specificTile);
         return;
       }
   }
  if($tileTopRightBottomBuilding.length > 0) {
-      $tileTopRightBottomBuildingColor = $tileTopRightBottomBuilding.css('background-color');
+      $tileTopRightBottomBuildingColor = $tileTopRightBottomBuilding.css('color');
       if ($tileTopRightBottomBuildingColor == playerColor) {
         road.buildTopRightRoad($specificTile);
         return;
@@ -473,21 +475,21 @@ road.upperLeft = function($specificTile, $previousTile, $nextTile, $upperLeftTil
   }
 // CHECK TOP BUILDING SPOT
   if ($tileTopBuilding.length > 0) {
-    $tileTopBuildingColor = $tileTopBuilding.css('background-color');
+    $tileTopBuildingColor = $tileTopBuilding.css('color');
     if ($tileTopBuildingColor == playerColor) {
       road.buildTopLeftRoad($specificTile);
       return;
     }
   }
  if( $tileTopLeftBottomRightBuilding.length > 0) {
-    $tileTopLeftBottomRightBuildingColor = $tileTopLeftBottomRightBuilding.css('background-color');
+    $tileTopLeftBottomRightBuildingColor = $tileTopLeftBottomRightBuilding.css('color');
     if ($tileTopLeftBottomRightBuildingColor == playerColor) {
       road.buildTopLeftRoad($specificTile);
       return;
     }
   }
  if ($tileTopRightBottomLeftBuilding.length > 0) {
-    $tileTopRightBottomLeftBuildingColor = $tileTopRightBottomLeftBuilding.css('background-color');
+    $tileTopRightBottomLeftBuildingColor = $tileTopRightBottomLeftBuilding.css('color');
     if ($tileTopRightBottomLeftBuildingColor == playerColor) {
       road.buildTopLeftRoad($specificTile);
       return;
@@ -495,21 +497,21 @@ road.upperLeft = function($specificTile, $previousTile, $nextTile, $upperLeftTil
   }
 // CHECK TOP LEFT BUILDING SPOT
   if ($tileTopLeftBuilding.length > 0 ) {
-    $tileTopLeftBuildingColor = $tileTopLeftBuilding.css('background-color');
+    $tileTopLeftBuildingColor = $tileTopLeftBuilding.css('color');
     if($tileTopLeftBuildingColor == playerColor) {
       road.buildTopLeftRoad($specificTile);
       return;
     }
   }
  if($tilePreviousTopRightBuilding.length > 0) {
-      $tilePreviousTopRightBuildingColor = $tilePreviousTopRightBuilding.css('background-color');
+      $tilePreviousTopRightBuildingColor = $tilePreviousTopRightBuilding.css('color');
       if ($tilePreviousTopRightBuildingColor == playerColor) {
         road.buildTopLeftRoad($specificTile);
         return;
       }
   }
  if($tileTopLeftBottomBuilding.length > 0) {
-      $tileTopLeftBottomBuildingColor = $tileTopLeftBottomBuilding.css('background-color');
+      $tileTopLeftBottomBuildingColor = $tileTopLeftBottomBuilding.css('color');
       if ($tileTopLeftBottomBuildingColor == playerColor) {
         road.buildTopLeftRoad($specificTile);
         return;
@@ -611,21 +613,21 @@ road.bottomLeft = function($specificTile, $previousTile, $nextTile, $upperLeftTi
   }
 // CHECK BOTTOM LEFT BUILDING SPOT
   if ($tilePreviousBottomRightBuilding.length > 0) {
-    $tilePreviousBottomRightBuildingColor = $tilePreviousBottomRightBuilding.css('background-color');
+    $tilePreviousBottomRightBuildingColor = $tilePreviousBottomRightBuilding.css('color');
     if ($tilePreviousBottomRightBuildingColor == playerColor) {
       road.buildBottomLeftRoad($specificTile);
       return;
     }
   }
  if( $tileBottomLeftBuilding.length > 0) {
-    $tileBottomLeftBuildingColor = $tileBottomLeftBuilding.css('background-color');
+    $tileBottomLeftBuildingColor = $tileBottomLeftBuilding.css('color');
     if ($tileBottomLeftBuildingColor == playerColor) {
       road.buildBottomLeftRoad($specificTile);
       return;
     }
   }
  if ($tileBottomLeftUpperBuilding.length > 0) {
-    $tileBottomLeftUpperBuildingColor = $tileBottomLeftUpperBuilding.css('background-color');
+    $tileBottomLeftUpperBuildingColor = $tileBottomLeftUpperBuilding.css('color');
     if ($tileBottomLeftUpperBuildingColor == playerColor) {
       road.buildBottomLeftRoad($specificTile);
       return;
@@ -633,21 +635,21 @@ road.bottomLeft = function($specificTile, $previousTile, $nextTile, $upperLeftTi
   }
 // CHECK BOTTOM BUILDING SPOT
   if ($tileBottomBuilding.length > 0 ) {
-    $tileBottomBuildingColor = $tileBottomBuilding.css('background-color');
+    $tileBottomBuildingColor = $tileBottomBuilding.css('color');
     if($tileBottomBuildingColor == playerColor) {
       road.buildBottomLeftRoad($specificTile);
       return;
     }
   }
  if($tileBottomLeftUpperRightBuilding.length > 0) {
-      $tileBottomLeftUpperRightBuildingColor = $tileBottomLeftUpperRightBuilding.css('background-color');
+      $tileBottomLeftUpperRightBuildingColor = $tileBottomLeftUpperRightBuilding.css('color');
       if ($tileBottomLeftUpperRightBuildingColor == playerColor) {
         road.buildBottomLeftRoad($specificTile);
         return;
       }
   }
  if($tileBottomRightUpperLeftBuilding.length > 0) {
-      $tileBottomRightUpperLeftBuildingColor = $tileBottomRightUpperLeftBuilding.css('background-color');
+      $tileBottomRightUpperLeftBuildingColor = $tileBottomRightUpperLeftBuilding.css('color');
       if ($tileBottomRightUpperLeftBuildingColor == playerColor) {
         road.buildBottomLeftRoad($specificTile);
         return;
@@ -749,21 +751,21 @@ road.bottomRight = function($specificTile, $previousTile, $nextTile, $upperLeftT
   }
 // CHECK BOTTOM RIGHT BUILDING SPOT
   if ($tileNextBottomLeftBuilding.length > 0) {
-    $tileNextBottomLeftBuildingColor = $tileNextBottomLeftBuilding.css('background-color');
+    $tileNextBottomLeftBuildingColor = $tileNextBottomLeftBuilding.css('color');
     if ($tileNextBottomLeftBuildingColor == playerColor) {
       road.buildBottomRightRoad($specificTile);
       return;
     }
   }
  if( $tileBottomRightBuilding.length > 0) {
-    $tileBottomRightBuildingColor = $tileBottomRightBuilding.css('background-color');
+    $tileBottomRightBuildingColor = $tileBottomRightBuilding.css('color');
     if ($tileBottomRightBuildingColor == playerColor) {
       road.buildBottomRightRoad($specificTile);
       return;
     }
   }
  if ($tileBottomRightUpperBuilding.length > 0) {
-    $tileBottomRightUpperBuildingColor = $tileBottomRightUpperBuilding.css('background-color');
+    $tileBottomRightUpperBuildingColor = $tileBottomRightUpperBuilding.css('color');
     if ($tileBottomRightUpperBuildingColor == playerColor) {
       road.buildBottomRightRoad($specificTile);
       return;
@@ -771,21 +773,21 @@ road.bottomRight = function($specificTile, $previousTile, $nextTile, $upperLeftT
   }
 // CHECK BOTTOM BUILDING SPOT
   if ($tileBottomBuilding.length > 0 ) {
-    $tileBottomBuildingColor = $tileBottomBuilding.css('background-color');
+    $tileBottomBuildingColor = $tileBottomBuilding.css('color');
     if($tileBottomBuildingColor == playerColor) {
       road.buildBottomRightRoad($specificTile);
       return;
     }
   }
  if($tileBottomLeftUpperRightBuilding.length > 0) {
-      $tileBottomLeftUpperRightBuildingColor = $tileBottomLeftUpperRightBuilding.css('background-color');
+      $tileBottomLeftUpperRightBuildingColor = $tileBottomLeftUpperRightBuilding.css('color');
       if ($tileBottomLeftUpperRightBuildingColor == playerColor) {
         road.buildBottomRightRoad($specificTile);
         return;
       }
   }
  if($tileBottomRightUpperLeftBuilding.length > 0) {
-      $tileBottomRightUpperLeftBuildingColor = $tileBottomRightUpperLeftBuilding.css('background-color');
+      $tileBottomRightUpperLeftBuildingColor = $tileBottomRightUpperLeftBuilding.css('color');
       if ($tileBottomRightUpperLeftBuildingColor == playerColor) {
         road.buildBottomRightRoad($specificTile);
         return;
