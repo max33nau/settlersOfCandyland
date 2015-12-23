@@ -30,7 +30,15 @@ header {
   color: #90D3C1;
 }
 
-li:hover {
+#startNewGameLink {
+  position: absolute;
+  font-family: Arial Black, Arial Bold, Gadget, sans-serif;
+  color: #90D3C1;
+  bottom: -60px;
+  right: 43%;
+
+}
+li:hover, #startNewGameLink:hover {
   color: #FF6969;
 }
 

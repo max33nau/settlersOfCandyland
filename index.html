@@ -14,10 +14,11 @@
   <body>
     <header><img class= 'title' src='graphics/settlersTitle.png'></header>
     <ul class='nav'>
-      <a href="index.html"><li>home</li></a>
-      <a href="instructions.html"><li>instructions</li></a>
-      <a href="about.html"><li>about</li></a>
+      <a class='pagelink' href="index.html"><li>home</li></a>
+      <a class='pagelink' href="instructions.html"><li>instructions</li></a>
+      <a class='pagelink' href="about.html"><li>about</li></a>
     </ul>
+
     <div id='diceWrapper'>
       <div id='die1' class='dice'>0</div>
       <div id='die2' class='dice'>0</div>
@@ -233,12 +234,13 @@
 
 
     <img class='bakingInstructions' src='graphics/bakingInstructions.gif'>
-
+    <a id='startNewGameLink' href='index.html'> Start New Game </a>
 
   <script src="script/jquery-2.1.4.min.js"></script>
   <script src='script/building.js'></script>
   <script src='script/road.js'></script>
-  <script src='script/test.js'></script>
+  <script src='script/gameInfo.js'></script>
+  <script src='script/gameBoard.js'></script>
 
 
   </body>

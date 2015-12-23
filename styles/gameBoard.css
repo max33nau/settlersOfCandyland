@@ -315,8 +315,8 @@ body {
 }
 
 .dessertLocation {
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
   border-radius: 20px;
   background-color: red;
   position: absolute;
@@ -327,31 +327,31 @@ body {
 }
 
 #locationTopDessert {
-  top: 14px;
-  left: 76px;
+  top: 22px;
+  left: 81px;
 }
 
 #locationTopLeftDessert {
-  top: 54px;
-  left: 4px;
+  top: 60px;
+  left: 10px;
 }
 
 #locationTopRightDessert {
-  top: 54px;
-  right: 4px;
+  top: 60px;
+  right: 10px;
 }
 
 #locationBottomLeftDessert {
-  bottom: 55px;
-  left: 4px;
+  bottom: 42px;
+  left: 10px;
 }
 
 #locationBottomRightDessert {
-  bottom: 55px;
-  right: 4px;
+  bottom: 42px;
+  right: 10px;
 }
 
 #locationBottomDessert {
-  bottom: 15px;
-  left: 76px;
+  bottom: 3px;
+  left: 81px;
 }
