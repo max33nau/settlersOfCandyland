@@ -231,6 +231,8 @@ body {
   top: 40%;
   right: 1%;
   border: none;
+  max-width: 175px;
+  text-align: center;
 }
 
 #moveThiefButton {
