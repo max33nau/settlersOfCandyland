@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> Settlers Of CandyLand </title>
+  <meta charset="utf-8"></meta>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="styles/nav.css">
+  <link rel="stylesheet" type="text/css" href="styles/landingPage.css">
+
+</head>
+<body>
+  <header><img class= 'title' src='graphics/settlersTitle.png'></header>
+  <ul class='nav'>
+    <a href="index.html"><li>game board</li></a>
+    <a href="instructions.html"><li>instructions</li></a>
+    <a href="about.html"><li>about</li></a>
+  </ul>
+
+  <h2>number of players</h2>
+  <div id='playerNumberContainer'>
+    <div class='playerNumber'>3</div>
+    <div class='playerNumber'>4</div>
+  </div>
+
+  <fieldset>
+    <legend> Add Player Names </legend>
+    <img class='characterImages' id='king' src="graphics/KingKandy.png"><input type="text" placeholder="player 1" name="" value="">
+    <br>
+    <img class='characterImages' id='queen' src="graphics/lordLicorice.png"><input type="text" placeholder="player 2" name="" value="">
+    <br>
+    <img class='characterImages' id='lord' src="graphics/queenFrostine.png"><input type="text" placeholder="player 3" name="" value="">
+    <br>
+    <img class='characterImages' id='gloppy' src="graphics/gloppy.png"><input type="text" placeholder="player 4" name="" value="">
+
+  </fieldset>
+
+  <script src="script/jquery-2.1.4.min.js"></script>
+  <script src="script/landingPage.js"></script>
+</body>
+</html>
