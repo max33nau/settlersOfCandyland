@@ -414,3 +414,15 @@ body {
   bottom: 5px;
   left: 72px;
 }
+
+@media (orientation: portrait) {
+  html {
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+    min-height: 100vh;
+    min-width: 100vh;
+  }
+}
