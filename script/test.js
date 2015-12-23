@@ -1,27 +1,25 @@
-function PlayerInfo (name, color,imageUrl) {
+function PlayerInfo (name, color,imageUrl, cupCakeSVG, iceCreamSVG) {
   this.name = name;
   this.color = color;
   this.imageUrl = imageUrl;
   this.numberOfChurros = 15;
   this.numberOfCupcakes = 5;
   this.numberOfIceCreamSundaes = 4;
-  this.sugar = 0;
-  this.batter = 0;
-  this.sprinkles = 0;
-  this.frosting = 0;
-  this.icecream = 0;
+  this.cupCake = cupCakeSVG;
+  this.iceCream = iceCreamSVG;
 }
 
 my = {};
 
-player1 = new PlayerInfo('King Kandy', 'rgb(250, 161, 17)','graphics/KingKandy.png');
-player2 = new PlayerInfo('Lord Licorice', 'rgb(202, 55, 55)','graphics/lordLicorice.png');
-player3 = new PlayerInfo('Queen Frostine', 'rgb(102, 173, 229)','graphics/queenFrostine.png');
-player4 = new PlayerInfo('Gloppy', 'rgb(121, 82, 51)','graphics/gloppy.png');
+player1 = new PlayerInfo('King Kandy', 'rgb(250, 161, 17)','graphics/KingKandy.png','cupCakesAndSundaes/cupCakeOrange.svg','cupCakesAndSundaes/sundeaOrange.svg');
+player2 = new PlayerInfo('Lord Licorice', 'rgb(202, 55, 55)','graphics/lordLicorice.png','cupCakesAndSundaes/cupCakeRed.svg','cupCakesAndSundaes/sundeaRed.svg');
+player3 = new PlayerInfo('Queen Frostine', 'rgb(102, 173, 229)','graphics/queenFrostine.png','cupCakesAndSundaes/cupCakeBlue.svg','cupCakesAndSundaes/sundeaBlue.svg');
+player4 = new PlayerInfo('Gloppy', 'rgb(121, 82, 51)','graphics/gloppy.png','cupCakesAndSundaes/cupCakeBrown.svg','cupCakesAndSundaes/sundeaBrown.svg');
+
 var playerInfo = [player1,player2,player3,player4];
 my.currentPlayer = 0;
-my.dessertLocation = '';
-my.churroLocation = '';
+my.dessertLocationClick = '';
+my.churroLocationClick = '';
 my.playersTurnColor = '';
 my.playersTurnName = '';
 my.currentPlayerFieldset = $('#currentPlayer');
@@ -68,11 +66,11 @@ var $tiles = $('.check');
 if (hasTouch) {
   $('.churroLocation').on('touchend', function() {
     $thisLocation = $(this);
-    my.churroLocation = $thisLocation.attr('id');
+    my.churroLocationClick = $thisLocation.attr('id');
   });
   $('.dessertLocation').on('touchend', function() {
     $thisLocation = $(this);
-    my.dessertLocation = $thisLocation.attr('id');
+    my.dessertLocationClick = $thisLocation.attr('id');
   });
   $tiles.on('touchend',checkButton);
   $('#rollDiceButton').on('touchend',diceRolled);
@@ -80,14 +78,13 @@ if (hasTouch) {
 } else {
   $('.churroLocation').on('click', function() {
     $thisLocation = $(this);
-    my.churroLocation = $thisLocation.attr('id');
+    my.churroLocationClick = $thisLocation.attr('id');
   });
   $('.dessertLocation').on('click', function() {
     $thisLocation = $(this);
-    my.dessertLocation = $thisLocation.attr('id');
+    my.dessertLocationClick = $thisLocation.attr('id');
   });
   $tiles.on('click',checkButton);
-
   $('#rollDiceButton').on('click',diceRolled);
 }
 
@@ -132,31 +129,31 @@ function checkButton() {
   var nextTile = $('#xy'+rightX.toString()+yCoord.toString());
   var bottomLeftTile = $('#xy'+leftX.toString()+bottomY.toString());
   var bottomRightTile = $('#xy'+xCoord.toString()+bottomY.toString());
-
-  if(my.churroLocation) {
+  console.log(my.churroLocationClick);
+  if(my.churroLocationClick) {
     if (playerInfo[my.currentPlayer].numberOfChurros == 0) {
       alert('You have ran out of churros sorry');
-    } else if (my.churroLocation == 'locationTopLeftChurro') {
+    } else if (my.churroLocationClick == 'locationTopLeftChurro') {
       road.upperLeft($tile,previousTile,nextTile,upperLeftTile, upperRightTile, bottomLeftTile, bottomRightTile,playerInfo[my.currentPlayer].color);
 
-    } else if (my.churroLocation == 'locationTopRightChurro') {
+    } else if (my.churroLocationClick == 'locationTopRightChurro') {
       road.upperRight($tile,previousTile,nextTile,upperLeftTile, upperRightTile, bottomLeftTile, bottomRightTile,playerInfo[my.currentPlayer].color);
 
-    } else if (my.churroLocation == 'locationMiddleLeftChurro') {
+    } else if (my.churroLocationClick == 'locationMiddleLeftChurro') {
       road.middleLeft($tile,previousTile,nextTile,upperLeftTile, upperRightTile, bottomLeftTile, bottomRightTile,playerInfo[my.currentPlayer].color);
 
-    } else if (my.churroLocation == 'locationMiddleRightChurro') {
+    } else if (my.churroLocationClick == 'locationMiddleRightChurro') {
       road.middleRight($tile,previousTile,nextTile,upperLeftTile, upperRightTile, bottomLeftTile, bottomRightTile,playerInfo[my.currentPlayer].color);
 
-    } else if (my.churroLocation == 'locationBottomLeftChurro') {
+    } else if (my.churroLocationClick == 'locationBottomLeftChurro') {
       road.bottomLeft($tile,previousTile,nextTile,upperLeftTile, upperRightTile, bottomLeftTile, bottomRightTile,playerInfo[my.currentPlayer].color);
-    } else if (my.churroLocation == 'locationBottomRightChurro') {
+    } else if (my.churroLocationClick == 'locationBottomRightChurro') {
       road.bottomRight($tile,previousTile,nextTile,upperLeftTile, upperRightTile, bottomLeftTile, bottomRightTile,playerInfo[my.currentPlayer].color);
     } else {
       console.log('truthy');
     }
 
-} else if (my.dessertLocation) {
+} else if (my.dessertLocationClick) {
   var straightAboveTile = $('#xy'+rightX.toString()+ straightAboveY.toString());
   var straightBelowTile = $('#xy'+leftX.toString()+ straightBelowY.toString());
   var previousUpperLeftTile = $('#xy'+leftX.toString()+upperY.toString());
@@ -165,27 +162,27 @@ function checkButton() {
   var nextBottomRightTile = $('#xy'+rightX.toString()+bottomY.toString());
   if (playerInfo[my.currentPlayer].numberOfCupcakes == 0) {
     alert('You have ran out of cupcakes sorry');
-  } else if (my.dessertLocation == 'locationTopDessert') {
+  } else if (my.dessertLocationClick == 'locationTopDessert') {
     building.upper($tile,previousTile,nextTile,upperLeftTile, upperRightTile, bottomLeftTile, bottomRightTile,straightAboveTile,playerInfo[my.currentPlayer].color);
 
-  } else if (my.dessertLocation == 'locationTopRightDessert') {
+  } else if (my.dessertLocationClick == 'locationTopRightDessert') {
 
     building.topRight($tile,previousTile,nextTile,upperLeftTile, upperRightTile, bottomLeftTile, bottomRightTile,nextUpperRightTile,playerInfo[my.currentPlayer].color);
 
 
-  } else if (my.dessertLocation == 'locationTopLeftDessert') {
+  } else if (my.dessertLocationClick == 'locationTopLeftDessert') {
     building.topLeft($tile,previousTile,nextTile,upperLeftTile, upperRightTile, bottomLeftTile, bottomRightTile,previousUpperLeftTile,playerInfo[my.currentPlayer].color);
 
 
-  } else if (my.dessertLocation == 'locationBottomDessert') {
+  } else if (my.dessertLocationClick == 'locationBottomDessert') {
     building.bottom($tile,previousTile,nextTile,upperLeftTile, upperRightTile, bottomLeftTile, bottomRightTile,straightBelowTile,playerInfo[my.currentPlayer].color);
 
 
-  } else if (my.dessertLocation == 'locationBottomLeftDessert') {
+  } else if (my.dessertLocationClick == 'locationBottomLeftDessert') {
     building.bottomLeft($tile,previousTile,nextTile,upperLeftTile, upperRightTile, bottomLeftTile, bottomRightTile,previousBottomLeftTile,playerInfo[my.currentPlayer].color);
 
 
-  } else if (my.dessertLocation == 'locationBottomRightDessert') {
+  } else if (my.dessertLocationClick == 'locationBottomRightDessert') {
     building.bottomRight($tile,previousTile,nextTile,upperLeftTile, upperRightTile, bottomLeftTile, bottomRightTile,nextBottomRightTile,playerInfo[my.currentPlayer].color);
 
   }  else {
@@ -201,8 +198,8 @@ function checkButton() {
   alert('You did not make a selection, please try again.');
 }
 
-my.dessertLocation = '';
-my.churroLocation = '';
+my.dessertLocationClick = '';
+my.churroLocationClick = '';
 localStorage.setItem('currentGame', my.$gameBoard.html() );
 localStorage.setItem('currentPlayerInfo',JSON.stringify(playerInfo));
 localStorage.setItem('currentPlayer', my.currentPlayer);

@@ -1,37 +1,37 @@
 var road = {};
 
 road.buildLeftRoad = function($tile) {
-  $tile.append('<div class="leftRoad"></div>');
+  $tile.append('<div class="leftRoad road"></div>');
   $tile.find('.leftRoad').css('background-color',playerInfo[my.currentPlayer].color);
   playerInfo[my.currentPlayer].numberOfChurros--;
 }
 
 road.buildRightRoad = function($tile) {
-  $tile.append('<div class="rightRoad"></div>');
+  $tile.append('<div class="rightRoad road"></div>');
   $tile.find('.rightRoad').css('background-color',playerInfo[my.currentPlayer].color);
   playerInfo[my.currentPlayer].numberOfChurros--;
 }
 
 road.buildTopRightRoad = function($tile) {
-  $tile.append('<div class="topRightRoad"></div>');
+  $tile.append('<div class="topRightRoad road"></div>');
   $tile.find('.topRightRoad').css('background-color',playerInfo[my.currentPlayer].color);
   playerInfo[my.currentPlayer].numberOfChurros--;
 }
 
 road.buildTopLeftRoad = function($tile) {
-  $tile.append('<div class="topLeftRoad"></div>');
+  $tile.append('<div class="topLeftRoad road"></div>');
   $tile.find('.topLeftRoad').css('background-color',playerInfo[my.currentPlayer].color);
   playerInfo[my.currentPlayer].numberOfChurros--;
 }
 
 road.buildBottomRightRoad = function($tile) {
-  $tile.append('<div class="bottomRightRoad"></div>');
+  $tile.append('<div class="bottomRightRoad road"></div>');
   $tile.find('.bottomRightRoad').css('background-color',playerInfo[my.currentPlayer].color);
   playerInfo[my.currentPlayer].numberOfChurros--;
 }
 
 road.buildBottomLeftRoad = function($tile) {
-  $tile.append('<div class="bottomLeftRoad"></div>');
+  $tile.append('<div class="bottomLeftRoad road"></div>');
   $tile.find('.bottomLeftRoad').css('background-color',playerInfo[my.currentPlayer].color);
   playerInfo[my.currentPlayer].numberOfChurros--;
 }

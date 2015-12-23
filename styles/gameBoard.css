@@ -1,8 +1,36 @@
+<<<<<<< HEAD:styles/gameBoard.css
+=======
+header {
+  max-width: 100%;
+  text-align: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+
+>>>>>>> a8229b69931461513b9925d26a9e8542c9102ba8:styles/hexagon.css
 body {
   margin: auto;
   max-width: 100%;
 }
 
+<<<<<<< HEAD:styles/gameBoard.css
+=======
+.nav {
+  font-size: 1.5em;
+  margin: auto;
+  list-style: none;
+  text-align: center;
+  width: 100px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+
+>>>>>>> a8229b69931461513b9925d26a9e8542c9102ba8:styles/hexagon.css
 #gameBoard {
     display: -webkit-box;
     display: -webkit-flex;
@@ -16,12 +44,99 @@ body {
     margin: 50px auto;
 }
 
+<<<<<<< HEAD:styles/gameBoard.css
 .cupcake {
+=======
+#startNewGame {
+  position: fixed;
+  top: 35%;
+  left: 1%;
+}
+
+.radioTile {
+  width: 150px;
+}
+
+#roadSelection {
+  width: 150px;
+  height: 200px;
+  font-size: .8em;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.churroLocation {
+  position: absolute;
+  height: 55px;
+  width: 10px;
+  z-index: 20;
+  display: inline;
+}
+
+.location:hover {
+  background-color: green !important;
+}
+
+#locationTopLeftChurro {
+  left: 43px;
+  top: 17px;
+  -ms-transform: rotate(60deg); /* IE 9 */
+  -webkit-transform: rotate(60deg); /* Chrome, Safari, Opera */
+  transform: rotate(60deg);
+}
+#locationTopRightChurro {
+  right: 43px;
+  top: 17px;
+  -ms-transform: rotate(-60deg); /* IE 9 */
+  -webkit-transform: rotate(-60deg); /* Chrome, Safari, Opera */
+  transform: rotate(-60deg);
+}
+
+#locationMiddleLeftChurro {
+  top: 80px;
+  left: 8px;
+}
+
+#locationMiddleRightChurro {
+  top: 80px;
+  right: 8px;
+}
+
+#locationBottomRightChurro {
+  right: 43px;
+  bottom: 17px;
+  -ms-transform: rotate(60deg); /* IE 9 */
+  -webkit-transform: rotate(60deg); /* Chrome, Safari, Opera */
+  transform: rotate(60deg);
+}
+
+#locationBottomLeftChurro {
+  left: 43px;
+  bottom: 17px;
+  -ms-transform: rotate(-60deg); /* IE 9 */
+  -webkit-transform: rotate(-60deg); /* Chrome, Safari, Opera */
+  transform: rotate(-60deg);
+}
+
+#buildingSelection {
+  width: 150px;
+  height: 200px;
+  font-size: .8em;
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+
+.dessertLocation {
+>>>>>>> a8229b69931461513b9925d26a9e8542c9102ba8:styles/hexagon.css
   width: 20px;
   height: 20px;
+  z-index: 20;
   border-radius: 20px;
 }
 
+<<<<<<< HEAD:styles/gameBoard.css
 .iceCreamSundae {
   width: 25px;
   height: 25px;
@@ -29,6 +144,37 @@ body {
 }
 
 /*----------TILES----------*/
+=======
+#locationTopDessert {
+  top: 14px;
+  left: 76px;
+}
+
+#locationTopLeftDessert {
+  top: 54px;
+  left: 4px;
+}
+
+#locationTopRightDessert {
+  top: 54px;
+  right: 4px;
+}
+
+#locationBottomLeftDessert {
+  bottom: 55px;
+  left: 4px;
+}
+
+#locationBottomRightDessert {
+  bottom: 55px;
+  right: 4px;
+}
+
+#locationBottomDessert {
+  bottom: 15px;
+  left: 76px;
+}
+>>>>>>> a8229b69931461513b9925d26a9e8542c9102ba8:styles/hexagon.css
 
 .row {
   display: -webkit-box;
