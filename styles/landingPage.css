@@ -2,13 +2,20 @@
   font-size: 1.3em;
   font-family: Arial Black, Arial Bold, Gadget, sans-serif;
   color: #45B0E5;
-  max-width: 60%;
+  max-width: 90%;
   margin: auto;
+  margin-top: 30px;
+  text-align: center;
 }
 
 p {
   font-family: Arial, Gadget, sans-serif;
   margin-left: 22%;
+}
+
+.centerText {
+  text-align: center;
+  margin: auto;
 }
 
 #playerNumberContainer {
@@ -37,8 +44,18 @@ p {
   cursor: pointer;
 }
 
+#playerNameContainer {
+  width: 70%;
+  margin: auto;
+  border: 2px dotted #90D3C1;
+  font-family: Arial, Gadget, sans-serif;
+  margin-top: 40px;
+  margin-bottom: 30px;
+  text: none;
+}
+
 .characterImages {
-  width: 50px;
+  width: 60px;
   vertical-align: middle;
   padding: 10px;
   margin: 10px;
