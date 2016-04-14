@@ -25,7 +25,8 @@ body {
 }
 
 .nav li {
-  margin: 25px;
+  margin: 15px;
+  padding: 5px;
   display: inline;
   font-family: Arial Black, Arial Bold, Gadget, sans-serif;
   color: #90D3C1;
